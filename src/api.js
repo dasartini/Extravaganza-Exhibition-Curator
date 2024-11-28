@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export function getArtworks() {
-    return axios.get('https://api.artic.edu/api/v1/artworks?page=5&limit=8')
+export function getArtworks(num =1) {
+    if(num ===null){ num =1}
+    else if(num >0){num++}
+    return axios.get(`https://api.artic.edu/api/v1/artworks?page=${num}&limit=8`)
         .then((response) => {
-            // Ensure we are returning only the 'data' field containing artwork array
             return response.data.data; 
         })
         .catch((error) => {
