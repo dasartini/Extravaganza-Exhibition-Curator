@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getArtworksOther } from "../api";
 import Boxie from "../styles/Boxie";
 
-function Homebox() {
+function Other() {
     const [artworks, setArtworks] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ function Homebox() {
                         {artworks.map((art, index) => (
                             <div key={index} className="item">
                                 <img 
-                                    src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg` || 'placeholder.jpg'} 
+                                    src={`${art.images.web.url}`|| 'placeholder.jpg'} 
                                     alt={art.title || 'Untitled'} 
                                     className="itemImage" 
                                 />
@@ -45,4 +45,4 @@ function Homebox() {
     );
 }
 
-export default Homebox;
+export default Other;

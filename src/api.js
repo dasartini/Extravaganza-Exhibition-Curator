@@ -12,7 +12,7 @@ export function getArtworks() {
         });
 }
 export function getArtworksOther() {
-    return axios.get('https://openaccess-api.clevelandart.org/api/artworks?limit=5'
+    return axios.get('https://openaccess-api.clevelandart.org/api/artworks?limit=8'
     
     )
         .then((response) => {
