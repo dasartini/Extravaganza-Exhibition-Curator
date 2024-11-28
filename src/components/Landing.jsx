@@ -3,6 +3,7 @@ import LandingStyle from "../styles/LandingStyle"
 function Landing(){
 
     return(
+  <main>
 <LandingStyle>
         <div class="search-section">
       <h2 class="section-title">Ricerca per musei</h2>
@@ -15,13 +16,10 @@ function Landing(){
           <img src="https://i.ytimg.com/vi/yBrPz5aCXdM/maxresdefault.jpg" alt="Palazzo Pitti" class="card-image"/>
           <h3 class="card-title">Cleveland Museum Of Art</h3>
         </div>
-        {/* <div class="card">
-          <img src="giardino_boboli.jpg" alt="Giardino di Boboli" class="card-image"/>
-          <h3 class="card-title">Giardino di Boboli</h3>
-        </div> */}
       </div>
     </div>
     </LandingStyle>
+    </main>
     )
 }
 
