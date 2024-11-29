@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export function getArtworks() {
-    return axios.get('https://api.artic.edu/api/v1/artworks?page=5&limit=8')
+export function getArtworks(num =1) {
+    if(num ===null){ num =1}
+    else if(num >0){num++}
+    return axios.get(`https://api.artic.edu/api/v1/artworks?page=${num}&limit=8`)
         .then((response) => {
-            // Ensure we are returning only the 'data' field containing artwork array
             return response.data.data; 
         })
         .catch((error) => {
@@ -11,8 +12,10 @@ export function getArtworks() {
             throw error;
         });
 }
-export function getArtworksOther() {
-    return axios.get('https://openaccess-api.clevelandart.org/api/artworks?limit=8'
+export function getArtworksOther(num = 0) {
+if(num ===0 ){num =0 }
+else if(num!==0){num += 8}
+    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks?limit=8&skip=${num}`
     
     )
         .then((response) => {
