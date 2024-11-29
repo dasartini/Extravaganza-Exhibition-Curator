@@ -82,4 +82,4 @@ function AllArtworks() {
     )
 }
 
-export default AllArtworks;
+export default AllArtworks

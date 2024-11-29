@@ -16,10 +16,13 @@ function Landing(){
           <h3 class="card-title">Art Institute of Chicago</h3>
         </div>
         </Link>
+
+        <Link to="clevelandartmuseum">
         <div class="card">
           <img src="https://i.ytimg.com/vi/yBrPz5aCXdM/maxresdefault.jpg" alt="Palazzo Pitti" class="card-image"/>
           <h3 class="card-title">Cleveland Museum Of Art</h3>
         </div>
+        </Link>
       </div>
     </div>
     </LandingStyle>

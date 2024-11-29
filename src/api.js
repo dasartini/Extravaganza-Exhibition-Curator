@@ -12,8 +12,10 @@ export function getArtworks(num =1) {
             throw error;
         });
 }
-export function getArtworksOther() {
-    return axios.get('https://openaccess-api.clevelandart.org/api/artworks?limit=8'
+export function getArtworksOther(num = 0) {
+if(num ===0 ){num =0 }
+else if(num!==0){num += 8}
+    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks?limit=8&skip=${num}`
     
     )
         .then((response) => {
