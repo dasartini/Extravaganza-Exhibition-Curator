@@ -36,7 +36,7 @@ return (<>
         <p>LOADING PLEASE</p></div> : 
         <>
         <div className="frame">
-            <img
+            <img className="singleArtwork"
                 src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
                 alt={artwork.title || "Untitled"}
                 title={artwork.thumbnail.alt_text}

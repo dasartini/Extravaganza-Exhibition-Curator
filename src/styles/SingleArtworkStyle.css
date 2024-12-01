@@ -1,5 +1,13 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .singleArtworkCont{
-
+    animation: fadeIn 0.5s ease-in-out;
         display: flex;
         flex-direction: column;
 }
@@ -7,8 +15,7 @@
 .frame{
     display: flex;
     flex-direction: row;
-    border-radius: 20px;
-    background-color: rgb(153, 147, 160);
+   
     width: 100rem;
     max-width: 90%;
     margin: 2.5rem auto;
@@ -19,4 +26,21 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+}
+
+.artworkInfo{
+    border-radius: 20px;
+    box-shadow: 0px 20px 30px -10px rgb(0, 0, 0);
+    background-color: rgb(153, 147, 160);
+    max-width: 90%;
+    p{
+    padding: 2rem;
+    }
+    margin: 2.5rem auto;
+    h1{
+        margin-top: 2rem;
+    }
+    animation: fadeIn 1s ease-in-out;
+
+
 }
