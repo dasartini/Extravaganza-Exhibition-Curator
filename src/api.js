@@ -28,6 +28,17 @@ else if(num!==0){num += 8}
         });
 }
 
+export function getArtworksById(artwork_id){
+return axios.get(`https://api.artic.edu/api/v1/artworks/${artwork_id}`)
+.then((response)=>{
+    return response.data.data
+})
+.catch((error) => {
+    console.error('Error fetching specific artwork:', error);
+    throw error;
+});
 
-getArtworksOther()
+}
 
+
+getArtworksById()

@@ -1,0 +1,22 @@
+.singleArtworkCont{
+
+        display: flex;
+        flex-direction: column;
+}
+
+.frame{
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    background-color: rgb(153, 147, 160);
+    width: 100rem;
+    max-width: 90%;
+    margin: 2.5rem auto;
+    padding: 2rem;
+
+}
+.specs{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}

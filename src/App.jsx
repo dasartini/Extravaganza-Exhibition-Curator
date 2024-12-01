@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import AllArtworks from './components/AllArtworks'
 import { Routes, Route } from 'react-router'
 import AllArtworks2 from './components/AllArtworks2'
+import SingleArtwork from './components/SingleArtwork'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path='/' element={<Landing/>}/>
       <Route path='/chicagoinstituteofart' element={<AllArtworks/>}/>
       <Route path='/clevelandartmuseum' element={<AllArtworks2/>}/>
+      <Route path='/chicagoinstituteofart/:artwork_id' element={<SingleArtwork/>}/>
     
     </Routes>
     </div>
