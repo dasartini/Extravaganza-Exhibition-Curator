@@ -1,4 +1,5 @@
 import HeaderStyle from "../styles/HeaderStyle"
+import { Link } from "react-router"
 
 function Header(){
     return(
@@ -9,7 +10,7 @@ function Header(){
       <p>Art Curator</p>
     </div>
     <nav className="nav">
-      <a href="#" className="nav-link">Home</a>
+     <Link to={'/'}><p>Home</p></Link>
       <a href="#" className="nav-link">Catalog</a>
       <a href="#" className="nav-link">Login</a>
     </nav>

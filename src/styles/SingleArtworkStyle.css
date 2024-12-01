@@ -31,16 +31,26 @@
 .artworkInfo{
     border-radius: 20px;
     box-shadow: 0px 20px 30px -10px rgb(0, 0, 0);
-    background-color: rgb(153, 147, 160);
+    background-color: rgba(219, 211, 227, 0.774);
     max-width: 90%;
     p{
     padding: 2rem;
     }
     margin: 2.5rem auto;
     h1{
+        margin-left: 3rem;
+        margin-right: 3rem;
         margin-top: 2rem;
     }
     animation: fadeIn 1s ease-in-out;
 
 
+}
+.watching{
+ border-radius: 20px;
+    height: 25rem;
+margin: 2rem auto    
+}
+.singleArtwork{
+    max-width: 70%;
 }

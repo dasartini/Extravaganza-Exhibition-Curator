@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArtworksOther } from "../api";
 import Boxie from "../styles/Boxie";
+import { Link } from "react-router";
 
 function AllArtworks2() {
     const [artworks, setArtworks] = useState([])
@@ -51,9 +52,11 @@ function AllArtworks2() {
                     alt={art.title || "Untitled"}
                     className="itemImage"
                   />
+                  <Link to={`/clevelandartmuseum/${art.id}`}>
                   <p className="itemTitle" title={art.title}>
                     {art.title || "Untitled"}
                   </p>
+                  </Link>
                 </div>
               ))}
             </div>

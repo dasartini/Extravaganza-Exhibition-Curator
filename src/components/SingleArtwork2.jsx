@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getArtworksById } from "../api"
+import { getArtworksById2 } from "../api"
 import SingleArtworkStyle from '../styles/SingleArtworkStyle'
 import DOMPurify from 'dompurify'
 import whatching from '../assets/images/watching.jpg'
 
-function SingleArtwork(){
+function SingleArtwork2(){
 
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
@@ -14,7 +14,7 @@ const [loading, setLoading] = useState(true)
 
 useEffect(()=>{
 
-    getArtworksById(artwork_id)
+    getArtworksById2(artwork_id)
     .then((data)=>{
         setArtwork(data)
         console.log(artwork)
@@ -38,18 +38,18 @@ return (<>
         <>
         <div className="frame">
             <img className="singleArtwork"
-                src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
+                src={artwork.images?.web?.url }
                 alt={artwork.title || "Untitled"}
-                title={artwork.thumbnail.alt_text}
+                title={artwork.tombstone}
             />
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>
             <ol>
-            <p>By: {artwork.artist_title || "Unknown Artist"}</p>
-            <p>Date: {artwork.date_display || "Unknown Date"}</p>
-            <p>Place of origin: {artwork.place_of_origin || "unknown"}</p>
-            <p>Medium: {artwork.medium_display}</p>
-            <p>Category: {artwork.department_title}</p>
+            <p>By: {artwork.creators[0].description || "Unknown Artist"}</p>
+            <p>Date: {artwork.creation_date || "Unknown Date"}</p>
+            <p>Place of origin: {artwork.culture[0] || "unknown"}</p>
+            <p>Medium: {artwork.technique}</p>
+            <p>Category: {artwork.department}</p>
             
             </ol>
             </div>
@@ -59,7 +59,7 @@ return (<>
 <h1>{artwork.title || "Untitled"}
 
 </h1>
-<h2>{artwork.date_display || "Unknown Date"}. </h2>
+<h2>{artwork.creation_date|| "Unknown Date"}. </h2>
 <p
 dangerouslySetInnerHTML={{  __html: DOMPurify.sanitize(artwork.description), }}
 ></p>
@@ -79,4 +79,4 @@ dangerouslySetInnerHTML={{  __html: DOMPurify.sanitize(artwork.description), }}
 
 }
 
-export default SingleArtwork
+export default SingleArtwork2
