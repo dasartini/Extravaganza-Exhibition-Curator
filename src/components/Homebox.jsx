@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
-import { getArtworks, } from "../api";
-import Boxie from "../styles/Boxie";
+import { useState, useEffect } from 'react'
+import { getArtworks, } from "../api"
+import Boxie from "../styles/Boxie"
 
 function Homebox() {
-    const [artworks, setArtworks] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [artworks, setArtworks] = useState([])
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getArtworks()
             .then((data) => {
-                setArtworks(data);
-                setLoading(false);
+                setArtworks(data)
+                setLoading(false)
             })
             .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, []); 
+                setError(err.message)
+                setLoading(false)
+            })
+    }, []);
 
     return (
         <Boxie>
@@ -42,7 +42,7 @@ function Homebox() {
                 )}
             </div>
         </Boxie>
-    );
+    )
 }
 
-export default Homebox;
+export default Homebox
