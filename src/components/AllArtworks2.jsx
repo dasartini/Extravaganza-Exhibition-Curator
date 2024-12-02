@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { getArtworksOther } from "../api";
-import Boxie from "../styles/Boxie";
-import { Link } from "react-router";
+import { useState, useEffect } from "react"
+import { getArtworksOther } from "../api"
+import Boxie from "../styles/Boxie"
+import { Link } from "react-router"
 
 function AllArtworks2() {
     const [artworks, setArtworks] = useState([])
@@ -19,8 +19,8 @@ function AllArtworks2() {
         .catch((err) => {
           setError(err.message)
           setLoading(false)
-        });
-    };
+        })
+    }
   
     useEffect(() => {
       fetchArtworks(num)

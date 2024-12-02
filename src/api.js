@@ -1,21 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export function getArtworks(num =1) {
-    if(num ===null){ num =1}
+    if(num ===1){ num =1}
     else if(num >0){num++}
-    return axios.get(`https://api.artic.edu/api/v1/artworks?page=${num}&limit=8`)
+    return axios.get(`https://api.artic.edu/api/v1/artworks?page=${num}&limit=12`)
         .then((response) => {
             return response.data.data; 
         })
         .catch((error) => {
             console.error('Error fetching artworks:', error);
-            throw error;
-        });
+            throw error
+        })
 }
 export function getArtworksOther(num = 0) {
 if(num ===0 ){num =0 }
-else if(num!==0){num += 8}
-    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks?limit=8&skip=${num}`
+else if(num!==0){num += 12}
+    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks?limit=12&skip=${num}`
     
     )
         .then((response) => {
@@ -24,8 +24,8 @@ else if(num!==0){num += 8}
         })
         .catch((error) => {
             console.error('Error fetching artworks:', error);
-            throw error;
-        });
+            throw error
+        })
 }
 
 export function getArtworksById(artwork_id){
@@ -35,8 +35,8 @@ return axios.get(`https://api.artic.edu/api/v1/artworks/${artwork_id}`)
 })
 .catch((error) => {
     console.error('Error fetching specific artwork:', error);
-    throw error;
-});
+    throw error
+})
 
 }
 
@@ -47,7 +47,7 @@ export function getArtworksById2(artwork_id){
     })
     .catch((error) => {
         console.error('Error fetching specific artwork:', error);
-        throw error;
-    });
+        throw error
+    })
     
     }

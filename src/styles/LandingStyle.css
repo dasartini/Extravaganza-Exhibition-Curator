@@ -1,37 +1,89 @@
 .search-section {
-    text-align: center;
-    margin: 2rem 0;
-  }
-  
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.section-title {
+  font-size: 2rem; 
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.museum-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1200px; 
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
+  max-width: 280px; 
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  color: #0073e6;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+
+
+@media (max-width: 768px) {
   .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
   }
-  
+
   .museum-cards {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+      gap: 1.5rem; 
   }
-  
+
   .card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    text-align: center;
+      max-width: 240px; 
   }
-  
-  .card-image {
-    width: 100%;
-    height: auto;
-  }
-  
+
   .card-title {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    color: #0073e6;
+      font-size: 1.1rem;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+  }
+
+  .museum-cards {
+      gap: 1rem;
+  }
+
+  .card {
+      max-width: 90%; 
+      margin: 0 auto; 
+  }
+
+  .card-title {
+      font-size: 1rem;
+  }
+}
