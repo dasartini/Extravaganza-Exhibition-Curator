@@ -1,9 +1,11 @@
 import HeaderStyle from "../styles/HeaderStyle"
 import { Link } from "react-router"
 import { useState } from "react"
+import Search from "./Search"
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [searchbar ,setSearchbar] = useState("Chicago")
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -16,7 +18,9 @@ function Header() {
           <h1>Extravaganza</h1>
           <p>Art Curator</p>
         </div>
-        <input type="text" className="search-bar" placeholder="Search..." />
+
+        <Search/>
+    
         <button className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
