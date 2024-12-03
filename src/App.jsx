@@ -8,11 +8,13 @@ import AllArtworks2 from './components/AllArtworks2'
 import SingleArtwork from './components/SingleArtwork'
 import SingleArtwork2 from './components/SingleArtwork2'
 import { PageProvider } from './context/PageContext'
+import { VisibleProvider } from './context/VisibleContext'
 
 function App() {
 
   return (
     <div className='wrapper' >
+      <VisibleProvider>
     <Header/>
 <div className='mainContent'>
   <PageProvider>
@@ -26,6 +28,7 @@ function App() {
     </PageProvider>
     </div>
     <Footer/>
+    </VisibleProvider>
     </div>
   )
 }

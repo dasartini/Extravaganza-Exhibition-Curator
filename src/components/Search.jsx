@@ -1,18 +1,16 @@
 import { useState, useContext } from "react"
-import { SearchContext } from "../context/SearchContext"
-
+import { useVisibleContext } from "../context/VisibleContext"
 function Search(){
-    const { search, setSearch } = useContext(SearchContext)
-    const [searchbar ,setSearchbar] = useState("Chicago")
+  const { visible, setVisible } = useVisibleContext()
 
 
     return (<>
-      <div className="searchbarCont">
-          {searchbar === "Chicago"? <input type="text" className="search-bar" placeholder="Search Chicago" /> : 
-          <input type="text" className="search-bar" placeholder="Search Cleveland" />}
+      <div hidden={visible} className="searchbarCont">
+          <input type="text" className="search-bar" placeholder="Search artworks" /> 
+          
           <button>GO!</button>
         <div className="searchBarButtons">
-        <span onClick={()=>{setSearchbar("Chicago")}}>Chicago</span> | <span onClick={()=>{setSearchbar("Cleveland")}}> Cleveland</span></div>
+        </div>
         </div>
 
     </>)
