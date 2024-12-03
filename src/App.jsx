@@ -9,12 +9,13 @@ import SingleArtwork from './components/SingleArtwork'
 import SingleArtwork2 from './components/SingleArtwork2'
 import { PageProvider } from './context/PageContext'
 import { VisibleProvider } from './context/VisibleContext'
-
+import { SearchProvider } from './context/SearchContext'
 function App() {
 
   return (
     <div className='wrapper' >
       <VisibleProvider>
+        <SearchProvider>
     <Header/>
 <div className='mainContent'>
   <PageProvider>
@@ -28,6 +29,7 @@ function App() {
     </PageProvider>
     </div>
     <Footer/>
+    </SearchProvider>
     </VisibleProvider>
     </div>
   )

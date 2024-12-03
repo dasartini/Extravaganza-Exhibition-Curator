@@ -2,8 +2,12 @@ import { useState, useEffect } from "react"
 import { getArtworksOther } from "../api"
 import Boxie from "../styles/Boxie"
 import { Link } from "react-router"
+import { useVisibleContext } from "../context/VisibleContext"
+
 
 function AllArtworks2() {
+  const { visible, setVisible } = useVisibleContext()
+
     const [artworks, setArtworks] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -24,7 +28,8 @@ function AllArtworks2() {
   
     useEffect(() => {
       fetchArtworks(num)
-    }, [num])
+      setVisible(false)
+    }, [num, visible])
 
     const handleClick = () => {
       setNum((prevNum) => prevNum + 8)

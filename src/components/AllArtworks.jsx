@@ -3,8 +3,11 @@ import { usePageContext } from "../context/PageContext"
 import { getArtworks } from "../api"
 import Boxie from "../styles/Boxie"
 import { Link } from "react-router"
+import { useVisibleContext } from "../context/VisibleContext"
+
 
 function AllArtworks() {
+    const { visible, setVisible } = useVisibleContext()
     const { currentPage, setCurrentPage } = usePageContext()
     const [artworks, setArtworks] = useState([])
     const [error, setError] = useState(null)
@@ -25,7 +28,8 @@ function AllArtworks() {
 
     useEffect(() => {
         fetchArtworks(currentPage)
-    }, [currentPage])
+        setVisible(false)
+    }, [currentPage, visible])
 
     const handleNext = () => {
         setCurrentPage((prevPage) => prevPage + 1)

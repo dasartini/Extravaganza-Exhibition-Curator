@@ -1,5 +1,7 @@
-import { useState, useContext } from "react"
 import { useVisibleContext } from "../context/VisibleContext"
+
+
+
 function Search(){
   const { visible, setVisible } = useVisibleContext()
 
