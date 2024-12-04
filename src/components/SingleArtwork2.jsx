@@ -44,14 +44,14 @@ return (<>
             />
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>
-            <ol>
-            <p>By: {artwork.creators[0].description || "Unknown Artist"}</p>
-            <p>Date: {artwork.creation_date || "Unknown Date"}</p>
-            <p>Place of origin: {artwork.culture[0] || "unknown"}</p>
-            <p>Medium: {artwork.technique}</p>
-            <p>Category: {artwork.department}</p>
+            <ul>
+            <p>By: {artwork.creators?.[0]?.description?? "Unknown Artist"}</p>
+            <p>Date: {artwork.creation_date??  "Unknown Date"}</p>
+            <p>Place of origin: {artwork.culture?.[0]?? "Unknown"}</p>
+            <p>Medium: {artwork.technique?? "Unknown medium"}</p>
+            <p>Category: {artwork.department?? "Unknown"}</p>
             
-            </ol>
+            </ul>
             </div>
         </div>
 

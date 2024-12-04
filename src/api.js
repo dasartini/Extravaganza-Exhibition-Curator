@@ -12,10 +12,16 @@ export function getArtworks(num =1) {
             throw error
         })
 }
-export function getArtworksOther(num = 0) {
+export function getArtworksOther(num = 0, query) {
 if(num ===0 ){num =0 }
 else if(num!==0){num += 12}
-    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks?limit=12&skip=${num}`
+    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks`,{
+        params :{
+            limit: 12,
+            skip : num,
+            q: query
+        }
+    }
     
     )
         .then((response) => {
