@@ -1,15 +1,27 @@
 import HeaderStyle from "../styles/HeaderStyle"
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { useState } from "react"
 import Search from "./Search"
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [searchbar ,setSearchbar] = useState("Chicago")
-
+  const location = useLocation() 
+ 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
   };
+
+  const determineTarget = () =>{
+    if(location.pathname.startsWith("/chicagoinstituteofart")){
+      return "chicago"
+    }
+    if(location.pathname.startsWith("/clevelandartmuseum")){
+      return "cleveland"
+    }
+    return null
+  }
+
+  const target = determineTarget()
 
   return (
     <HeaderStyle>
@@ -18,8 +30,8 @@ function Header() {
           <h1>Extravaganza</h1>
           <p>Art Curator</p>
         </div>
-
-        <Search/>
+          {target && <Search target={target}/>}
+        
     
         <button className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
           <span></span>

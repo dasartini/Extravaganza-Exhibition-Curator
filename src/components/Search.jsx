@@ -2,17 +2,18 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 import { useState } from "react";
 
-function Search() {
+function Search({target}) {
   const { visible } = useVisibleContext();
-  const { setQuery } = useSearchContext(); // We only need `setQuery` here
-  const [inputValue, setInputValue] = useState(""); // Local state for input
+  const { setQuery, setChicagoQuery } = useSearchContext();
+  const [inputValue, setInputValue] = useState(""); 
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value); // Update local input state
+    setInputValue(e.target.value); 
   };
 
   const handleSearch = () => {
-    setQuery(inputValue); // Update global query state when "GO!" is clicked
+    if (target === "cleveland"){ setQuery(inputValue)}
+   else if (target === "chicago"){ setChicagoQuery(inputValue)}
   };
 
   return (
@@ -20,8 +21,8 @@ function Search() {
       <input
         type="text"
         className="search-bar"
-        value={inputValue} // Bind to local input state
-        onChange={handleInputChange} // Update local state on typing
+        value={inputValue} 
+        onChange={handleInputChange} 
         placeholder="Search artworks"
       />
       <button onClick={handleSearch}>GO!</button>
