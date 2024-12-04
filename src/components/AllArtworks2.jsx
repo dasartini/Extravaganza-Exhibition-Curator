@@ -6,46 +6,46 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 
 function AllArtworks2() {
-  const { visible, setVisible } = useVisibleContext();
-  const { query } = useSearchContext();
+  const { visible, setVisible } = useVisibleContext()
+  const { query } = useSearchContext()
 
-  const [artworks, setArtworks] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [num, setNum] = useState(0);
+  const [artworks, setArtworks] = useState([])
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [num, setNum] = useState(0)
 
   const fetchArtworks = (pageNum, searchQuery = "") => {
-    setLoading(true);
+    setLoading(true)
     getArtworksOther(pageNum, searchQuery)
       .then((data) => {
-        setArtworks(data);
-        setLoading(false);
+        setArtworks(data)
+        setLoading(false)
       })
       .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  };
+        setError(err.message)
+        setLoading(false)
+      })
+  }
 
   useEffect(() => {
-    setNum(0); // Reset pagination when query changes
-    fetchArtworks(0, query); // Fetch first page with the updated query
+    setNum(0); 
+    fetchArtworks(0, query);
     setVisible(false);
-  }, [query]);
+  }, [query])
 
   useEffect(() => {
-    fetchArtworks(num, query); // Fetch artworks on pagination change
-  }, [num]);
+    fetchArtworks(num, query);
+  }, [num])
 
   const handleClick = () => {
-    setNum((prevNum) => prevNum + 8);
-  };
+    setNum((prevNum) => prevNum + 8)
+  }
 
   const handlePrev = () => {
     if (num >= 8) {
-      setNum((prevNum) => prevNum - 8);
+      setNum((prevNum) => prevNum - 8)
     }
-  };
+  }
 
   return (
     <Boxie>

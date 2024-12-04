@@ -1,15 +1,15 @@
-import './App.css'
-import Header from './components/Header'
-import Landing from './components/Landing'
-import Footer from './components/Footer'
-import AllArtworks from './components/AllArtworks'
-import { Routes, Route } from 'react-router'
-import AllArtworks2 from './components/AllArtworks2'
-import SingleArtwork from './components/SingleArtwork'
-import SingleArtwork2 from './components/SingleArtwork2'
-import { PageProvider } from './context/PageContext'
-import { VisibleProvider } from './context/VisibleContext'
-import { SearchProvider } from './context/SearchContext'
+import './App.css';
+import Header from './components/Header';
+import Landing from './components/Landing';
+import Footer from './components/Footer';
+import AllArtworks from './components/AllArtworks';
+import { Routes, Route } from 'react-router';
+import AllArtworks2 from './components/AllArtworks2';
+import SingleArtwork from './components/SingleArtwork';
+import SingleArtwork2 from './components/SingleArtwork2';
+import { PageProvider } from './context/PageContext';
+import { VisibleProvider } from './context/VisibleContext';
+import { SearchProvider } from './context/SearchContext';
 function App() {
 
   return (

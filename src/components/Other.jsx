@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { getArtworksOther } from "../api"
-import Boxie from "../styles/Boxie"
+import { useState, useEffect } from 'react';
+import { getArtworksOther } from "../api";
+import Boxie from "../styles/Boxie";
 
 function Other() {
     const [artworks, setArtworks] = useState([])
@@ -11,7 +11,7 @@ function Other() {
         getArtworksOther()
             .then((data) => {
                 setArtworks(data)
-                setLoading(false);
+                setLoading(false)
             })
             .catch((err) => {
                 setError(err.message)

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { getArtworksById2 } from "../api"
-import SingleArtworkStyle from '../styles/SingleArtworkStyle'
-import DOMPurify from 'dompurify'
-import whatching from '../assets/images/watching.jpg'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getArtworksById2 } from "../api";
+import SingleArtworkStyle from '../styles/SingleArtworkStyle';
+import DOMPurify from 'dompurify';
+import whatching from '../assets/images/watching.jpg';
 
 function SingleArtwork2(){
 

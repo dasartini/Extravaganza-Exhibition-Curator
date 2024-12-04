@@ -1,8 +1,8 @@
-import LandingStyle from "../styles/LandingStyle"
-import chicago from '../assets/images/chicago.jpg'
-import { Link } from "react-router"
-import { useVisibleContext } from "../context/VisibleContext"
-import { useEffect } from "react"
+import LandingStyle from "../styles/LandingStyle";
+import chicago from '../assets/images/chicago.jpg';
+import { Link } from "react-router";
+import { useVisibleContext } from "../context/VisibleContext";
+import { useEffect } from "react";
 
 
 

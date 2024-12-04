@@ -4,17 +4,17 @@ import { useState } from "react";
 
 function Search({target}) {
   const { visible } = useVisibleContext();
-  const { setQuery, setChicagoQuery } = useSearchContext();
-  const [inputValue, setInputValue] = useState(""); 
+  const { setQuery, setChicagoQuery } = useSearchContext()
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value); 
-  };
+  }
 
   const handleSearch = () => {
     if (target === "cleveland"){ setQuery(inputValue)}
    else if (target === "chicago"){ setChicagoQuery(inputValue)}
-  };
+  }
 
   return (
     <div hidden={visible} className="searchbarCont">
@@ -27,7 +27,7 @@ function Search({target}) {
       />
       <button onClick={handleSearch}>GO!</button>
     </div>
-  );
+  )
 }
 
-export default Search;
+export default Search

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { getArtworks, } from "../api"
-import Boxie from "../styles/Boxie"
+import { useState, useEffect } from 'react';
+import { getArtworks, } from "../api";
+import Boxie from "../styles/Boxie";
 
 function Homebox() {
     const [artworks, setArtworks] = useState([])
@@ -17,7 +17,7 @@ function Homebox() {
                 setError(err.message)
                 setLoading(false)
             })
-    }, []);
+    }, [])
 
     return (
         <Boxie>

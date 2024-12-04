@@ -1,7 +1,7 @@
-import HeaderStyle from "../styles/HeaderStyle"
-import { Link, useLocation } from "react-router"
-import { useState } from "react"
-import Search from "./Search"
+import HeaderStyle from "../styles/HeaderStyle";
+import { Link, useLocation } from "react-router";
+import { useState } from "react";
+import Search from "./Search";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
