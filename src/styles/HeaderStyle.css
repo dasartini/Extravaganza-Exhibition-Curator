@@ -79,8 +79,8 @@
 
 @media (max-width: 768px) {
   .header {
-      flex-wrap: wrap;
-      align-items: flex-start;
+     display: flex;
+     flex-direction: column;
   }
 
   .logo {
@@ -90,6 +90,7 @@
   }
 
   .search-bar {
+    
       width: 100%;
       margin-bottom: 1rem;
   }
