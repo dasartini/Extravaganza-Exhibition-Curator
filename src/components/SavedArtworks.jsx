@@ -1,7 +1,7 @@
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 
 function SavedArtworks() {
-  const { savedArtworks } = useSavedArtworks()
+  const { savedArtworks, removeArtwork, resetGallery } = useSavedArtworks();
 
   return (
     <div>
@@ -9,19 +9,39 @@ function SavedArtworks() {
       {savedArtworks.length === 0 ? (
         <p>No artworks saved yet!</p>
       ) : (
-        <ul>
-          {savedArtworks.map((artwork, index) => (
-            <li key={index}>
-              <img src={artwork.image} alt={artwork.title} style={{ width: "200px" }} />
-              <h2>{artwork.title}</h2>
-              <p>By: {artwork.artist}</p>
-              <p>From: {artwork.museum} Museum</p>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <button onClick={resetGallery} style={{ marginBottom: "20px", padding: "10px" }}>
+            Reset Gallery
+          </button>
+          <ul>
+            {savedArtworks.map((artwork, index) => (
+              <li key={index} style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+                <img src={artwork.image} alt={artwork.title} style={{ width: "100px", marginRight: "10px" }} />
+                <div>
+                  <h2>{artwork.title}</h2>
+                  <p>By: {artwork.artist}</p>
+                  <p>From: {artwork.museum} Museum</p>
+                </div>
+                <button
+                  onClick={() => removeArtwork(index)}
+                  style={{
+                    marginLeft: "10px",
+                    background: "red",
+                    color: "white",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "5px 10px",
+                  }}
+                >
+                  X
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
-  )
+  );
 }
 
-export default SavedArtworks
+export default SavedArtworks;
