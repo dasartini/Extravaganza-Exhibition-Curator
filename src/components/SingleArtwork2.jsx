@@ -6,6 +6,8 @@ import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
 import { useSavedArtworks } from "../context/SavedArtworksContext";
+import noImage from "../assets/images/noImage2.jpg"
+
 
 function SingleArtwork2(){
 const {addArtwork} = useSavedArtworks()
@@ -48,11 +50,21 @@ return (<>
         <p>LOADING PLEASE</p></div> : 
         <>
         <div className="frame">
-            <img className="singleArtwork"
-                src={artwork.images?.web?.url }
-                alt={artwork.title || "Untitled"}
-                title={artwork.tombstone}
-            />
+            {artwork.images?.web?.url ? (
+                 <img className="singleArtwork"
+                 src={artwork.images?.web?.url}
+                 alt={artwork.title || "Untitled"}
+                 title={artwork.tombstone}
+             />
+            ):
+            (
+                <img
+                className="singleArtwork"
+                src={noImage} 
+                alt="No artwork available"
+                title="No artwork image available"
+              />
+            )}
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>
             <ol>

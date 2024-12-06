@@ -9,8 +9,8 @@ export function getArtworks(num = 1, searchQuery = "") {
 
     const baseURL = "https://api.artic.edu/api/v1/artworks"
     const url = searchQuery 
-        ? `${baseURL}/search?q=${searchQuery}&page=${num}&limit=12` 
-        : `${baseURL}?page=${num}&limit=12`;
+        ? `${baseURL}/search?q=${searchQuery}&page=${num}&limit=30` 
+        : `${baseURL}?page=${num}&limit=30`;
 
     return axios.get(url)
         .then((response) => {
@@ -24,10 +24,10 @@ export function getArtworks(num = 1, searchQuery = "") {
 
 export function getArtworksOther(num = 0, query) {
 if(num ===0 ){num =0 }
-else if(num!==0){num += 12}
+else if(num!==0){num += 30}
     return axios.get(`https://openaccess-api.clevelandart.org/api/artworks`,{
         params :{
-            limit: 12,
+            limit: 30,
             skip : num,
             q: query
         }

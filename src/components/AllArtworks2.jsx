@@ -4,6 +4,7 @@ import Boxie from "../styles/Boxie";
 import { Link } from "react-router";
 import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
+import noImage from "../assets/images/noImage2.jpg"
 
 function AllArtworks2() {
   const { visible, setVisible } = useVisibleContext()
@@ -61,7 +62,7 @@ function AllArtworks2() {
             {artworks.map((art, index) => (
               <div key={index} className="item">
                 <img
-                  src={art.images?.web?.url || "placeholder.jpg"}
+                  src={art.images?.web?.url || noImage}
                   alt={art.title || "Untitled"}
                   className="itemImage"
                 />
@@ -76,14 +77,14 @@ function AllArtworks2() {
         )}
         <div className="pagination-buttons" style={{ marginTop: "20px" }}>
           {num > 0 && (
-            <button
+            <button className="boxshadow"
               style={{ height: "50px", width: "100px", marginRight: "10px" }}
               onClick={handlePrev}
             >
               Prev
             </button>
           )}
-          <button
+          <button className="boxshadow"
             style={{ height: "50px", width: "100px" }}
             onClick={handleClick}
           >

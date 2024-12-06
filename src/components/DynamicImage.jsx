@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArtworksById } from "../api";
+import noImage from "../assets/images/noImage2.jpg"
+
 
 function DynamicImage({ singleArtworkId }) {
     const [dynamicImage, setDyamicImage] = useState('')
@@ -25,7 +27,7 @@ function DynamicImage({ singleArtworkId }) {
  
     return (
         <img
-            src={`https://www.artic.edu/iiif/2/${dynamicImage}/full/200,/0/default.jpg`}
+            src={`https://www.artic.edu/iiif/2/${dynamicImage}/full/200,/0/default.jpg` || noImage}
             alt="Artwork"
             className="itemImage"
         />

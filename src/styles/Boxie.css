@@ -1,22 +1,12 @@
 .image-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  grid-auto-rows: auto; 
-  gap: 15px; 
-  padding: 20px;
-}
-
-.allArtworks {
-  margin-top: 2rem;
-  background-color: #e4dddda9;
-  border-radius: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-  min-height: 200px;
-  overflow: hidden;
+  column-count: 4; /* Number of columns */
+  column-gap: 15px; /* Space between columns */
+  padding: 30px;
 }
 
 .item {
+  break-inside: avoid; /* Prevent items from breaking across columns */
+  margin-bottom: 15px; /* Add spacing between rows */
   background-color: #000000;
   border-radius: 10px;
   overflow: hidden;
@@ -35,13 +25,7 @@
   display: block;
   border-bottom: 2px solid #ffffff;
 }
-.pagination-buttons{
- padding: 1rem;
-display: flex;
-flex-direction:row;
-gap: 2rem;
-justify-content: center;
-}
+
 .itemTitle {
   margin: 10px;
   font-size: clamp(0.8rem, 1vw, 1rem);
@@ -51,18 +35,18 @@ justify-content: center;
 
 @media (max-width: 1024px) {
   .image-container {
-      grid-template-columns: repeat(3, 1fr);
+    column-count: 3; /* Fewer columns for smaller screens */
   }
 }
 
 @media (max-width: 768px) {
   .image-container {
-      grid-template-columns: repeat(2, 1fr); 
+    column-count: 2; /* Two columns for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
   .image-container {
-      grid-template-columns: 1fr; 
+    column-count: 1; /* Single column for very small screens */
   }
 }

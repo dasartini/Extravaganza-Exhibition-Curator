@@ -6,6 +6,9 @@ import { Link } from "react-router";
 import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 import DynamicImage from "./DynamicImage";
+import noImage from "../assets/images/noImage2.jpg"
+
+
 
 
 function AllArtworks() {
@@ -20,6 +23,7 @@ function AllArtworks() {
         setLoading(true)
         getArtworks(pageNum, searchQuery)
             .then((data) => {
+                console.log(data)
                 setArtworks(data)
                 setLoading(false)
             })
@@ -55,8 +59,11 @@ function AllArtworks() {
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">
-                                    {art.image_id  ? <img
-                                        src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg` || "placeholder.jpg"}
+                                    {
+                                    
+                                    
+                                    art.image_id  ? <img
+                                        src={`https://www.artic.edu/iiif/2/${art?.image_id}/full/200,/0/default.jpg` || noImage}
                                         alt={art.title || "Untitled"}
                                         className="itemImage"
                                     />   :<DynamicImage singleArtworkId ={art.id}/>}
