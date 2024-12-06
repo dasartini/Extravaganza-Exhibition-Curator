@@ -8,9 +8,6 @@ import { useSearchContext } from "../context/SearchContext";
 import DynamicImage from "./DynamicImage";
 import noImage from "../assets/images/noImage2.jpg"
 
-
-
-
 function AllArtworks() {
     const { visible, setVisible } = useVisibleContext()
     const { chicagoQuery } = useSearchContext()
@@ -32,6 +29,28 @@ function AllArtworks() {
                 setLoading(false)
             })
     }
+    const renderImage = (art, noImage) => {
+        if (art.image_id === null) {
+          return (
+            <img
+              src={noImage}
+              alt="No artwork available"
+              className="itemImage"
+            />
+          );
+        } else if (art.image_id) {
+          return (
+            <img
+              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg`}
+              alt={art.title || "Untitled"}
+              className="itemImage"
+            />
+          );
+        } else if (art.image_id === undefined) {
+          return <DynamicImage singleArtworkId={art.id} />;
+        }
+      };
+      
 
     useEffect(() => {
         fetchArtworks(currentPage, chicagoQuery)
@@ -59,14 +78,8 @@ function AllArtworks() {
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">
-                                    {
-                                    
-                                    
-                                    art.image_id  ? <img
-                                        src={`https://www.artic.edu/iiif/2/${art?.image_id}/full/200,/0/default.jpg` || noImage}
-                                        alt={art.title || "Untitled"}
-                                        className="itemImage"
-                                    />   :<DynamicImage singleArtworkId ={art.id}/>}
+                                    {renderImage(art, noImage)}
+
                                     
                                    
                                     <Link to={`/chicago-institute-of-art/${art.id}`}>
