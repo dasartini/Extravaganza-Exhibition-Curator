@@ -10,26 +10,31 @@ import SingleArtwork2 from './components/SingleArtwork2';
 import { PageProvider } from './context/PageContext';
 import { VisibleProvider } from './context/VisibleContext';
 import { SearchProvider } from './context/SearchContext';
+import { SavedArtworksProvider } from './context/SavedArtworksContext';
+import SavedArtworks from './components/SavedArtworks';
 function App() {
 
   return (
     <div className='wrapper' >
       <VisibleProvider>
+        <SavedArtworksProvider>
         <SearchProvider>
     <Header/>
 <div className='mainContent'>
   <PageProvider>
     <Routes>
       <Route path='/' element={<Landing/>}/>
-      <Route path='/chicagoinstituteofart' element={<AllArtworks/>}/>
-      <Route path='/clevelandartmuseum' element={<AllArtworks2/>}/>
-      <Route path='/chicagoinstituteofart/:artwork_id' element={<SingleArtwork/>}/>
-      <Route path='/clevelandartmuseum/:artwork_id' element={<SingleArtwork2/>}/>
+      <Route path='/chicago-institute-of-art' element={<AllArtworks/>}/>
+      <Route path='/cleveland-art-museum' element={<AllArtworks2/>}/>
+      <Route path='/chicago-institute-of-art/:artwork_id' element={<SingleArtwork/>}/>
+      <Route path='/cleveland-art-museum/:artwork_id' element={<SingleArtwork2/>}/>
+      <Route path='/saved-artworks' element={<SavedArtworks/>}/>
     </Routes>
     </PageProvider>
     </div>
     <Footer/>
     </SearchProvider>
+    </SavedArtworksProvider>
     </VisibleProvider>
     </div>
   )

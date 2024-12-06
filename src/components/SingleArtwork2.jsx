@@ -5,9 +5,10 @@ import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
+import { useSavedArtworks } from "../context/SavedArtworksContext";
 
 function SingleArtwork2(){
-
+const {addArtwork} = useSavedArtworks()
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
@@ -28,6 +29,15 @@ useEffect(()=>{
 })
 },[artwork_id])
 
+const handleAdd = () => {
+    const standardizedArtwork = {
+      title: artwork.title || "Untitled",
+      artist: artwork.creators?.[0]?.description || "Unknown Artist",
+      image: artwork.images?.web?.url || "placeholder.jpg",
+      museum: "Cleveland",
+    };
+    addArtwork(standardizedArtwork)
+  }
 
 return (<>
 
@@ -53,7 +63,8 @@ return (<>
             <p>Category: {artwork.department?? "Unknown"}</p>
             
             </ol>
-            <AddButton/>
+            
+            <span onClick={handleAdd}><AddButton/></span>
             </div>
         </div>
 

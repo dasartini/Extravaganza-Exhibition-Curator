@@ -5,7 +5,7 @@ function AddButton (){
     return (
         <AddButtonStyle>
         <>
-        <div class="d-1">Add to my gallery </div>        </>
+        <div className="d-1">Add to my gallery </div>        </>
         </AddButtonStyle>
     )
 }

@@ -65,7 +65,7 @@ function AllArtworks2() {
                   alt={art.title || "Untitled"}
                   className="itemImage"
                 />
-                <Link to={`/clevelandartmuseum/${art.id}`}>
+                <Link to={`/cleveland-art-museum/${art.id}`}>
                   <p className="itemTitle" title={art.title}>
                     {art.title || "Untitled"}
                   </p>

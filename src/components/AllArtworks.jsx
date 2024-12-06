@@ -62,7 +62,7 @@ function AllArtworks() {
                                     />   :<DynamicImage singleArtworkId ={art.id}/>}
                                     
                                    
-                                    <Link to={`/chicagoinstituteofart/${art.id}`}>
+                                    <Link to={`/chicago-institute-of-art/${art.id}`}>
                                         <p className="itemTitle" title={art.title}>
                                             {art.title || "Untitled"}
                                         </p>

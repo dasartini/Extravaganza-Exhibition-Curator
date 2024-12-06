@@ -12,10 +12,10 @@ function Header() {
   };
 
   const determineTarget = () =>{
-    if(location.pathname.startsWith("/chicagoinstituteofart")){
+    if(location.pathname.startsWith("/chicago-institute-of-art")){
       return "chicago"
     }
-    if(location.pathname.startsWith("/clevelandartmuseum")){
+    if(location.pathname.startsWith("/cleveland-art-museum")){
       return "cleveland"
     }
     return null
@@ -42,9 +42,9 @@ function Header() {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <a href="#" className="nav-link">
-            Catalog
-          </a>
+          <Link to="/saved-artworks" className="nav-link">
+            My Gallery
+          </Link>
           <a href="#" className="nav-link">
             Login
           </a>
