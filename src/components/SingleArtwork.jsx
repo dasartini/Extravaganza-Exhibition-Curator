@@ -6,6 +6,7 @@ import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
 import { useSavedArtworks } from "../context/SavedArtworksContext";
+import noImage from "../assets/images/noImage2.jpg"
 
 
 
@@ -54,11 +55,21 @@ return (<>
         <p>LOADING PLEASE</p></div> : 
         <>
         <div className="frame">
-            <img className="singleArtwork"
-                src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
-                alt={artwork.title || "Untitled"}
-                title={artwork.thumbnail.alt_text}
+        {artwork.image_id === null ? (
+            <img
+              className="singleArtwork"
+              src={noImage} 
+              alt="No artwork available"
+              title="No artwork image available"
             />
+          ) : (
+            <img
+              className="singleArtwork"
+              src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
+              alt={artwork.title || "Untitled"}
+              title={artwork.thumbnail?.alt_text || "No artwork image available"}
+            />
+          )}
           
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>

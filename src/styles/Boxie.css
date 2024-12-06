@@ -1,22 +1,13 @@
 .image-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  grid-auto-rows: auto; 
-  gap: 15px; 
-  padding: 20px;
-}
-
-.allArtworks {
-  margin-top: 2rem;
-  background-color: #e4dddda9;
-  border-radius: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-  min-height: 200px;
-  overflow: hidden;
+  min-height: 30rem;
+  column-count: 4; 
+  column-gap: 15px; 
+  padding: 30px;
 }
 
 .item {
+  break-inside: avoid; 
+  margin-bottom: 15px; 
   background-color: #000000;
   border-radius: 10px;
   overflow: hidden;
@@ -35,13 +26,7 @@
   display: block;
   border-bottom: 2px solid #ffffff;
 }
-.pagination-buttons{
- padding: 1rem;
-display: flex;
-flex-direction:row;
-gap: 2rem;
-justify-content: center;
-}
+
 .itemTitle {
   margin: 10px;
   font-size: clamp(0.8rem, 1vw, 1rem);
@@ -51,18 +36,20 @@ justify-content: center;
 
 @media (max-width: 1024px) {
   .image-container {
-      grid-template-columns: repeat(3, 1fr);
+    column-count: 3;
   }
 }
 
 @media (max-width: 768px) {
   .image-container {
-      grid-template-columns: repeat(2, 1fr); 
+    overflow-x: hidden;
+    min-height: 36rem;
+    column-count: 2; 
   }
 }
 
 @media (max-width: 480px) {
   .image-container {
-      grid-template-columns: 1fr; 
+    column-count: 1; 
   }
 }

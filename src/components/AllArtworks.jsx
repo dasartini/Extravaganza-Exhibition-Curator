@@ -6,7 +6,8 @@ import { Link } from "react-router";
 import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 import DynamicImage from "./DynamicImage";
-
+import noImage from "../assets/images/noImage2.jpg"
+import Loader from "./Loader";
 
 function AllArtworks() {
     const { visible, setVisible } = useVisibleContext()
@@ -28,6 +29,28 @@ function AllArtworks() {
                 setLoading(false)
             })
     }
+    const renderImage = (art, noImage) => {
+        if (art.image_id === null) {
+          return (
+            <img
+              src={noImage}
+              alt="No artwork available"
+              className="itemImage"
+            />
+          );
+        } else if (art.image_id) {
+          return (
+            <img
+              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg`}
+              alt={art.title || "Untitled"}
+              className="itemImage"
+            />
+          );
+        } else if (art.image_id === undefined) {
+          return <DynamicImage singleArtworkId={art.id} />;
+        }
+      };
+      
 
     useEffect(() => {
         fetchArtworks(currentPage, chicagoQuery)
@@ -36,11 +59,13 @@ function AllArtworks() {
 
     const handleNext = () => {
         setCurrentPage((prevPage) => prevPage + 1)
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     const handlePrev = () => {
         if (currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1)
+            window.scrollTo({ top: 0, behavior: "smooth" })
         }
     }
     return (
@@ -48,18 +73,20 @@ function AllArtworks() {
             <Boxie>
                 <div className="allArtworks">
                     {loading ? (
-                        <p>Loading...</p>
+                        <Loader/>
                     ) : error ? (
-                        <p>Error: {error}</p>
-                    ) : (
+                        <div className="image-container"> 
+                        <p>Error: {error}</p></div>
+                    ) : artworks.length === 0 ? (
+                        <div className="image-container"> 
+                        <p>No artworks found for your search.</p>
+                        </div>
+                      ): (
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">
-                                    {art.image_id  ? <img
-                                        src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg` || "placeholder.jpg"}
-                                        alt={art.title || "Untitled"}
-                                        className="itemImage"
-                                    />   :<DynamicImage singleArtworkId ={art.id}/>}
+                                    {renderImage(art, noImage)}
+
                                     
                                    
                                     <Link to={`/chicago-institute-of-art/${art.id}`}>
