@@ -73,14 +73,14 @@ function AllArtworks() {
                     )}
                     <div className="pagination-buttons" style={{ marginTop: "20px" }}>
                         {currentPage > 1 && (
-                            <button
+                            <button className="boxshadow"
                                 style={{ height: "50px", width: "100px", marginRight: "10px" }}
                                 onClick={handlePrev}
                             >
                                 Prev
                             </button>
                         )}
-                        <button
+                        <button className="boxshadow"
                             style={{ height: "50px", width: "100px" }}
                             onClick={handleNext}
                         >

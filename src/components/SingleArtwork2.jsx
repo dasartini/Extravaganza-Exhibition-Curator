@@ -4,6 +4,7 @@ import { getArtworksById2 } from "../api";
 import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
+import AddButton from "./AddButton";
 
 function SingleArtwork2(){
 
@@ -44,14 +45,15 @@ return (<>
             />
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>
-            <ul>
+            <ol>
             <p>By: {artwork.creators?.[0]?.description?? "Unknown Artist"}</p>
             <p>Date: {artwork.creation_date??  "Unknown Date"}</p>
             <p>Place of origin: {artwork.culture?.[0]?? "Unknown"}</p>
             <p>Medium: {artwork.technique?? "Unknown medium"}</p>
             <p>Category: {artwork.department?? "Unknown"}</p>
             
-            </ul>
+            </ol>
+            <AddButton/>
             </div>
         </div>
 

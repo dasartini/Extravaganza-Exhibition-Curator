@@ -41,3 +41,26 @@ a{
   text-decoration: none; 
   color: inherit; 
 }
+.boxshadow {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	background: white;
+	border: 2px solid black;
+	box-shadow: 5px 5px 0 black,
+		-5px -5px 0 black,
+		-5px 5px 0 black,
+		5px -5px 0 black;
+	transition: 500ms ease-in-out;
+}
+
+.boxshadow:hover {
+	box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+
+.boxshadow:focus {
+	outline: none;
+}

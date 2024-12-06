@@ -4,6 +4,7 @@ import { getArtworksById } from "../api";
 import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
+import AddButton from "./AddButton";
 
 function SingleArtwork(){
 
@@ -42,6 +43,7 @@ return (<>
                 alt={artwork.title || "Untitled"}
                 title={artwork.thumbnail.alt_text}
             />
+          
             <div className="specs">
             <h1>{artwork.title || "Untitled"}</h1>
             <ol>
@@ -52,7 +54,9 @@ return (<>
             <p>Category: {artwork.department_title}</p>
             
             </ol>
+            <AddButton/>
             </div>
+          
         </div>
 
        {artwork.description ? <div className="artworkInfo"> 
