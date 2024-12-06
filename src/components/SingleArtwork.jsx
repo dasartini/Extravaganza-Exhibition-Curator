@@ -5,8 +5,12 @@ import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
 import whatching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
+import { useSavedArtworks } from "../context/SavedArtworksContext";
+
+
 
 function SingleArtwork(){
+    const {addArtwork} = useSavedArtworks()
 
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
@@ -28,6 +32,18 @@ useEffect(()=>{
 })
 },[artwork_id])
 
+const handleAdd = () => {
+    console.log("adding")
+    const standardizedArtwork = {
+      title: artwork.title || "Untitled",
+      artist: artwork.artist_title || "Unknown Artist",
+      image: artwork.image_id
+        ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`
+        : "placeholder.jpg",
+      museum: "Chicago",
+    };
+    addArtwork(standardizedArtwork);
+  };
 
 return (<>
 
@@ -54,7 +70,7 @@ return (<>
             <p>Category: {artwork.department_title}</p>
             
             </ol>
-            <AddButton/>
+           <span onClick={handleAdd}> <AddButton /></span>
             </div>
           
         </div>

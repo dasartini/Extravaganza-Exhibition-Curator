@@ -1,4 +1,5 @@
 .d-1 {
+	cursor: pointer;
 	--b:4px;  
 	--c:20px;  
 	--g:calc(var(--c)*0.707); 
