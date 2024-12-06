@@ -7,6 +7,7 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 import DynamicImage from "./DynamicImage";
 import noImage from "../assets/images/noImage2.jpg"
+import Loader from "./Loader";
 
 function AllArtworks() {
     const { visible, setVisible } = useVisibleContext()
@@ -20,7 +21,6 @@ function AllArtworks() {
         setLoading(true)
         getArtworks(pageNum, searchQuery)
             .then((data) => {
-                console.log(data)
                 setArtworks(data)
                 setLoading(false)
             })
@@ -59,11 +59,13 @@ function AllArtworks() {
 
     const handleNext = () => {
         setCurrentPage((prevPage) => prevPage + 1)
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     const handlePrev = () => {
         if (currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1)
+            window.scrollTo({ top: 0, behavior: "smooth" })
         }
     }
     return (
@@ -71,10 +73,15 @@ function AllArtworks() {
             <Boxie>
                 <div className="allArtworks">
                     {loading ? (
-                        <p>Loading...</p>
+                        <Loader/>
                     ) : error ? (
-                        <p>Error: {error}</p>
-                    ) : (
+                        <div className="image-container"> 
+                        <p>Error: {error}</p></div>
+                    ) : artworks.length === 0 ? (
+                        <div className="image-container"> 
+                        <p>No artworks found for your search.</p>
+                        </div>
+                      ): (
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">

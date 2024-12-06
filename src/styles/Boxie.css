@@ -1,12 +1,13 @@
 .image-container {
-  column-count: 4; /* Number of columns */
-  column-gap: 15px; /* Space between columns */
+  min-height: 30rem;
+  column-count: 4; 
+  column-gap: 15px; 
   padding: 30px;
 }
 
 .item {
-  break-inside: avoid; /* Prevent items from breaking across columns */
-  margin-bottom: 15px; /* Add spacing between rows */
+  break-inside: avoid; 
+  margin-bottom: 15px; 
   background-color: #000000;
   border-radius: 10px;
   overflow: hidden;
@@ -35,18 +36,20 @@
 
 @media (max-width: 1024px) {
   .image-container {
-    column-count: 3; /* Fewer columns for smaller screens */
+    column-count: 3;
   }
 }
 
 @media (max-width: 768px) {
   .image-container {
-    column-count: 2; /* Two columns for smaller screens */
+    overflow-x: hidden;
+    min-height: 36rem;
+    column-count: 2; 
   }
 }
 
 @media (max-width: 480px) {
   .image-container {
-    column-count: 1; /* Single column for very small screens */
+    column-count: 1; 
   }
 }
