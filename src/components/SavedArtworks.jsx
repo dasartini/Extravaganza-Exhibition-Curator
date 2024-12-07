@@ -5,6 +5,16 @@ import { useState } from "react";
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
+  const [isResetting, setIsResetting] = useState(false); // Track if reset is in progress
+  const handleResetGallery = () => {
+    setIsResetting(true); // Start the fade-out animation
+
+    // Wait for the animation to finish (500ms)
+    setTimeout(() => {
+      resetGallery(); // Call the context function to reset the artworks
+      setIsResetting(false); // Reset the reset flag
+    }, 500); // Match the duration of the fade-out animation
+  };
 
   const handleDragStart = (index) => {
     setDraggedItemIndex(index)
@@ -28,7 +38,7 @@ function SavedArtworks() {
   return (
     <div>
       <h1>My Saved Artworks</h1>
-      <button onClick={resetGallery} className="reset">
+      <button onClick={handleResetGallery} className="reset">
         Reset Gallery
       </button>
       {savedArtworks.length === 0 ? (
@@ -41,7 +51,7 @@ function SavedArtworks() {
                 
                 <li
                   key={index}
-                  className="savedList"
+                  className={`savedList ${isResetting ? "fadeOut" : ""}`}                  
                   draggable
                   onDragStart={() => handleDragStart(index)}
                   onDragOver={handleDragOver}
