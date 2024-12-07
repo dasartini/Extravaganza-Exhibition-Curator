@@ -22,8 +22,15 @@ width: 100px;
 margin-right: 10px;
 
 }
-.savedList{
+.savedList {
     display: flex;
-    align-items: "center";
+    align-items: center;
     margin-bottom: 10px;
-}
+    cursor: grab; 
+  }
+  
+  .savedList:active {
+    cursor: grabbing;
+    opacity: 0.8; 
+  }
+  
