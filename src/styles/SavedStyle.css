@@ -1,0 +1,29 @@
+.listContainer{
+    display: flex;
+align-items: center;
+justify-content: center;
+}
+.erase{
+    
+    margin-left: 10px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.reset{
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
+.draggingListImage{
+width: 100px;
+margin-right: 10px;
+
+}
+.savedList{
+    display: flex;
+    align-items: "center";
+    margin-bottom: 10px;
+}
