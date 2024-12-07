@@ -36,11 +36,13 @@ useEffect(()=>{
 const handleAdd = () => {
     console.log("adding")
     const standardizedArtwork = {
-      title: artwork.title || "Untitled",
-      artist: artwork.artist_title || "Unknown Artist",
+      title: artwork.title ?
+      artwork.title
+      : "Untitled",
+      artist: artwork.artist_title? artwork.artist_title : "Unknown Artist",
       image: artwork.image_id
         ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`
-        : "placeholder.jpg",
+        : noImage,
       museum: "Chicago",
     };
     addArtwork(standardizedArtwork);

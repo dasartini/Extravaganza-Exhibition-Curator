@@ -35,7 +35,7 @@ const handleAdd = () => {
     const standardizedArtwork = {
       title: artwork.title || "Untitled",
       artist: artwork.creators?.[0]?.description || "Unknown Artist",
-      image: artwork.images?.web?.url || "placeholder.jpg",
+      image: artwork.images?.web?.url || noImage,
       museum: "Cleveland",
     };
     addArtwork(standardizedArtwork)

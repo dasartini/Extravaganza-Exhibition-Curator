@@ -1,0 +1,72 @@
+.savedList.fadeOut {
+    opacity: 0;         
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+.savedList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    cursor: grab;
+    position: relative; 
+}
+
+.savedList:active {
+    transform: scale(1.05);
+    background-color: #f7f7f7;
+}
+
+.draggingListImage {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.erase {
+    position: absolute; 
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.reset {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.listContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+ul {
+    width: 100%;
+    max-width: 500px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.savedList div {
+    margin-right:2rem;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /
+    
+
+}
