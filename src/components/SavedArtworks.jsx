@@ -38,6 +38,7 @@ function SavedArtworks() {
           <div className="listContainer">
             <ul>
               {savedArtworks.map((artwork, index) => (
+                
                 <li
                   key={index}
                   className="savedList"
