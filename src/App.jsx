@@ -16,29 +16,28 @@ import Slideshow from './components/Slideshow';
 function App() {
 
   return (
-    <div className='wrapper' >
       <VisibleProvider>
         <SavedArtworksProvider>
         <SearchProvider>
+          <div className="app">
     <Header/>
-<div className='mainContent'>
   <PageProvider>
     <Routes>
-      <Route path='/' element={<Landing/>}/>
+      <Route path='/' element={<Landing/> }/>
       <Route path='/chicago-institute-of-art' element={<AllArtworks/>}/>
       <Route path='/cleveland-art-museum' element={<AllArtworks2/>}/>
       <Route path='/chicago-institute-of-art/:artwork_id' element={<SingleArtwork/>}/>
       <Route path='/cleveland-art-museum/:artwork_id' element={<SingleArtwork2/>}/>
       <Route path='/gallery' element={<SavedArtworks/>}/>
       <Route path='/gallery/slideshow' element={<Slideshow/>}/>
+  
     </Routes>
     </PageProvider>
-    </div>
     <Footer/>
+    </div>
     </SearchProvider>
     </SavedArtworksProvider>
     </VisibleProvider>
-    </div>
   )
 }
 

@@ -1,5 +1,5 @@
 .loader-container {
-        min-height: 30rem;
+        min-height: 100vh;
         display: flex;
         justify-content: center; 
         align-items: center; 
@@ -48,6 +48,6 @@
     @media (max-width: 768px) {
         .loader-container {
           overflow-x: hidden;
-          min-height: 36rem; 
+          min-height: 100vh;
         }
       }

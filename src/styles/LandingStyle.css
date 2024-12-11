@@ -24,9 +24,10 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
-  max-width: 280px; 
+  max-width: 400px; 
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .card:hover {

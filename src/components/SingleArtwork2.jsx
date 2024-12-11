@@ -7,6 +7,7 @@ import whatching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import noImage from "../assets/images/noImage2.jpg"
+import Loader from "./Loader";
 
 
 function SingleArtwork2(){
@@ -46,8 +47,7 @@ return (<>
 <SingleArtworkStyle>
 
 <div className='singleArtworkCont'>
-    {loading ?   <div className="frame">
-        <p>LOADING PLEASE</p></div> : 
+    {loading ?   <Loader/> : 
         <>
         <div className="frame">
             {artwork.images?.web?.url ? (
