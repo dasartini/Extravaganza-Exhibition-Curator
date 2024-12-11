@@ -1,11 +1,15 @@
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import SavedStyle from "../styles/SavedStyle";
-import { useState } from "react";
+import { useState } from "react"
+import Slideshow from "./Slideshow";
+import { Link } from "react-router";
 
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
+  
+ 
 
   
   const handleResetGallery = () => {
@@ -36,15 +40,18 @@ function SavedArtworks() {
   }
 
   return (
+      <SavedStyle>
     <div>
       <h1>My Saved Artworks</h1>
-      <button onClick={handleResetGallery} className="reset">
+      <div hidden={savedArtworks.length === 0} className="galleryButtonsCont">
+      <button onClick={handleResetGallery} className="galleryButtons">
         Reset Gallery
       </button>
+    <Link to={'/gallery/slideshow'}> <button className="galleryButtons"> Slide Show!</button></Link>
+      </div>
       {savedArtworks.length === 0 ? (
         <p>No artworks saved yet!</p>
       ) : (
-        <SavedStyle>
           <div className="listContainer">
             <ul>
               {savedArtworks.map((artwork, index) => (
@@ -77,9 +84,9 @@ function SavedArtworks() {
               ))}
             </ul>
           </div>
-        </SavedStyle>
       )}
     </div>
+      </SavedStyle>
   )
 }
 

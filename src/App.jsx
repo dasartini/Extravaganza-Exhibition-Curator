@@ -12,6 +12,7 @@ import { VisibleProvider } from './context/VisibleContext';
 import { SearchProvider } from './context/SearchContext';
 import { SavedArtworksProvider } from './context/SavedArtworksContext';
 import SavedArtworks from './components/SavedArtworks';
+import Slideshow from './components/Slideshow';
 function App() {
 
   return (
@@ -28,7 +29,8 @@ function App() {
       <Route path='/cleveland-art-museum' element={<AllArtworks2/>}/>
       <Route path='/chicago-institute-of-art/:artwork_id' element={<SingleArtwork/>}/>
       <Route path='/cleveland-art-museum/:artwork_id' element={<SingleArtwork2/>}/>
-      <Route path='/saved-artworks' element={<SavedArtworks/>}/>
+      <Route path='/gallery' element={<SavedArtworks/>}/>
+      <Route path='/gallery/slideshow' element={<Slideshow/>}/>
     </Routes>
     </PageProvider>
     </div>
