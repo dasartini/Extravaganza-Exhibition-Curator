@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArtworksById } from "../api";
 import noImage from "../assets/images/noImage2.jpg";
+import Loader from "./Loader";
 
 function DynamicImage({ singleArtworkId }) {
     const [dynamicImage, setDynamicImage] = useState(null)
@@ -19,7 +20,7 @@ function DynamicImage({ singleArtworkId }) {
     }, [singleArtworkId]);
 
     if (loading) {
-        return <p>Loading image...</p>
+        return <Loader/>
     }
 
     return (
