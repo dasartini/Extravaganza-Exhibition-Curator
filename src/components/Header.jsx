@@ -42,7 +42,7 @@ function Header() {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/saved-artworks" className="nav-link">
+          <Link to="/gallery" className="nav-link">
             My Gallery
           </Link>
           <a href="#" className="nav-link">

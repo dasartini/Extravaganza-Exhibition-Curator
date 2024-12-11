@@ -4,10 +4,10 @@ function Footer(){
 
     return(
         <FooterStyle>
-        <footer>
+            <div className="myfooter">
 <p>Sams pijamas</p>
 
-        </footer>
+        </div>
         </FooterStyle>
     )
 }

@@ -30,14 +30,16 @@ function AllArtworks() {
             })
     }
     const renderImage = (art, noImage) => {
+        
         if (art.image_id === null) {
+            
           return (
             <img
               src={noImage}
               alt="No artwork available"
               className="itemImage"
             />
-          );
+          )
         } else if (art.image_id) {
           return (
             <img
@@ -45,11 +47,13 @@ function AllArtworks() {
               alt={art.title || "Untitled"}
               className="itemImage"
             />
+    
           );
         } else if (art.image_id === undefined) {
-          return <DynamicImage singleArtworkId={art.id} />;
+          return <DynamicImage singleArtworkId={art.id} />
         }
-      };
+        setLoading(false)
+      }
       
 
     useEffect(() => {
@@ -89,7 +93,7 @@ function AllArtworks() {
 
                                     
                                    
-                                    <Link to={`/chicago-institute-of-art/${art.id}`}>
+                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
                                         <p className="itemTitle" title={art.title}>
                                             {art.title || "Untitled"}
                                         </p>
@@ -117,7 +121,7 @@ function AllArtworks() {
                 </div>
             </Boxie>
         </>
-    );
+    )
 }
 
 export default AllArtworks
