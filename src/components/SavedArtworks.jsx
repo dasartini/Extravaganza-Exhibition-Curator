@@ -4,37 +4,36 @@ import { useState } from "react";
 import Slideshow from "./Slideshow";
 
 function SavedArtworks() {
-  const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks();
-  const [draggedItemIndex, setDraggedItemIndex] = useState(null);
-  const [isResetting, setIsResetting] = useState(false);
-  const [isSlideshowOpen, setIsSlideshowOpen] = useState(false); // Track slideshow modal visibility
+  const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
+  const [draggedItemIndex, setDraggedItemIndex] = useState(null)
+  const [isResetting, setIsResetting] = useState(false)
+  const [isSlideshowOpen, setIsSlideshowOpen] = useState(false)
 
   const handleResetGallery = () => {
-    setIsResetting(true);
+    setIsResetting(true)
     setTimeout(() => {
-      resetGallery();
-      setIsResetting(false);
-    }, 500);
-  };
+      resetGallery()
+      setIsResetting(false)
+    }, 500)
+  }
 
   const handleDragStart = (index) => {
-    setDraggedItemIndex(index);
-  };
+    setDraggedItemIndex(index)
+  }
 
   const handleDragOver = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   const handleDrop = (index) => {
-    if (draggedItemIndex === null || draggedItemIndex === index) return;
+    if (draggedItemIndex === null || draggedItemIndex === index) return
+    const reorderedArtworks = [...savedArtworks]
+    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1)
+    reorderedArtworks.splice(index, 0, draggedItem)
 
-    const reorderedArtworks = [...savedArtworks];
-    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1);
-    reorderedArtworks.splice(index, 0, draggedItem);
-
-    setSavedArtworks(reorderedArtworks);
-    setDraggedItemIndex(null);
-  };
+    setSavedArtworks(reorderedArtworks)
+    setDraggedItemIndex(null)
+  }
 
   return (
     <SavedStyle>
@@ -85,16 +84,16 @@ function SavedArtworks() {
           <div className="modal">
             <div className="modal-overlay" onClick={() => setIsSlideshowOpen(false)}></div>
             <div className="modal-content">
-              <button className="modal-close" onClick={() => setIsSlideshowOpen(false)}>
+              {/* <button className="modal-close" onClick={() => setIsSlideshowOpen(false)}>
                 Close
-              </button>
+              </button> */}
               <Slideshow />
             </div>
           </div>
         )}
       </div>
     </SavedStyle>
-  );
+  )
 }
 
-export default SavedArtworks;
+export default SavedArtworks
