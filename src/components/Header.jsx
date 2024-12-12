@@ -2,6 +2,7 @@ import HeaderStyle from "../styles/HeaderStyle";
 import { Link, useLocation } from "react-router";
 import { useState } from "react";
 import Search from "./Search";
+import logo2 from "../assets/images/logo2.png"
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -26,9 +27,12 @@ function Header() {
   return (
     <HeaderStyle>
       <header className="header">
-        <div className="logo">
+        <div className="logocont">
+      <img src={logo2} className="logo"/>
+        <div className="title">
           <h1>Extravaganza</h1>
           <p>Art Curator</p>
+          </div>
         </div>
           {target && <Search target={target}/>}
         

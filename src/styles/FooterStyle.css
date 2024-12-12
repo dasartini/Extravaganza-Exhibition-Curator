@@ -5,8 +5,115 @@
   padding: 25px 0;
   margin-top:auto;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 3rem
 
+}
+.solid{ 
+  margin-top: 1px;
+  margin-bottom: 1px;
+  border-top: 1px solid #bbb;}
+.head{
+  width: 5rem;
+}
+.headcont{
+  display: flex;
+  flex-direction: row;
+}
+.footertitle h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
 
+.footertitle p {
+  font-size: 0.9rem;
+  color: #f3dfdf;
+}
+
+.profilecont{
+  display: flex;
+  flex-direction: column;
+}
+.socials{
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.socialIcons{
+  height: 2.3rem;
+}
+.nft{
+  height: 3rem;
+  width: 3rem;
+}
+.socials h3{
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .myfooter {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 20px 10px;
+  }
+
+  .headcont {
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .footertitle h1 {
+    font-size: 1.3rem;
+  }
+
+  .footertitle p {
+    font-size: 0.8rem;
+  }
+
+  .profilecont {
+    gap: 2rem;
+  }
+
+  .socials {
+    flex-direction:row;
+    gap: 0.5rem;
+  }
+
+  .socialIcons {
+    height: 2rem;
+  }
+
+  .nft {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .socials h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footertitle h1 {
+    font-size: 1rem;
+  }
+
+  .footertitle p {
+    font-size: 0.7rem;
+  }
+
+  .socialIcons {
+    height: 1.8rem;
+  }
+
+  .nft {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .socials h3 {
+    font-size: 0.8rem;
+  }
 }
