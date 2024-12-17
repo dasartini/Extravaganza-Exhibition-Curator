@@ -58,6 +58,7 @@ const checkArtworks = () => {
   const isAdded = savedArtworks.some((element) =>
      element.title === artwork.title)
   setAdded(isAdded)
+
 }
 
 return (<>
@@ -95,8 +96,8 @@ return (<>
             <p>Category: {artwork.department_title}</p>
             
             </ol>
-           <span onClick={handleAdd}> <AddButton /></span>
-           <p hidden={!added}>Artwork added into your gallery!</p>
+           <span onClick={handleAdd}> <AddButton  /></span>
+           <p hidden={!added} style={{margin: "20px"}}>Artwork already added into your gallery!</p>
             </div>
           
         </div>

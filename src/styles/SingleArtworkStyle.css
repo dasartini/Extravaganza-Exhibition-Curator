@@ -27,10 +27,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
-  p{
-    text-align: left;
-  }
+  /* p{
+   text-justify: distribute;
+  } */
 }
 .specs-cont{
     margin-top: 20%;
