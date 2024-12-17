@@ -16,23 +16,30 @@ function AllArtworks() {
     const [artworks, setArtworks] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [imgErrors, setImgErrors] = useState({})
+
 
     const fetchArtworks = (pageNum, searchQuery) => {
         setLoading(true)
         getArtworks(pageNum, searchQuery)
             .then((data) => {
                 setArtworks(data)
+                console.log(data)
                 setLoading(false)
+                window.scrollTo({ top: 0, behavior: "smooth" })
+
             })
             .catch((err) => {
                 setError(err.message)
                 setLoading(false)
             })
     }
-    const renderImage = (art, noImage) => {
-        
-        if (art.image_id === null) {
-            
+    const handleImgError = (imageId) => {
+        setImgErrors((prev) => ({ ...prev, [imageId]: true }))
+      }
+    
+      const renderImage = (art, noImage) => {
+        if (imgErrors[art.image_id] || art.image_id === null) {
           return (
             <img
               src={noImage}
@@ -43,16 +50,15 @@ function AllArtworks() {
         } else if (art.image_id) {
           return (
             <img
-              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg`}
+              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
               alt={art.title || "Untitled"}
               className="itemImage"
+              onError={() => handleImgError(art.image_id)} 
             />
-    
-          );
+          )
         } else if (art.image_id === undefined) {
           return <DynamicImage singleArtworkId={art.id} />
         }
-        setLoading(false)
       }
       
 
