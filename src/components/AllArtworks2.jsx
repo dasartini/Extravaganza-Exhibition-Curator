@@ -22,6 +22,8 @@ function AllArtworks2() {
       .then((data) => {
         setArtworks(data)
         setLoading(false)
+        window.scrollTo({ top: 0, behavior: "smooth" })
+
       })
       .catch((err) => {
         setError(err.message)
@@ -30,7 +32,7 @@ function AllArtworks2() {
   }
 
   useEffect(() => {
-    setNum(0); 
+    setNum(0)
     fetchArtworks(0, query)
     setVisible(false)
   }, [query])
@@ -41,19 +43,17 @@ function AllArtworks2() {
 
   const handleClick = () => {
     setNum((prevNum) => prevNum + 8)
-    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   const handlePrev = () => {
     if (num >= 8) {
       setNum((prevNum) => prevNum - 8)
-      window.scrollTo({ top: 0, behavior: "smooth" })
     }
   }
 
   return (
     <Boxie>
-      <div className="latestNews">
+      <div className="allArtworks">
         {loading ? (
           <>
                       <Loader/>
@@ -83,7 +83,7 @@ function AllArtworks2() {
             ))}
           </div>
         )}
-        <div className="pagination-buttons" style={{ marginTop: "20px" }}>
+        <div className="pagination-buttons">
           {num > 0 && (
             <button className="boxshadow"
               style={{ height: "50px", width: "100px", marginRight: "10px" }}

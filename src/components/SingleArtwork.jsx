@@ -12,30 +12,36 @@ import Loader from "./Loader";
 
 
 function SingleArtwork(){
-    const {addArtwork} = useSavedArtworks()
+    const {savedArtworks, addArtwork} = useSavedArtworks()
 
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true)
+const [added, setAdded] =useState(false)
 
 useEffect(()=>{
 
     getArtworksById(artwork_id)
     .then((data)=>{
         setArtwork(data)
-        console.log(artwork)
         setLoading(false)
+        window.scrollTo({ top: 0, behavior: "smooth" })
+
     })
     .catch((err)=>{
-        console.log("was an error")
  setError(err.messge)
  setLoading(false)
 })
 },[artwork_id])
 
+useEffect(() => {
+  if (artwork) {
+    checkArtworks()
+  }
+}, [artwork, savedArtworks])
+
 const handleAdd = () => {
-    console.log("adding")
     const standardizedArtwork = {
       title: artwork.title ?
       artwork.title
@@ -45,9 +51,14 @@ const handleAdd = () => {
         ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`
         : noImage,
       museum: "Chicago",
-    };
-    addArtwork(standardizedArtwork);
-  };
+    }
+    addArtwork(standardizedArtwork)
+  }
+const checkArtworks = () => {
+  const isAdded = savedArtworks.some((element) =>
+     element.title === artwork.title)
+  setAdded(isAdded)
+}
 
 return (<>
 
@@ -85,6 +96,7 @@ return (<>
             
             </ol>
            <span onClick={handleAdd}> <AddButton /></span>
+           <p hidden={!added}>Artwork added into your gallery!</p>
             </div>
           
         </div>

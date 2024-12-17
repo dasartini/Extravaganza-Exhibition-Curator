@@ -11,19 +11,22 @@ import Loader from "./Loader";
 
 
 function SingleArtwork2(){
-const {addArtwork} = useSavedArtworks()
+const {savedArtworks,addArtwork} = useSavedArtworks()
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true)
+const [added, setAdded] =useState(false)
+
 
 useEffect(()=>{
 
     getArtworksById2(artwork_id)
     .then((data)=>{
         setArtwork(data)
-        console.log(artwork)
         setLoading(false)
+        window.scrollTo({ top: 0, behavior: "smooth" })
+
     })
     .catch((err)=>{
         console.log("was an error")
@@ -31,6 +34,12 @@ useEffect(()=>{
  setLoading(false)
 })
 },[artwork_id])
+
+useEffect(() => {
+    if (artwork) {
+      checkArtworks()
+    }
+  }, [artwork, savedArtworks])
 
 const handleAdd = () => {
     const standardizedArtwork = {
@@ -40,6 +49,12 @@ const handleAdd = () => {
       museum: "Cleveland",
     };
     addArtwork(standardizedArtwork)
+  }
+
+  const checkArtworks = () => {
+    const isAdded = savedArtworks.some((element) =>
+       element.title === artwork.title)
+    setAdded(isAdded)
   }
 
 return (<>
@@ -77,6 +92,8 @@ return (<>
             </ol>
             
             <span onClick={handleAdd}><AddButton/></span>
+            <p hidden={!added}>Artwork added into your gallery!</p>
+
             </div>
         </div>
 

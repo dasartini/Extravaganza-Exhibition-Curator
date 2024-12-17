@@ -24,7 +24,6 @@ function AllArtworks() {
         getArtworks(pageNum, searchQuery)
             .then((data) => {
                 setArtworks(data)
-                console.log(data)
                 setLoading(false)
                 window.scrollTo({ top: 0, behavior: "smooth" })
 
@@ -69,13 +68,11 @@ function AllArtworks() {
 
     const handleNext = () => {
         setCurrentPage((prevPage) => prevPage + 1)
-        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     const handlePrev = () => {
         if (currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1)
-            window.scrollTo({ top: 0, behavior: "smooth" })
         }
     }
     return (
@@ -108,10 +105,10 @@ function AllArtworks() {
                             ))}
                         </div>
                     )}
-                    <div className="pagination-buttons" style={{ marginTop: "20px" }}>
+                    <div className="pagination-buttons" >
                         {currentPage > 1 && (
                             <button className="boxshadow"
-                                style={{ height: "50px", width: "100px", marginRight: "10px" }}
+                                style={{ height: "50px", width: "100px"}}
                                 onClick={handlePrev}
                             >
                                 Prev
