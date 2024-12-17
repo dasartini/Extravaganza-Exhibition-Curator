@@ -33,7 +33,16 @@
   line-height: 1.4;
   color: #ccc;
 }
-
+.allArtworks{
+  margin-bottom: 2rem;
+}
+.pagination-buttons{
+  display: flex;
+  flex-direction: row;
+  gap:2rem;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 1024px) {
   .image-container {
     column-count: 3;

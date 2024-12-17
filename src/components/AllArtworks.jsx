@@ -16,6 +16,8 @@ function AllArtworks() {
     const [artworks, setArtworks] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [imgErrors, setImgErrors] = useState({})
+
 
     const fetchArtworks = (pageNum, searchQuery) => {
         setLoading(true)
@@ -23,16 +25,20 @@ function AllArtworks() {
             .then((data) => {
                 setArtworks(data)
                 setLoading(false)
+                window.scrollTo({ top: 0, behavior: "smooth" })
+
             })
             .catch((err) => {
                 setError(err.message)
                 setLoading(false)
             })
     }
-    const renderImage = (art, noImage) => {
-        
-        if (art.image_id === null) {
-            
+    const handleImgError = (imageId) => {
+        setImgErrors((prev) => ({ ...prev, [imageId]: true }))
+      }
+    
+      const renderImage = (art, noImage) => {
+        if (imgErrors[art.image_id] || art.image_id === null) {
           return (
             <img
               src={noImage}
@@ -43,16 +49,15 @@ function AllArtworks() {
         } else if (art.image_id) {
           return (
             <img
-              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/200,/0/default.jpg`}
+              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
               alt={art.title || "Untitled"}
               className="itemImage"
+              onError={() => handleImgError(art.image_id)} 
             />
-    
-          );
+          )
         } else if (art.image_id === undefined) {
           return <DynamicImage singleArtworkId={art.id} />
         }
-        setLoading(false)
       }
       
 
@@ -63,13 +68,11 @@ function AllArtworks() {
 
     const handleNext = () => {
         setCurrentPage((prevPage) => prevPage + 1)
-        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     const handlePrev = () => {
         if (currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1)
-            window.scrollTo({ top: 0, behavior: "smooth" })
         }
     }
     return (
@@ -102,10 +105,10 @@ function AllArtworks() {
                             ))}
                         </div>
                     )}
-                    <div className="pagination-buttons" style={{ marginTop: "20px" }}>
+                    <div className="pagination-buttons" >
                         {currentPage > 1 && (
                             <button className="boxshadow"
-                                style={{ height: "50px", width: "100px", marginRight: "10px" }}
+                                style={{ height: "50px", width: "100px"}}
                                 onClick={handlePrev}
                             >
                                 Prev
