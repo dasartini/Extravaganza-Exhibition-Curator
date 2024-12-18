@@ -35,6 +35,7 @@
 }
 .allArtworks{
   margin-bottom: 2rem;
+  margin-top: -3rem;
 }
 .pagination-buttons{
   display: flex;

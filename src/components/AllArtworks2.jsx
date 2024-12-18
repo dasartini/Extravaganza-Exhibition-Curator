@@ -6,6 +6,7 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { useSearchContext } from "../context/SearchContext";
 import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
+import GoBackButton from "./GoBack";
 
 function AllArtworks2() {
   const { visible, setVisible } = useVisibleContext()
@@ -53,6 +54,7 @@ function AllArtworks2() {
 
   return (
     <Boxie>
+      <GoBackButton/>
       <div className="allArtworks">
         {loading ? (
           <>
