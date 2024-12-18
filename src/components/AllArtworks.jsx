@@ -94,11 +94,11 @@ function AllArtworks() {
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">
+                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
                                     {renderImage(art, noImage)}
 
                                     
                                    
-                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
                                         <p className="itemTitle" title={art.title}>
                                             {art.title || "Untitled"}
                                         </p>

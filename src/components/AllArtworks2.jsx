@@ -71,12 +71,12 @@ function AllArtworks2() {
           <div className="image-container">
             {artworks.map((art, index) => (
               <div key={index} className="item">
+                <Link to={`/cleveland-art-museum/${art.id}`}>
                 <img
                   src={art.images?.web?.url || noImage}
                   alt={art.title || "Untitled"}
                   className="itemImage"
                 />
-                <Link to={`/cleveland-art-museum/${art.id}`}>
                   <p className="itemTitle" title={art.title}>
                     {art.title || "Untitled"}
                   </p>
