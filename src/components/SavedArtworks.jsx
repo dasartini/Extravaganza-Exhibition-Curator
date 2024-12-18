@@ -2,6 +2,7 @@ import { useSavedArtworks } from "../context/SavedArtworksContext";
 import SavedStyle from "../styles/SavedStyle";
 import { useState } from "react";
 import Slideshow from "./Slideshow";
+import GoBackButton from "./GoBack";
 
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
@@ -37,7 +38,8 @@ function SavedArtworks() {
 
   return (
     <SavedStyle>
-      <div>
+        <GoBackButton/>
+      <div className="savedArtworksCont">
         <h1>My Saved Artworks</h1>
         <div hidden={savedArtworks.length === 0} className="galleryButtonsCont">
           <button onClick={handleResetGallery} className="galleryButtons">

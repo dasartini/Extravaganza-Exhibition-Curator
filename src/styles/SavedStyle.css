@@ -50,6 +50,9 @@
     margin-bottom: 20px;
     padding: 10px;
 }
+.savedArtworksCont{
+  margin-top: -2.5rem;
+}
 
 .listContainer {
     display: flex;
