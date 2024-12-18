@@ -13,6 +13,7 @@ import { SearchProvider } from './context/SearchContext';
 import { SavedArtworksProvider } from './context/SavedArtworksContext';
 import SavedArtworks from './components/SavedArtworks';
 import Slideshow from './components/Slideshow';
+import ErrPage from './components/ErrPage';
 function App() {
 
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/cleveland-art-museum/:artwork_id' element={<SingleArtwork2/>}/>
       <Route path='/gallery' element={<SavedArtworks/>}/>
       <Route path='/gallery/slideshow' element={<Slideshow/>}/>
+      <Route path='/*' element={<ErrPage/>}/>
   
     </Routes>
     </PageProvider>
