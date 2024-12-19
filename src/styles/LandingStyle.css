@@ -6,7 +6,7 @@
 .section-title {
   font-size: 2rem; 
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #000000;
 }
 
 .museum-cards {
@@ -43,7 +43,7 @@
 .card-title {
   font-size: 1.3rem;
   margin: 1rem 0;
-  color: #0073e6;
+  color: #000000;
   font-weight: bold;
   text-transform: capitalize;
 }

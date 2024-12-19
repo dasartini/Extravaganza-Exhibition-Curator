@@ -25,7 +25,7 @@ function Search({target}) {
         onChange={handleInputChange} 
         placeholder="Search artworks"
       />
-      <button onClick={handleSearch}>GO!</button>
+      <button className="go"onClick={handleSearch}>GO!</button>
     </div>
   )
 }
