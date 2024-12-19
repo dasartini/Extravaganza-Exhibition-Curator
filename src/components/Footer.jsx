@@ -33,7 +33,7 @@ function Footer() {
             </div>
             <div className="socials">
             <img className="nft" alt="Personal Nft" title="Retardio NFT" src={nft}/>
-            <h3>adriansartind@gmail.com</h3>
+            <h3>adriansartinid@gmail.com</h3>
             </div>
             </div>
 

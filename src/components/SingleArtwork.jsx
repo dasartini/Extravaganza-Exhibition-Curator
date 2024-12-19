@@ -98,7 +98,7 @@ return (<>
             
             </ol>
            <span onClick={handleAdd}> <AddButton  /></span>
-           <p hidden={!added} style={{margin: "20px"}}>Artwork already added into your gallery!</p>
+           <p hidden={!added} style={{margin: "20px"}}>Artwork already added to your gallery!</p>
             </div>
           
         </div>
