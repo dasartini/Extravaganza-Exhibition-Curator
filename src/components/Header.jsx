@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import Search from "./Search";
 import logo2 from "../assets/images/logo2.png";
+import extravaganza from  "../assets/images/extravaganza.png"
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -51,13 +52,15 @@ function Header() {
   return (
     <HeaderStyle>
       <header className="header">
-        <div className="logocont">
+
+        {/* <div className="logocont">
           <img src={logo2} className="logo" />
           <div className="title">
             <h1>Extravaganza</h1>
             <p>Art Curator</p>
           </div>
-        </div>
+        </div> */}
+        <img className="extravaganza"src={extravaganza} style={{height:"6rem"}}/>
         {target && <Search target={target} />}
 
         <button

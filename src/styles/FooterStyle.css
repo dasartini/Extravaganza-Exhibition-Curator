@@ -1,5 +1,5 @@
 .myfooter {
-  background-color: rgb(113, 103, 103);
+  background-color: rgb(0, 0, 0);
   color: white;
   text-align: center;
   padding: 25px 0;
@@ -10,6 +10,9 @@
   align-items: center;
   gap: 3rem
 
+}
+.extravaganza2{
+  height: 6rem;
 }
 .solid{ 
   margin-top: 1px;
