@@ -11,19 +11,17 @@
 .logo{
   width: 5rem;
 }
+.extravaganza{
+  height: 6rem;
+
+}
 .logocont{
   display: flex;
   flex-direction: row;
 }
-.title h1 {
-  font-size: 1.5rem;
-  margin-bottom: 0.2rem;
-}
 
-.title p {
-  font-size: 0.9rem;
-  color: #555;
-}
+
+
 .searchbarCont{
   display: flex;
   gap: 1rem;
@@ -86,7 +84,8 @@
 .nav-link {
   text-decoration: none;
   color: #000000;
-  font-weight: bold;
+  font-weight: normal;
+
 }
 
 .nav-link:hover {
@@ -142,6 +141,9 @@
 }
 
 @media (max-width: 768px) {
+  .extravaganza{
+    margin-bottom: 1rem;
+  }
   .header {
      display: flex;
      flex-direction: column;

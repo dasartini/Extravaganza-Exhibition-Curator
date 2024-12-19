@@ -1,5 +1,5 @@
 #root {
-
+  
   text-align: center;
 }
 
@@ -10,4 +10,5 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  h1, h2, h3{ font-weight: normal;}
 }

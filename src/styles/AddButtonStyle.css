@@ -24,7 +24,9 @@
 .boxshadow-gallery{
 	margin-top: 1.5rem;
 	width: 150px;
-	height: auto;
+	height: 3.3rem;
+	font-weight: normal;
+	
 }
 @media( max-width : 768px) {
 	.boxshadow-gallery{

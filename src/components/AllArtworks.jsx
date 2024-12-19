@@ -80,56 +80,78 @@ function AllArtworks() {
     }
     return (
         <>
-            <Boxie>
-                <GoBackButton/>
-                <div className="allArtworks">
-                    {loading ? (
-                        <Loader/>
-                    ) : error ? (
-                        <>
-                        <p>Error: no network available.</p>
-                        <img className="noMatch" title="You have no connection" alt="No connection" src={noconnection}/>
-                        </>
-                    ) : artworks.length === 0 ? (
-<>
-                        <p>No artworks found for your search.</p>
-                        <img className="noMatch" title="No artworks found for your search criteria" alt="No results" src={nomatch}/>
-                        </>                      ): (
-                        <div className="image-container">
-                            {artworks.map((art, index) => (
-                                <div key={index} className="item">
-                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
-                                    {renderImage(art, noImage)}
-
-                                    
-                                   
-                                        <p className="itemTitle" title={art.title}>
-                                            {art.title || "Untitled"}
-                                        </p>
-                                    </Link>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                    <div className="pagination-buttons" >
-                        {currentPage > 1 && artworks.length >0 && !error && (
-                            <button className="boxshadow"
-                                style={{ height: "50px", width: "100px"}}
-                                onClick={handlePrev}
+        <Boxie>
+            <GoBackButton />
+            <main className="allArtworks" aria-live="polite">
+                {loading ? (
+                    <Loader />
+                ) : error ? (
+                    <>
+                        <p role="alert">Error: No network available.</p>
+                        <img
+                            className="noMatch"
+                            title="You have no connection"
+                            alt="No connection"
+                            src={noconnection}
+                        />
+                    </>
+                ) : artworks.length === 0 ? (
+                    <>
+                        <p role="alert">No artworks found for your search.</p>
+                        <img
+                            className="noMatch"
+                            title="No artworks found for your search criteria"
+                            alt="No results"
+                            src={nomatch}
+                        />
+                    </>
+                ) : (
+                    <section className="image-container">
+                        {artworks.map((art, index) => (
+                            <article
+                                key={index}
+                                className="item"
+                                aria-label={`Artwork: ${art.title || "Untitled"}`}
                             >
-                                Prev
-                            </button>
-                        )}
-                        {artworks.length >0  && !error &&<button className="boxshadow"
+                                <Link to={`/chicago-institute-of-art/${art.id}`}>
+                                    {renderImage(art, noImage)}
+                                    <p
+                                        className="itemTitle"
+                                        title={art.title}
+                                        aria-label={art.title || "Untitled"}
+                                    >
+                                        {art.title || "Untitled"}
+                                    </p>
+                                </Link>
+                            </article>
+                        ))}
+                    </section>
+                )}
+                <nav className="pagination-buttons" aria-label="Pagination">
+                    {currentPage > 1 && artworks.length > 0 && !error && (
+                        <button
+                            className="boxshadow"
+                            style={{ height: "50px", width: "100px" }}
+                            onClick={handlePrev}
+                            aria-label="Previous page"
+                        >
+                            Prev
+                        </button>
+                    )}
+                    {artworks.length > 0 && !error && (
+                        <button
+                            className="boxshadow"
                             style={{ height: "50px", width: "100px" }}
                             onClick={handleNext}
+                            aria-label="Next page"
                         >
                             Next
-                        </button> }
-                    </div>
-                </div>
-            </Boxie>
-        </>
+                        </button>
+                    )}
+                </nav>
+            </main>
+        </Boxie>
+    </>
     )
 }
 

@@ -5,20 +5,20 @@ import github from "../assets/images/github.svg"
 import website from "../assets/images/website.svg"
 import nft from "../assets/images/827.png" 
 import {Link} from "react-router"
-
+import extravaganza2 from "../assets/images/extravaganza2.png"
 function Footer() {
 
     return (
         <FooterStyle>
             <div className="myfooter">
-                <div className="headcont">
+                {/* <div className="headcont">
                     <img src={logo2} className="head" />
                     <div className="footertitle">
                         <h1>Extravaganza</h1>
                         <p>Art Curator</p>
                     </div>
-                </div>
-
+                </div> */}
+        <img className="extravaganza2"src={extravaganza2}/>
                 <div>
                     <p>App designed and developed in React by Adrian Sartini. All rights reserved.</p>
                     <hr className="solid"></hr>

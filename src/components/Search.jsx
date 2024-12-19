@@ -18,15 +18,25 @@ function Search({target}) {
 
   return (
     <div hidden={visible} className="searchbarCont">
-      <input
-        type="text"
-        className="search-bar"
-        value={inputValue} 
-        onChange={handleInputChange} 
-        placeholder="Search artworks"
-      />
-      <button className="go"onClick={handleSearch}>GO!</button>
-    </div>
+    <label htmlFor="search-bar" className="sr-only">
+    </label>
+    <input
+      type="text"
+      id="search-bar"
+      className="search-bar"
+      value={inputValue}
+      onChange={handleInputChange}
+      placeholder="Search artworks"
+      aria-label="Search artworks"
+    />
+    <button
+      className="go"
+      onClick={handleSearch}
+      aria-label={`Search for artworks in ${target === "cleveland" ? "Cleveland Museum" : "Chicago Institute"}`}
+    >
+      GO!
+    </button>
+  </div>
   )
 }
 

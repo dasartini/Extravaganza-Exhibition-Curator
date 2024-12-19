@@ -7,6 +7,7 @@
   font-size: 2rem; 
   margin-bottom: 1.5rem;
   color: #000000;
+  font-weight: normal;
 }
 
 .museum-cards {
@@ -44,7 +45,7 @@
   font-size: 1.3rem;
   margin: 1rem 0;
   color: #000000;
-  font-weight: bold;
+  font-weight: normal;
   text-transform: capitalize;
 }
 
