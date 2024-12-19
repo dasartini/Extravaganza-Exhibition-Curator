@@ -4,7 +4,12 @@
   column-gap: 15px; 
   padding: 30px;
 }
+.noMatch{
+border-radius: 20px;
+margin-top: 1rem;
+height: 20rem;
 
+}
 .item {
   break-inside: avoid; 
   margin-bottom: 15px; 
@@ -34,6 +39,7 @@
   color: #ccc;
 }
 .allArtworks{
+  min-height: 100vh;
   margin-bottom: 2rem;
   margin-top: -3rem;
 }

@@ -46,7 +46,7 @@ function SavedArtworks() {
             Reset Gallery
           </button>
           <button onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
-            Slide Show!
+            Slide Show
           </button>
         </div>
         {savedArtworks.length === 0 ? (
@@ -86,9 +86,7 @@ function SavedArtworks() {
           <div className="modal">
             <div className="modal-overlay" onClick={() => setIsSlideshowOpen(false)}></div>
             <div className="modal-content">
-              {/* <button className="modal-close" onClick={() => setIsSlideshowOpen(false)}>
-                Close
-              </button> */}
+          
               <Slideshow />
             </div>
           </div>

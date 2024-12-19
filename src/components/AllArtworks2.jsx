@@ -7,6 +7,9 @@ import { useSearchContext } from "../context/SearchContext";
 import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
 import GoBackButton from "./GoBack";
+import nomatch from "../assets/images/nomatch.jpg"
+import noconnection from "../assets/images/noconnection.jpg"
+
 
 function AllArtworks2() {
   const { visible, setVisible } = useVisibleContext()
@@ -61,22 +64,23 @@ function AllArtworks2() {
                       <Loader/>
                         </>
                     ) : error ? (
-                        <div className="image-container"> 
-                        <p>Error: {error}</p></div>
-                    ) : artworks.length === 0 ? (
-                        <div className="image-container"> 
+                      <>
+                      <p>Error: no network available.</p>
+                      <img className="noMatch" title="You have no connection" alt="No connection" src={noconnection}/>
+                      </>                    ) : artworks.length === 0 ? (<>
                         <p>No artworks found for your search.</p>
-                        </div>
+                        <img className="noMatch" title="No artworks found for your search criteria" alt="No results" src={nomatch}/>
+                        </>
                       ): (
           <div className="image-container">
             {artworks.map((art, index) => (
               <div key={index} className="item">
+                <Link to={`/cleveland-art-museum/${art.id}`}>
                 <img
                   src={art.images?.web?.url || noImage}
                   alt={art.title || "Untitled"}
                   className="itemImage"
                 />
-                <Link to={`/cleveland-art-museum/${art.id}`}>
                   <p className="itemTitle" title={art.title}>
                     {art.title || "Untitled"}
                   </p>
@@ -86,7 +90,7 @@ function AllArtworks2() {
           </div>
         )}
         <div className="pagination-buttons">
-          {num > 0 && (
+          {num > 0 && !error && (
             <button className="boxshadow"
               style={{ height: "50px", width: "100px", marginRight: "10px" }}
               onClick={handlePrev}
@@ -94,12 +98,12 @@ function AllArtworks2() {
               Prev
             </button>
           )}
-          <button className="boxshadow"
+          {artworks.length > 0 && !error && <button className="boxshadow"
             style={{ height: "50px", width: "100px" }}
             onClick={handleClick}
           >
             Next
-          </button>
+          </button>}          
         </div>
       </div>
     </Boxie>

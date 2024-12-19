@@ -9,6 +9,8 @@ import DynamicImage from "./DynamicImage";
 import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
 import GoBackButton from "./GoBack";
+import nomatch from "../assets/images/nomatch.jpg"
+import noconnection from "../assets/images/noconnection.jpg"
 
 function AllArtworks() {
     const { visible, setVisible } = useVisibleContext()
@@ -84,21 +86,23 @@ function AllArtworks() {
                     {loading ? (
                         <Loader/>
                     ) : error ? (
-                        <div className="image-container"> 
-                        <p>Error: {error}</p></div>
+                        <>
+                        <p>Error: no network available.</p>
+                        <img className="noMatch" title="You have no connection" alt="No connection" src={noconnection}/>
+                        </>
                     ) : artworks.length === 0 ? (
-                        <div className="image-container"> 
+<>
                         <p>No artworks found for your search.</p>
-                        </div>
-                      ): (
+                        <img className="noMatch" title="No artworks found for your search criteria" alt="No results" src={nomatch}/>
+                        </>                      ): (
                         <div className="image-container">
                             {artworks.map((art, index) => (
                                 <div key={index} className="item">
+                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
                                     {renderImage(art, noImage)}
 
                                     
                                    
-                                    <Link  to={`/chicago-institute-of-art/${art.id}`}>
                                         <p className="itemTitle" title={art.title}>
                                             {art.title || "Untitled"}
                                         </p>
@@ -108,7 +112,7 @@ function AllArtworks() {
                         </div>
                     )}
                     <div className="pagination-buttons" >
-                        {currentPage > 1 && (
+                        {currentPage > 1 && artworks.length >0 && !error && (
                             <button className="boxshadow"
                                 style={{ height: "50px", width: "100px"}}
                                 onClick={handlePrev}
@@ -116,12 +120,12 @@ function AllArtworks() {
                                 Prev
                             </button>
                         )}
-                        <button className="boxshadow"
+                        {artworks.length >0  && !error &&<button className="boxshadow"
                             style={{ height: "50px", width: "100px" }}
                             onClick={handleNext}
                         >
                             Next
-                        </button>
+                        </button> }
                     </div>
                 </div>
             </Boxie>

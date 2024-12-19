@@ -9,11 +9,15 @@ import { useSavedArtworks } from "../context/SavedArtworksContext";
 import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
 import GoBackButton from "./GoBack";
+import { useVisibleContext } from "../context/VisibleContext";
+
 
 
 
 function SingleArtwork(){
     const {savedArtworks, addArtwork} = useSavedArtworks()
+    const { visible, setVisible } = useVisibleContext()
+
 
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
@@ -27,6 +31,8 @@ useEffect(()=>{
     .then((data)=>{
         setArtwork(data)
         setLoading(false)
+        setVisible(true)
+
         window.scrollTo({ top: 0, behavior: "smooth" })
 
     })
@@ -98,7 +104,7 @@ return (<>
             
             </ol>
            <span onClick={handleAdd}> <AddButton  /></span>
-           <p hidden={!added} style={{margin: "20px"}}>Artwork already added into your gallery!</p>
+           <p hidden={!added} style={{margin: "20px"}}>Artwork already added to your gallery!</p>
             </div>
           
         </div>
