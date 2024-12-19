@@ -45,7 +45,7 @@ function SavedArtworks() {
           <button onClick={handleResetGallery} className="galleryButtons">
             Reset Gallery
           </button>
-          <button onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
+          <button disabled={savedArtworks.length === 0} onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
             Slide Show
           </button>
         </div>
