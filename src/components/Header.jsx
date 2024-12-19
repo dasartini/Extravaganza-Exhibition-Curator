@@ -1,9 +1,9 @@
+
 import HeaderStyle from "../styles/HeaderStyle";
 import { Link, useLocation } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import Search from "./Search";
-import logo2 from "../assets/images/logo2.png";
-import extravaganza from  "../assets/images/extravaganza.png"
+import extravaganza from "../assets/images/extravaganza.png";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -11,30 +11,63 @@ function Header() {
   const navRef = useRef(null)
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
+    setMenuOpen(!menuOpen);
   }
 
   const closeMenu = () => {
-    setMenuOpen(false)
+    setMenuOpen(false);
   }
 
- const handleClickOutside = (event) => {
-  if (menuOpen && !navRef.current.contains(event.target)) {
-    if (event.target.closest(".hamburger")) {
-      return
+  const handleKeyDown = (event) => {
+    if (menuOpen && event.key === "Escape") {
+      closeMenu();
     }
-    closeMenu()
   }
-}
+
+  const trapFocus = (event) => {
+    if (menuOpen && navRef.current) {
+      const focusableElements = navRef.current.querySelectorAll(
+        "a, button, [tabindex]:not([tabindex='-1'])"
+      )
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      if (event.key === "Tab") {
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault()
+          lastElement.focus()
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault()
+          firstElement.focus()
+        }
+      }
+    }
+  }
+
+  const handleClickOutside = (event) => {
+    if (menuOpen && !navRef.current.contains(event.target)) {
+      if (event.target.closest(".hamburger")) {
+        return
+      }
+      closeMenu()
+    }
+  }
   useEffect(() => {
     if (menuOpen) {
       document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener("keydown", handleKeyDown)
+      document.addEventListener("keydown", trapFocus)
     } else {
       document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("keydown", handleKeyDown)
+      document.removeEventListener("keydown", trapFocus)
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
-    }
+      document.removeEventListener("keydown", handleKeyDown)
+      document.removeEventListener("keydown", trapFocus)
+    };
   }, [menuOpen])
 
   const determineTarget = () => {
@@ -52,37 +85,61 @@ function Header() {
   return (
     <HeaderStyle>
       <header className="header">
-
-        {/* <div className="logocont">
-          <img src={logo2} className="logo" />
-          <div className="title">
-            <h1>Extravaganza</h1>
-            <p>Art Curator</p>
-          </div>
-        </div> */}
-        <img className="extravaganza"src={extravaganza} style={{height:"6rem"}}/>
+        <img
+          className="extravaganza"
+          src={extravaganza}
+          alt="Art Extravaganza Logo"
+        />
         {target && <Search target={target} />}
 
         <button
           className={`hamburger ${menuOpen ? "open" : ""}`}
           onClick={toggleMenu}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        {menuOpen && <div className="overlay" onClick={closeMenu}></div>}
+
+        {menuOpen && (
+          <div
+            className="overlay"
+            onClick={closeMenu}
+            aria-hidden="true"
+            role="presentation"
+          ></div>
+        )}
+
         <nav
           className={`nav ${menuOpen ? "open" : ""}`}
           ref={navRef}
+          aria-hidden={!menuOpen}
+          aria-label="Main navigation"
         >
-          <Link to="/" className="nav-link" onClick={closeMenu}>
+          <Link
+            to="/"
+            className="nav-link"
+            onClick={closeMenu}
+            aria-label="Go to Home page"
+          >
             Home
           </Link>
-          <Link to="/gallery" className="nav-link" onClick={closeMenu}>
+          <Link
+            to="/gallery"
+            className="nav-link"
+            onClick={closeMenu}
+            aria-label="Go to My Gallery"
+          >
             My Gallery
           </Link>
-          <a href="#" className="nav-link" onClick={closeMenu}>
+          <a
+            href="#"
+            className="nav-link"
+            onClick={closeMenu}
+            aria-label="Login to your account"
+          >
             Login
           </a>
         </nav>

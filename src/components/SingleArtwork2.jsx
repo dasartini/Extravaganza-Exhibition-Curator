@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { getArtworksById2 } from "../api";
 import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
-import whatching from '../assets/images/watching.jpg';
+import watching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import noImage from "../assets/images/noImage2.jpg"
@@ -65,64 +65,99 @@ const handleAdd = () => {
   }
 
 return (<>
-
-<SingleArtworkStyle>
-<GoBackButton/>
-<div className='singleArtworkCont'>
-    {loading ?   <Loader/> : 
+  <SingleArtworkStyle>
+    <GoBackButton />
+    <div className="singleArtworkCont">
+      {loading ? (
         <>
-        <div className="frame">
+          <Loader />
+          
+        </>
+      ) : error ? (
+        <p
+          id="error-message"
+          aria-live="assertive"
+          style={{ color: "red" }}
+        >
+          Error loading artwork details: {error}.
+        </p>
+      ) : (
+        <>
+          <div className="frame">
             {artwork.images?.web?.url ? (
-                 <img className="singleArtwork"
-                 src={artwork.images?.web?.url}
-                 alt={artwork.title || "Untitled"}
-                 title={artwork.tombstone}
-             />
-            ):
-            (
-                <img
+              <img
                 className="singleArtwork"
-                src={noImage} 
+                src={artwork.images?.web?.url}
+                alt={artwork.title || "Untitled"}
+                title={artwork.tombstone || "Artwork details"}
+              />
+            ) : (
+              <img
+                className="singleArtwork"
+                src={noImage}
                 alt="No artwork available"
                 title="No artwork image available"
               />
             )}
             <div className="specs">
-            <h1>{artwork.title || "Untitled"}</h1>
-            <ol>
-            <p>By: {artwork.creators?.[0]?.description?? "Unknown Artist"}</p>
-            <p>Date: {artwork.creation_date??  "Unknown Date"}</p>
-            <p>Place of origin: {artwork.culture?.[0]?? "Unknown"}</p>
-            <p>Medium: {artwork.technique?? "Unknown medium"}</p>
-            <p>Category: {artwork.department?? "Unknown"}</p>
-            
-            </ol>
-            
-            <span onClick={handleAdd}><AddButton/></span>
-            <p hidden={!added} style={{margin: "20px"}}>Artwork already added to your gallery!</p>
-
+              <h1 id="artwork-title">{artwork.title || "Untitled"}</h1>
+              <ul>
+                <li>By: {artwork.creators?.[0]?.description || "Unknown Artist"}</li>
+                <li>Date: {artwork.creation_date || "Unknown Date"}</li>
+                <li>
+                  Place of origin: {artwork.culture?.[0] || "Unknown"}
+                </li>
+                <li>Medium: {artwork.technique || "Unknown medium"}</li>
+                <li>Category: {artwork.department || "Unknown"}</li>
+              </ul>
+              <span
+                className="add-button"
+                onClick={handleAdd}
+                aria-label={`Add ${artwork.title || "Untitled"} to your gallery`}
+              >
+                <AddButton />
+              </span>
+              <p
+                id="add-confirmation"
+                aria-live="polite"
+                hidden={!added}
+                style={{ margin: "20px" }}
+              >
+                Artwork already added to your gallery!
+              </p>
             </div>
-        </div>
+          </div>
 
-       {artwork.description ? <div className="artworkInfo"> 
-<h1>{artwork.title || "Untitled"}
-
-</h1>
-<h2>{artwork.creation_date|| "Unknown Date"}. </h2>
-<p
-dangerouslySetInnerHTML={{  __html: DOMPurify.sanitize(artwork.description), }}
-></p>
-</div>:<div className="artworkInfo">
-<h1>This artwork has no description. What do you think about it?</h1> 
-<img className="watching"src={whatching}/></div>} 
-        
+          {artwork.description ? (
+            <div
+              className="artworkInfo"
+              aria-labelledby="artwork-title artwork-description"
+            >
+              <h1 id="artwork-description">
+                {artwork.title || "Untitled"}
+              </h1>
+              <h2>{artwork.creation_date || "Unknown Date"}.</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(artwork.description),
+                }}
+              ></p>
+            </div>
+          ) : (
+            <div className="artworkInfo">
+              <h1>No description available for this artwork.</h1>
+              <img
+                className="watching"
+                src={watching}
+                alt="A person observing an artwork"
+              />
+            </div>
+          )}
         </>
-        }
-
-        </div>
-        </SingleArtworkStyle>
-    </>
-
+      )}
+    </div>
+  </SingleArtworkStyle>
+</>
 
 )
 

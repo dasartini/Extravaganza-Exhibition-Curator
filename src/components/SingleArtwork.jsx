@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { getArtworksById } from "../api";
 import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
-import whatching from '../assets/images/watching.jpg';
+import watching from '../assets/images/watching.jpg';
 import AddButton from "./AddButton";
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import noImage from "../assets/images/noImage2.jpg"
@@ -69,64 +69,97 @@ const checkArtworks = () => {
 }
 
 return (<>
-
-<SingleArtworkStyle>
-<GoBackButton/>
-<div className='singleArtworkCont'>
-    {loading ?   
-        <Loader/> : 
+  <SingleArtworkStyle>
+    <GoBackButton />
+    <div className="singleArtworkCont">
+      {loading ? (
         <>
-        <div className="frame">
-        {artwork.image_id === null ? (
-            <img
-              className="singleArtwork"
-              src={noImage} 
-              alt="No artwork available"
-              title="No artwork image available"
-            />
-          ) : (
-            <img
-              className="singleArtwork"
-              src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
-              alt={artwork.title || "Untitled"}
-              title={artwork.thumbnail?.alt_text || "No artwork image available"}
-            />
-          )}
-          
-            <div className="specs">
-            <h1>{artwork.title || "Untitled"}</h1>
-            <ol>
-            <p>By: {artwork.artist_title || "Unknown Artist"}</p>
-            <p>Date: {artwork.date_display || "Unknown Date"}</p>
-            <p>Place of origin: {artwork.place_of_origin || "unknown"}</p>
-            <p>Medium: {artwork.medium_display}</p>
-            <p>Category: {artwork.department_title}</p>
-            
-            </ol>
-           <span onClick={handleAdd}> <AddButton  /></span>
-           <p hidden={!added} style={{margin: "20px"}}>Artwork already added to your gallery!</p>
-            </div>
-          
-        </div>
-
-       {artwork.description ? <div className="artworkInfo"> 
-<h1>{artwork.title || "Untitled"}
-
-</h1>
-<h2>{artwork.date_display || "Unknown Date"}. </h2>
-<p
-dangerouslySetInnerHTML={{  __html: DOMPurify.sanitize(artwork.description), }}
-></p>
-</div>:<div className="artworkInfo">
-<h1>This artwork has no description. What do you think about it?</h1> 
-<img className="watching"src={whatching}/></div>} 
-        
+          <Loader />
+          <p aria-live="polite">Loading artwork details...</p>
         </>
-        }
+      ) : error ? (
+        <p
+          id="error-message"
+          aria-live="assertive"
+          style={{ color: "red" }}
+        >
+          Error loading artwork details: {error}.
+        </p>
+      ) : (
+        <>
+          <div className="frame">
+            {artwork.image_id === null ? (
+              <img
+                className="singleArtwork"
+                src={noImage}
+                alt="No artwork available"
+                title="No artwork image available"
+              />
+            ) : (
+              <img
+                className="singleArtwork"
+                src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
+                alt={artwork.title || "Untitled artwork"}
+                title={artwork.thumbnail?.alt_text || "Artwork image"}
+              />
+            )}
 
-        </div>
-        </SingleArtworkStyle>
-    </>
+            <div className="specs">
+              <h1 id="artwork-title">{artwork.title || "Untitled"}</h1>
+              <ul>
+                <li>By: {artwork.artist_title || "Unknown Artist"}</li>
+                <li>Date: {artwork.date_display || "Unknown Date"}</li>
+                <li>
+                  Place of origin: {artwork.place_of_origin || "Unknown"}
+                </li>
+                <li>Medium: {artwork.medium_display || "Unknown"}</li>
+                <li>Category: {artwork.department_title || "Unknown"}</li>
+              </ul>
+              <span                 aria-label={`Add ${artwork.title || "Untitled"} to your gallery`}
+ onClick={handleAdd}>
+                <AddButton aria-label="Add artwork to your gallery" />
+              </span>
+              <p
+                id="add-confirmation"
+                aria-live="polite"
+                hidden={!added}
+                style={{ margin: "20px" }}
+              >
+                Artwork already added to your gallery!
+              </p>
+            </div>
+          </div>
+
+          {artwork.description ? (
+            <div
+              className="artworkInfo"
+              aria-labelledby="artwork-title artwork-description"
+            >
+              <h1 id="artwork-description">
+                {artwork.title || "Untitled"}
+              </h1>
+              <h2>{artwork.date_display || "Unknown Date"}.</h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(artwork.description),
+                }}
+              ></p>
+            </div>
+          ) : (
+            <div className="artworkInfo">
+              <h1>No description available for this artwork.</h1>
+              <img
+                className="watching"
+                src={watching}
+                alt="A person observing an artwork"
+              />
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  </SingleArtworkStyle>
+</>
 
 
 )
