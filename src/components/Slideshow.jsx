@@ -32,19 +32,18 @@ function Slideshow() {
             key={index}
             className={slide === index ? "fancyFrame slide" : "fancyFrame slide-hidden"}
           >
-            <img
+            <img className="carouselImg"
               src={artwork.image}
               alt={artwork.title}
               title={artwork.title}
             />
-<div className="badge">
-  <img className="badgeItself" src={badge} alt="Badge" />
-  <div className="badgecont">
+   <div className="badgecont">
+  <img className="badge" src={badge} alt="Badge" />
+  <div className="textCont">
     <p className="title">{artwork.title}</p>
     <p className="author">{artwork.artist}</p>
   </div>
 </div>
-
 
 
           </div>

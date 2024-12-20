@@ -22,6 +22,16 @@
   padding: 8vmin;
   position: relative;
   text-align: center;
+
+}
+.carouselImg {
+  border: solid 2px;
+  border-bottom-color: #ffe;
+  border-left-color: #eed;
+  border-right-color: #eed;
+  border-top-color: #ccb;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .fancyFrame:before {
@@ -46,15 +56,6 @@
   top: -2.5vmin;
 }
 
-img {
-  border: solid 2px;
-  border-bottom-color: #ffe;
-  border-left-color: #eed;
-  border-right-color: #eed;
-  border-top-color: #ccb;
-  max-height: 100%;
-  max-width: 100%;
-}
 
 .slide {
   animation: slideIn 0.5s ease-in-out;
@@ -153,46 +154,42 @@ img {
     box-shadow: 0px 0px 5px #555;
     cursor: pointer;
 }
-.badge {
-  position: absolute;
-  bottom: -15vmin;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16rem; 
-  height: 8rem; 
+.badgecont{
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; 
+  z-index: 1;
 }
+.badge{
+  height: 6.5rem;
+  width: 16rem;
+position: absolute;
+bottom:-3rem;;
+z-index: 1;
 
-.badgeItself {
-  position: absolute;
-  object-fit: contain; 
-  z-index: 1; 
-  width: 9rem;
-  height: 7rem;
 }
+.textCont{
 
-.badge .title,
-.badge .author {
-  position: relative;
-  z-index: 2; 
-  color: rgb(0, 0, 0); 
-margin-bottom: 2px;
-}
+ position: absolute;
+ bottom: -1.2rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ width:13rem
 
-.badgecont{
-  display: flex;
-  flex-direction: column;
-  width: 7.5rem;
 }
-.badge .author {
-  font-size: 0.5rem;
+.title{
+  font-weight: bold;
 }
-.badge .title{
+.title, .author {
   font-size: 0.6rem;
+  color: black;
+  margin: 0; 
+  text-align: center;
+  z-index: 2; 
 }
+
 @keyframes slideIn {
     from {
       transform: translateX(100%);
@@ -224,3 +221,31 @@ margin-bottom: 2px;
     position: absolute; 
   }
   
+
+  @media(max-width : 768px ) {
+      .fancyFrame{
+        height: 20rem;
+      }
+      .badge{
+        height: 5rem ;
+        width:10rem;
+      }
+      .title, .author {
+        font-size: 0.4rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
+      }
+      .textCont{
+
+        position: absolute;
+        bottom: -1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width:9rem
+       
+       }
+  }
