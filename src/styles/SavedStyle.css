@@ -17,7 +17,10 @@
     cursor: grab;
     position: relative; 
 }
-
+.noArtworksContainer{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .savedList:active {
     transform: scale(1.05);
     background-color: #f7f7f7;
