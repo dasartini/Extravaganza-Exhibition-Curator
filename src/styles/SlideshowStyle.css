@@ -1,23 +1,70 @@
 .carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative; 
-    overflow: hidden; 
-  }
-  
-  .slide {
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 7px #666;
-    height: 30rem;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    opacity: 1;
-  }
-  
-  .slide-hidden {
-    opacity: 0;
-    position: absolute; 
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.fancyFrame {
+  background-color: #ddc;
+  border: solid 5vmin #eee;
+  border-bottom-color: #fff;
+  border-left-color: #eee;
+  border-radius: 2px;
+  border-right-color: #eee;
+  border-top-color: #ddd;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25) inset, 0 5px 10px 5px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 10vh 10vw;
+  height: 80vh;
+  padding: 8vmin;
+  position: relative;
+  text-align: center;
+}
+
+.fancyFrame:before {
+  border-radius: 2px;
+  bottom: -2vmin;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25) inset;
+  content: "";
+  left: -2vmin;
+  position: absolute;
+  right: -2vmin;
+  top: -2vmin;
+}
+
+.fancyFrame:after {
+  border-radius: 2px;
+  bottom: -2.5vmin;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  content: "";
+  left: -2.5vmin;
+  position: absolute;
+  right: -2.5vmin;
+  top: -2.5vmin;
+}
+
+img {
+  border: solid 2px;
+  border-bottom-color: #ffe;
+  border-left-color: #eed;
+  border-right-color: #eed;
+  border-top-color: #ccb;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.slide {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.slide-hidden {
+  animation: slideOut 0.5s ease-in-out;
+  position: absolute;
+  opacity: 0;
+}
   
   .arrows {
     position: absolute;
@@ -59,15 +106,7 @@
     background-color: rgb(87, 80, 80);
   }
   
-.slide{
-border-radius:  0.5rem;
-box-shadow: 0px 0px 7px #666;
-height: 30rem
 
-}
-.slide-hidden {
-    display: none;
-}
 .arrows{
     position: absolute;
     filter:drop-shadow( 0px 0px 5px #555);
@@ -114,7 +153,46 @@ height: 30rem
     box-shadow: 0px 0px 5px #555;
     cursor: pointer;
 }
+.badge {
+  position: absolute;
+  bottom: -15vmin;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16rem; 
+  height: 8rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; 
+}
 
+.badgeItself {
+  position: absolute;
+  object-fit: contain; 
+  z-index: 1; 
+  width: 9rem;
+  height: 7rem;
+}
+
+.badge .title,
+.badge .author {
+  position: relative;
+  z-index: 2; 
+  color: rgb(0, 0, 0); 
+margin-bottom: 2px;
+}
+
+.badgecont{
+  display: flex;
+  flex-direction: column;
+  width: 7.5rem;
+}
+.badge .author {
+  font-size: 0.5rem;
+}
+.badge .title{
+  font-size: 0.6rem;
+}
 @keyframes slideIn {
     from {
       transform: translateX(100%);

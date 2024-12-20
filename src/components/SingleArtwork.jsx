@@ -75,7 +75,7 @@ return (<>
       {loading ? (
         <>
           <Loader />
-          <p aria-live="polite">Loading artwork details...</p>
+
         </>
       ) : error ? (
         <p
