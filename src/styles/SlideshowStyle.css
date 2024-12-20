@@ -179,6 +179,9 @@ z-index: 1;
  width:13rem
 
 }
+.badgeTitleShort{
+  font-weight: bold;
+ }
 .badgeTitle{
   font-weight: bold;
 }
@@ -189,6 +192,13 @@ z-index: 1;
   text-align: center;
   z-index: 2; 
 }
+.badgeTitleShort, .badgeAuthorShort{
+  font-size: 1rem;
+  color: black;
+  margin: 0; 
+  text-align: center;
+  z-index: 2; 
+ }
 
 @keyframes slideIn {
     from {
@@ -247,5 +257,13 @@ z-index: 1;
         justify-content: center;
         width:9rem
        
+       }
+       
+       .badgeTitleShort, .badgeAuthorShort{
+        font-size: 0.6rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
        }
   }
