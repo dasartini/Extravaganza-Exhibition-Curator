@@ -179,10 +179,10 @@ z-index: 1;
  width:13rem
 
 }
-.title{
+.badgeTitle{
   font-weight: bold;
 }
-.title, .author {
+.badgeTitle, .badgeAuthor {
   font-size: 0.6rem;
   color: black;
   margin: 0; 
@@ -228,9 +228,9 @@ z-index: 1;
       }
       .badge{
         height: 5rem ;
-        width:10rem;
+        width:13rem;
       }
-      .title, .author {
+      .badgeTitle, .badgeAuthor {
         font-size: 0.4rem;
         color: black;
         margin: 0; 

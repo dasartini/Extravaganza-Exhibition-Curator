@@ -40,8 +40,8 @@ function Slideshow() {
    <div className="badgecont">
   <img className="badge" src={badge} alt="Badge" />
   <div className="textCont">
-    <p className="title">{artwork.title}</p>
-    <p className="author">{artwork.artist}</p>
+    <p className="badgeTitle">{artwork.title}</p>
+    <p className="badgeAuthor">{artwork.artist}</p>
   </div>
 </div>
 
