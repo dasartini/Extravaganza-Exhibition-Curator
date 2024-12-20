@@ -5,11 +5,13 @@
   display: flex;
   align-items: center; 
   justify-content: center;
-  position: sticky; /* Ensures sticky behavior */
-  top: 1rem; /* Defines the offset for sticking */
-  z-index: 1000; /* Ensures it stays above other content */
+  position: sticky; 
+  top: 1rem; 
+  z-index: 10000; 
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0); 
-  border-radius: 50%; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+@media (max-width :768px){
+
+  .goback{position: fixed;}
 }

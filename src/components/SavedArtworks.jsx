@@ -3,6 +3,7 @@ import SavedStyle from "../styles/SavedStyle";
 import { useState } from "react";
 import Slideshow from "./Slideshow";
 import GoBackButton from "./GoBack";
+import noArtworks from "../assets/images/noconnection.jpg"
 
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
@@ -41,16 +42,21 @@ function SavedArtworks() {
         <GoBackButton/>
       <div className="savedArtworksCont">
         <h1>My Saved Artworks</h1>
-        <div hidden={savedArtworks.length === 0} className="galleryButtonsCont">
+        {savedArtworks.length > 0 &&  <div  className="galleryButtonsCont">
           <button onClick={handleResetGallery} className="galleryButtons">
             Reset Gallery
           </button>
           <button disabled={savedArtworks.length === 0} onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
             Slide Show
           </button>
-        </div>
+        </div>}
+       
         {savedArtworks.length === 0 ? (
-          <p>No artworks saved yet!</p>
+          <div className="noArtworksContainer"><p>No artworks saved yet!</p>
+          <br></br>
+          <p>Add artworks from different museums and arrange and check them out in a slideshow here.</p>
+          <img style={{marginTop: "1rem", height:"20rem", borderRadius: "20px"}} src={noArtworks}/></div>
+          
         ) : (
           <div className="listContainer">
             <ul>
