@@ -10,8 +10,8 @@ import { usePageContext } from "../context/PageContext";
 function Landing(){
 
   const { visible, setVisible } = useVisibleContext()
-  const { setChicagoQuery, setQuery } = useSearchContext();
-  const { setCurrentPage } = usePageContext();
+  const { setChicagoQuery, setQuery } = useSearchContext()
+  const { setCurrentPage } = usePageContext()
   const handleResetAndNavigate = (museum) => {
     setCurrentPage(1)
     if (museum === "chicago") {
