@@ -46,12 +46,12 @@ function AllArtworks2() {
   }, [num])
 
   const handleClick = () => {
-    setNum((prevNum) => prevNum + 8)
+    setNum((prevNum) => prevNum + 30)
   }
 
   const handlePrev = () => {
-    if (num >= 8) {
-      setNum((prevNum) => prevNum - 8)
+    if (num >= 30) {
+      setNum((prevNum) => prevNum - 30)
     }
   }
 
