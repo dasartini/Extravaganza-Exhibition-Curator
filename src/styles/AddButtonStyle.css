@@ -31,6 +31,8 @@
 @media( max-width : 768px) {
 	.boxshadow-gallery{
 		margin-top: 3rem;
+		font-size: 1.2rem;
+		line-height: 1.3rem;
 	}
 
 }

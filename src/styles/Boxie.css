@@ -41,7 +41,6 @@ height: 20rem;
 .allArtworks{
   min-height: 100vh;
   margin-bottom: 2rem;
-  margin-top: -3rem;
 }
 .pagination-buttons{
   display: flex;
@@ -68,4 +67,11 @@ height: 20rem;
   .image-container {
     column-count: 1; 
   }
+}
+
+@media (min-width : 768px){
+  .allArtworks{
+    margin-top: -2.5rem;
+  }
+
 }
