@@ -41,14 +41,15 @@ function SavedArtworks() {
         <GoBackButton/>
       <div className="savedArtworksCont">
         <h1>My Saved Artworks</h1>
-        <div hidden={savedArtworks.length === 0} className="galleryButtonsCont">
+        {savedArtworks.length > 0 &&  <div  className="galleryButtonsCont">
           <button onClick={handleResetGallery} className="galleryButtons">
             Reset Gallery
           </button>
           <button disabled={savedArtworks.length === 0} onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
             Slide Show
           </button>
-        </div>
+        </div>}
+       
         {savedArtworks.length === 0 ? (
           <p>No artworks saved yet!</p>
         ) : (
