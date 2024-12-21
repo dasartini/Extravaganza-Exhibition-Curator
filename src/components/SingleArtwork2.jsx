@@ -125,7 +125,8 @@ return (<>
                 id="add-confirmation"
                 aria-live="polite"
                 hidden={!added}
-                style={{ margin: "20px" }}
+                className="confirmation"
+
               >
                 Artwork already added to your gallery!
               </p>
