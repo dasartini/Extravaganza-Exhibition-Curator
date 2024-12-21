@@ -71,6 +71,8 @@ position: relative;
 }
   
   .arrows {
+    background: none;
+    border: none;
     position: absolute;
     filter: drop-shadow(0px 0px 5px #555);
     height: 2rem;
@@ -86,7 +88,7 @@ position: relative;
   .indicators {
     display: flex;
     position: absolute;
-    gap: 3px;
+    gap: 5px;
     top:-2.2rem;
     margin-left: 40%
   }
@@ -112,7 +114,6 @@ position: relative;
 .arrows{
     position: absolute;
     filter:drop-shadow( 0px 0px 5px #555);
-    color: white;
     height: 2rem;
     width: 2rem;
 
@@ -128,13 +129,8 @@ position: relative;
 .arrow-right{
     right: 1rem;
 }
-.indicators{
-    display: flex;
-    position: absolute;
-    bottom: 1rem;
-    gap: 3px;
-}
-.indicator{
+
+.indicator{ 
     background-color: white;
     height: 0.5rem;
     width: 0.5rem;
@@ -155,51 +151,7 @@ position: relative;
     box-shadow: 0px 0px 5px #555;
     cursor: pointer;
 }
-.badgecont{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-.badge{
-  height: 6.5rem;
-  width: 16rem;
-position: absolute;
-bottom:-3rem;;
-z-index: 1;
 
-}
-.textCont{
-
- position: absolute;
- bottom: -1.2rem;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- width:13rem
-
-}
-.badgeTitleShort{
-  font-weight: bold;
- }
-.badgeTitle{
-  font-weight: bold;
-}
-.badgeTitle, .badgeAuthor {
-  font-size: 0.6rem;
-  color: black;
-  margin: 0; 
-  text-align: center;
-  z-index: 2; 
-}
-.badgeTitleShort, .badgeAuthorShort{
-  font-size: 1rem;
-  color: black;
-  margin: 0; 
-  text-align: center;
-  z-index: 2; 
- }
 
 @keyframes slideIn {
     from {
@@ -234,37 +186,47 @@ z-index: 1;
   
 
   @media(max-width : 768px ) {
-      .fancyFrame{
-        height: 20rem;
-      }
-      .badge{
-        height: 5rem ;
-        width:13rem;
-      }
-      .badgeTitle, .badgeAuthor {
-        font-size: 0.4rem;
-        color: black;
-        margin: 0; 
-        text-align: center;
-        z-index: 2; 
-      }
-      .textCont{
+    .fancyFrame {
 
+ 
+    
+      padding: 1vmin;
+      max-height: 95vh;
+      max-width: 100%;
+    
+    }
+      .carouselImg {
+      
+       padding: 5px;
+       width: 18rem;
+        max-height: 70VH;
+      }
+      .arrows{
         position: absolute;
-        bottom: -1.3rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width:9rem
+        filter:drop-shadow( 0px 0px 5px #555);
+        color: white;
+        height: 2rem;
+    
+    }
+      .arrow-left{ 
+        z-index: 300;
+        left: 0;
+    
+    }
+    .arrow-right{
+        z-index: 300;
+        right: 0;
+    }
+      
+  }
+
+
+  @media(max-width : 730px ) {
+    .carouselImg {
+      
        
-       }
-       
-       .badgeTitleShort, .badgeAuthorShort{
-        font-size: 0.6rem;
-        color: black;
-        margin: 0; 
-        text-align: center;
-        z-index: 2; 
-       }
+      width: 16rem;
+       max-height: 70VH;
+     }
+
   }
