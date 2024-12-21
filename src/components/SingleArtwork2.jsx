@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { getArtworksById2 } from "../api";
 import SingleArtworkStyle from '../styles/SingleArtworkStyle';
 import DOMPurify from 'dompurify';
@@ -10,13 +10,16 @@ import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
 import GoBackButton from "./GoBack";
 import { useVisibleContext } from "../context/VisibleContext";
+import { usePaginationContext } from "../context/PaginationContext";
+
 
 
 
 function SingleArtwork2(){
 const {savedArtworks,addArtwork} = useSavedArtworks()
 const { visible, setVisible } = useVisibleContext()
-
+const { num } = usePaginationContext();
+const navigate = useNavigate();
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
@@ -66,7 +69,8 @@ const handleAdd = () => {
 
 return (<>
   <SingleArtworkStyle>
-    <GoBackButton />
+   <span onClick={() =>{console.log("actioned")
+     navigate(`/cleveland-art-museum`, { state: { num } })}}> <GoBackButton   /></span>
     <div className="singleArtworkCont">
       {loading ? (
         <>
@@ -121,7 +125,8 @@ return (<>
                 id="add-confirmation"
                 aria-live="polite"
                 hidden={!added}
-                style={{ margin: "20px" }}
+                className="confirmation"
+
               >
                 Artwork already added to your gallery!
               </p>

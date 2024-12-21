@@ -22,26 +22,45 @@ export function getArtworks(num = 1, searchQuery = "") {
         })
 }
 
-export function getArtworksOther(num = 0, query) {
-if(num ===0 ){num =0 }
-else if(num!==0){num += 30}
-    return axios.get(`https://openaccess-api.clevelandart.org/api/artworks`,{
-        params :{
-            limit: 30,
-            skip : num,
-            q: query
-        }
-    }
+// export function getArtworksOther(num = 0, query) {
+// if(num ===0 ){num =0 }
+// else if(num!==0){num += 30}
+//     return axios.get(`https://openaccess-api.clevelandart.org/api/artworks`,{
+//         params :{
+//             limit: 30,
+//             skip : num,
+//             q: query
+//         }
+//     }
     
-    )
+//     )
+//         .then((response) => {
+//             return response.data.data
+//         })
+//         .catch((error) => {
+//             console.error('Error fetching artworks:', error);
+//             throw error
+//         })
+// }
+
+export function getArtworksOther(num = 0, query) {
+    if (num === 0) {
+        num = 0;
+    } else if (num !== 0) {
+        num += 30;
+    }
+
+    const apiUrl = `https://openaccess-api.clevelandart.org/api/artworks?limit=30&skip=${num}&q=${query}`
+
+    return axios
+        .get(apiUrl)
         .then((response) => {
-           console.log(response.data.data)
-            return response.data.data
+            return response.data.data;
         })
         .catch((error) => {
-            console.error('Error fetching artworks:', error);
-            throw error
-        })
+            console.error("Error fetching artworks:", error)
+            throw error;
+        });
 }
 
 export function getArtworksById(artwork_id){

@@ -13,7 +13,24 @@
     flex-direction: column;
     margin-bottom: 2rem;
 }
+.confirmation {
+    position: absolute; 
+    bottom: -15px; 
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    padding: 5px; 
+    opacity: 1;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+.confirmation[hidden] {
+    opacity: 0;
+    transform: translateY(0); 
+}
 .frame {
 
     display: flex;
@@ -28,14 +45,12 @@
 }
 
 .specs {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-  /* p{
-   text-justify: distribute;
-  } */
 }
 .specs-cont{
     margin-top: 20%;
