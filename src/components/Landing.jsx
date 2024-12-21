@@ -5,20 +5,23 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { useEffect } from "react";
 import { useSearchContext } from "../context/SearchContext";
 import { usePageContext } from "../context/PageContext";
+import { usePaginationContext } from "../context/PaginationContext";
 
 
 function Landing(){
+  const { num, setNum } = usePaginationContext();
 
   const { visible, setVisible } = useVisibleContext()
   const { setChicagoQuery, setQuery } = useSearchContext()
   const { setCurrentPage } = usePageContext()
   const handleResetAndNavigate = (museum) => {
-    setCurrentPage(1)
+    
     if (museum === "chicago") {
+      setCurrentPage(1)
       setChicagoQuery("")
     }
     if(museum ==="cleveland"){
-      setCurrentPage(1)
+      setNum(0)
       setQuery("")
     }
   }
