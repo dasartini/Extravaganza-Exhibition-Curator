@@ -32,11 +32,22 @@ function Slideshow() {
             key={index}
             className={slide === index ? "fancyFrame slide" : "fancyFrame slide-hidden"}
           >
+            {/* <div className="frameWithindicators">  */}
+                 <span className="indicators">
+          {savedArtworks.map((_, index) => (
+            <button
+              key={index}
+              className={slide === index ? "indicator" : "indicator-inactive"}
+              onClick={() => setSlide(index)}
+            ></button>
+          ))}
+        </span>
             <img className="carouselImg"
               src={artwork.image}
               alt={artwork.title}
               title={artwork.title}
             />
+            {/* </div> */}
             {/* <div className="badgecont">
               <img className="badge" src={badge} alt="Badge" />
               <div className="textCont">
@@ -51,15 +62,7 @@ function Slideshow() {
         <span className="arrows arrow-right" onClick={nextSlide}>
           <img src={right} alt="Next slide" />
         </span>
-        <span className="indicators">
-          {savedArtworks.map((_, index) => (
-            <button
-              key={index}
-              className={slide === index ? "indicator" : "indicator-inactive"}
-              onClick={() => setSlide(index)}
-            ></button>
-          ))}
-        </span>
+   
       </div>
     </SlideshowStyle>
   );

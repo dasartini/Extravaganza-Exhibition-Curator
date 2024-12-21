@@ -5,7 +5,10 @@
   position: relative;
   overflow: hidden;
 }
+.frameWithindicators{
+position: relative;
 
+}
 .fancyFrame {
   background-color: #ddc;
   border: solid 3vmin#271e0a;
@@ -83,8 +86,9 @@
   .indicators {
     display: flex;
     position: absolute;
-    bottom: 1rem;
     gap: 3px;
+    top:-2.2rem;
+    margin-left: 40%
   }
   
   .indicator {
@@ -102,10 +106,7 @@
   .indicator:hover {
     transform: scale(1.2)
   }
-  
-  .indicator-inactive {
-    background-color: rgb(87, 80, 80);
-  }
+
   
 
 .arrows{
@@ -145,7 +146,7 @@
 }
 
 .indicator-inactive{
-    background-color: rgb(87, 80, 80);
+    background-color: rgb(0, 0, 0);
     height: 0.5rem;
     width: 0.5rem;
     border-radius: 100%;
