@@ -4,9 +4,14 @@ import { useState } from "react";
 
 function Search({target}) {
   const { visible } = useVisibleContext();
-  const { setQuery, setChicagoQuery } = useSearchContext()
+  const { setQuery, setChicagoQuery, query, chicagoQuery } = useSearchContext()
   const [inputValue, setInputValue] = useState("");
 
+    const handleReset = () => {
+      setInputValue("")
+      if (target === "cleveland"){ setQuery("")}
+   else if (target === "chicago"){ setChicagoQuery("")}
+    }
   const handleInputChange = (e) => {
     setInputValue(e.target.value); 
   }
@@ -36,6 +41,8 @@ function Search({target}) {
       >
         GO!
       </button>
+      {(chicagoQuery || query) &&  <button className="go" onClick={handleReset}>Reset</button> }
+     
     </div> }
 </>
   )
