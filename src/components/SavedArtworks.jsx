@@ -133,7 +133,11 @@ function SavedArtworks() {
               className="modal-overlay"
               onClick={() => setIsSlideshowOpen(false)}
               aria-label="Close slideshow"
-            ></div>
+
+            >
+              <div className="closingCont">
+              <button  onClick={() => setIsSlideshowOpen(false)} className="go go-closing" >Close</button>
+              </div></div>
             <div className="modal-content">
          
               <Slideshow />
