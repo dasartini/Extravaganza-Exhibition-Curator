@@ -4,9 +4,12 @@ import { Link, useLocation } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import Search from "./Search";
 import extravaganza from "../assets/images/extravaganza.png";
+import { useSlideShowContext } from "../context/SlideShowContext";
+
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const {isSlideShowOpen, setIsSlideShowOpen} = useSlideShowContext()
   const location = useLocation()
   const navRef = useRef(null)
 
@@ -97,6 +100,7 @@ function Header() {
           onClick={toggleMenu}
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
+          disabled={isSlideShowOpen}
         >
           <span></span>
           <span></span>

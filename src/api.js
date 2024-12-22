@@ -60,7 +60,7 @@ export function getArtworksOther(num = 0, query) {
         .catch((error) => {
             console.error("Error fetching artworks:", error)
             throw error;
-        });
+        })
 }
 
 export function getArtworksById(artwork_id){

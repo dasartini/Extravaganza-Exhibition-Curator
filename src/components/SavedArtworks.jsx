@@ -1,15 +1,17 @@
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import SavedStyle from "../styles/SavedStyle";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Slideshow from "./Slideshow";
 import GoBackButton from "./GoBack";
 import noArtworks from "../assets/images/noconnection.jpg";
+import { useSlideShowContext } from "../context/SlideShowContext";
+
 
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
-  const [isSlideshowOpen, setIsSlideshowOpen] = useState(false)
+  const {isSlideShowOpen, setIsSlideShowOpen} = useSlideShowContext()
 
   const handleResetGallery = () => {
     setIsResetting(true)
@@ -38,8 +40,8 @@ function SavedArtworks() {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "Escape" && isSlideshowOpen) {
-        setIsSlideshowOpen(false);
+      if (event.key === "Escape" && isSlideShowOpen) {
+        setIsSlideShowOpen(false);
       }
     }
 
@@ -47,7 +49,7 @@ function SavedArtworks() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [isSlideshowOpen])
+  }, [isSlideShowOpen])
 
   return (
     <SavedStyle>
@@ -65,7 +67,7 @@ function SavedArtworks() {
             </button>
             <button
               disabled={savedArtworks.length === 0}
-              onClick={() => setIsSlideshowOpen(true)}
+              onClick={() => setIsSlideShowOpen(true)}
               className="galleryButtons"
               aria-label="Open slideshow of saved artworks"
             >
@@ -122,7 +124,7 @@ function SavedArtworks() {
           </div>
         )}
 
-        {isSlideshowOpen && (
+        {isSlideShowOpen && (
           <div
             className="modal"
             role="dialog"
@@ -131,12 +133,12 @@ function SavedArtworks() {
           >
             <div
               className="modal-overlay"
-              onClick={() => setIsSlideshowOpen(false)}
+              onClick={() => setIsSlideShowOpen(false)}
               aria-label="Close slideshow"
 
             >
               <div className="closingCont">
-              <button  onClick={() => setIsSlideshowOpen(false)} className="go go-closing" >Close</button>
+              <button  onClick={() => setIsSlideShowOpen(false)} className="go go-closing" >Close</button>
               </div></div>
             <div className="modal-content">
          
