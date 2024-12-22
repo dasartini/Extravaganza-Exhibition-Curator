@@ -1,4 +1,4 @@
-.goback {
+.goback-button {
   height: 3rem;
   width: 3rem; 
   margin: 1rem; 
@@ -9,9 +9,11 @@
   top: 1rem; 
   z-index: 10000; 
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 @media (max-width :768px){
 
-  .goback{position: fixed;}
+  .goback-button{position: fixed;}
 }

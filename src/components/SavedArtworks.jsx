@@ -1,15 +1,17 @@
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import SavedStyle from "../styles/SavedStyle";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import Slideshow from "./Slideshow";
 import GoBackButton from "./GoBack";
-import noArtworks from "../assets/images/noconnection.jpg"
+import noArtworks from "../assets/images/noconnection.jpg";
+import { useSlideShowContext } from "../context/SlideShowContext";
+
 
 function SavedArtworks() {
   const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
-  const [isSlideshowOpen, setIsSlideshowOpen] = useState(false)
+  const {isSlideShowOpen, setIsSlideShowOpen} = useSlideShowContext()
 
   const handleResetGallery = () => {
     setIsResetting(true)
@@ -28,37 +30,65 @@ function SavedArtworks() {
   }
 
   const handleDrop = (index) => {
-    if (draggedItemIndex === null || draggedItemIndex === index) return
+    if (draggedItemIndex === null || draggedItemIndex === index) return;
     const reorderedArtworks = [...savedArtworks]
     const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1)
     reorderedArtworks.splice(index, 0, draggedItem)
-
     setSavedArtworks(reorderedArtworks)
     setDraggedItemIndex(null)
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && isSlideShowOpen) {
+        setIsSlideShowOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [isSlideShowOpen])
+
   return (
     <SavedStyle>
-        <GoBackButton/>
+      <GoBackButton />
       <div className="savedArtworksCont">
-        <h1>My Saved Artworks</h1>
-        {savedArtworks.length > 0 &&  <div  className="galleryButtonsCont">
-          <button onClick={handleResetGallery} className="galleryButtons">
-            Reset Gallery
-          </button>
-          <button disabled={savedArtworks.length === 0} onClick={() => setIsSlideshowOpen(true)} className="galleryButtons">
-            Slide Show
-          </button>
-        </div>}
-       
+        <h1 id="saved-artworks-heading">My Saved Artworks</h1>
+        {savedArtworks.length > 0 && (
+          <div className="galleryButtonsCont">
+            <button
+              onClick={handleResetGallery}
+              className="galleryButtons"
+              aria-label="Reset gallery to remove all saved artworks"
+            >
+              Reset Gallery
+            </button>
+            <button
+              disabled={savedArtworks.length === 0}
+              onClick={() => setIsSlideShowOpen(true)}
+              className="galleryButtons"
+              aria-label="Open slideshow of saved artworks"
+            >
+              Slide Show
+            </button>
+          </div>
+        )}
+
         {savedArtworks.length === 0 ? (
-          <div className="noArtworksContainer"><p>No artworks saved yet!</p>
-          <br></br>
-          <p>Add artworks from different museums and arrange and check them out in a slideshow here.</p>
-          <img style={{marginTop: "1rem", height:"20rem", borderRadius: "20px"}} src={noArtworks}/></div>
-          
+          <div className="noArtworksContainer">
+            <p aria-live="polite">No artworks saved yet!</p>
+            <br />
+            <p>Add artworks from different museums and arrange and check them out in a slideshow here.</p>
+            <img
+              style={{ marginTop: "1rem", height: "20rem", borderRadius: "20px" }}
+              src={noArtworks}
+              alt="No artworks saved illustration"
+            />
+          </div>
         ) : (
-          <div className="listContainer">
+          <div className="listContainer" role="list" aria-labelledby="saved-artworks-heading">
             <ul>
               {savedArtworks.map((artwork, index) => (
                 <li
@@ -68,10 +98,12 @@ function SavedArtworks() {
                   onDragStart={() => handleDragStart(index)}
                   onDragOver={handleDragOver}
                   onDrop={() => handleDrop(index)}
+                  role="listitem"
+                  aria-label={`Artwork: ${artwork.title}, by ${artwork.artist}`}
                 >
                   <img
                     src={artwork.image}
-                    alt={artwork.title}
+                    alt={`Artwork: ${artwork.title}`}
                     className="draggingListImage"
                   />
                   <div>
@@ -79,7 +111,11 @@ function SavedArtworks() {
                     <p>By: {artwork.artist}</p>
                     <p>From: {artwork.museum} Museum</p>
                   </div>
-                  <button className="erase" onClick={() => removeArtwork(index)}>
+                  <button
+                    className="erase"
+                    onClick={() => removeArtwork(index)}
+                    aria-label={`Remove artwork: ${artwork.title}`}
+                  >
                     X
                   </button>
                 </li>
@@ -88,11 +124,24 @@ function SavedArtworks() {
           </div>
         )}
 
-        {isSlideshowOpen && (
-          <div className="modal">
-            <div className="modal-overlay" onClick={() => setIsSlideshowOpen(false)}></div>
+        {isSlideShowOpen && (
+          <div
+            className="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="slideshow-heading"
+          >
+            <div
+              className="modal-overlay"
+              onClick={() => setIsSlideShowOpen(false)}
+              aria-label="Close slideshow"
+
+            >
+              <div className="closingCont">
+              <button  onClick={() => setIsSlideShowOpen(false)} className="go go-closing" >Close</button>
+              </div></div>
             <div className="modal-content">
-          
+         
               <Slideshow />
             </div>
           </div>

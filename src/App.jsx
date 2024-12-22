@@ -12,6 +12,7 @@ import { VisibleProvider } from './context/VisibleContext';
 import { SearchProvider } from './context/SearchContext';
 import { SavedArtworksProvider } from './context/SavedArtworksContext';
 import { PaginationProvider } from "./context/PaginationContext";
+import { SlideShowProvider } from './context/SlideShowContext';
 import SavedArtworks from './components/SavedArtworks';
 import Slideshow from './components/Slideshow';
 import ErrPage from './components/ErrPage';
@@ -20,6 +21,7 @@ function App() {
   return (
       <VisibleProvider>
         <SavedArtworksProvider>
+          <SlideShowProvider>
         <SearchProvider>
       <PaginationProvider>
           <div className="app">
@@ -41,6 +43,7 @@ function App() {
     </div>
     </PaginationProvider>
     </SearchProvider>
+    </SlideShowProvider>
     </SavedArtworksProvider>
     </VisibleProvider>
   )

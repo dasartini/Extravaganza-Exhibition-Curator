@@ -10,36 +10,77 @@ function Footer() {
 
     return (
         <FooterStyle>
-            <div className="myfooter">
-                {/* <div className="headcont">
-                    <img src={logo2} className="head" />
-                    <div className="footertitle">
-                        <h1>Extravaganza</h1>
-                        <p>Art Curator</p>
-                    </div>
-                </div> */}
-        <img className="extravaganza2"src={extravaganza2}/>
-                <div>
-                    <p>App designed and developed in React by Adrian Sartini. All rights reserved.</p>
-                    <hr className="solid"></hr>
-                    <p>Logos created with Leonardo AI, images fetched from respective museums' APIs.</p>
-                </div>
+          <div className="myfooter" aria-labelledby="footer-heading">
+            <img
+              className="extravaganza2"
+              src={extravaganza2}
+              alt="Logo for Extravaganza project"
+            />
+            <div>
+              <h2 id="footer-heading">About This App</h2>
+              <p>
+                App designed and developed in React by Adrian Sartini. All rights
+                reserved.
+              </p>
+              <hr className="solid" aria-hidden="true" />
+              <p>
+                Logos created with Leonardo AI, images fetched from respective
+                museums' APIs.
+              </p>
+            </div>
             <div className="profilecont">
-                <div className="socials">
-            <h2>Find me on:</h2>
-           <Link to={"https://www.linkedin.com/in/adrian-sartini-051b352b1/"} target="_blank"> <img className="socialIcons" alt="Linkedin logo" title="My Linkedin" src={linkedin}/></Link>
-           <Link to={"https://github.com/dasartini"} target="_blank">  <img className="socialIcons" alt="Github logo" title="My Github" src={github}/></Link>
-           <Link to={"https://asartini.dev/"} target="_blank"> <img className="socialIcons" alt="Website logo" title="My portfolio website" src={website}/></Link>
+              <div className="socials">
+                <h2 id="social-links">Find me on:</h2>
+                <Link
+                  to={"https://www.linkedin.com/in/adrian-sartini-051b352b1/"}
+                  target="_blank"
+                  aria-label="Visit Adrian's LinkedIn profile"
+                >
+                  <img
+                    className="socialIcons"
+                    alt="LinkedIn logo"
+                    title="My LinkedIn"
+                    src={linkedin}
+                  />
+                </Link>
+                <Link
+                  to={"https://github.com/dasartini"}
+                  target="_blank"
+                  aria-label="Visit Adrian's GitHub profile"
+                >
+                  <img
+                    className="socialIcons"
+                    alt="GitHub logo"
+                    title="My GitHub"
+                    src={github}
+                  />
+                </Link>
+                <Link
+                  to={"https://asartini.dev/"}
+                  target="_blank"
+                  aria-label="Visit Adrian's personal portfolio website"
+                >
+                  <img
+                    className="socialIcons"
+                    alt="Website logo"
+                    title="My portfolio website"
+                    src={website}
+                  />
+                </Link>
+              </div>
+              <div className="socials">
+                <img
+                  className="nft"
+                  alt="Personal NFT artwork by Adrian"
+                  title="Personal NFT"
+                  src={nft}
+                />
+                <h3 aria-label="Email address">adriansartinid@gmail.com</h3>
+              </div>
             </div>
-            <div className="socials">
-            <img className="nft" alt="Personal Nft" title="Retardio NFT" src={nft}/>
-            <h3>adriansartinid@gmail.com</h3>
-            </div>
-            </div>
-
-            </div>
+          </div>
         </FooterStyle>
-    )
+      );
 }
 
 export default Footer

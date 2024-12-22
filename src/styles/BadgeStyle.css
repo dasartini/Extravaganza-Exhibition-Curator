@@ -1,0 +1,76 @@
+.badge{
+        height: 5rem ;
+        width:13rem;
+      }
+      .badgeTitle, .badgeAuthor {
+        font-size: 0.4rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
+      }
+      .textCont{
+
+        position: absolute;
+        bottom: -1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width:9rem
+       
+       }
+       
+       .badgeTitleShort, .badgeAuthorShort{
+        font-size: 0.6rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
+       }
+
+       .badgecont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+      .badge{
+        height: 6.5rem;
+        width: 16rem;
+      position: absolute;
+      bottom:-3rem;;
+      z-index: 1;
+      
+      }
+      .textCont{
+      
+       position: absolute;
+       bottom: -1.2rem;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       width:13rem
+      
+      }
+      .badgeTitleShort{
+        font-weight: bold;
+       }
+      .badgeTitle{
+        font-weight: bold;
+      }
+      .badgeTitle, .badgeAuthor {
+        font-size: 0.6rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
+      }
+      .badgeTitleShort, .badgeAuthorShort{
+        font-size: 1rem;
+        color: black;
+        margin: 0; 
+        text-align: center;
+        z-index: 2; 
+       }
