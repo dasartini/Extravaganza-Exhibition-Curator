@@ -138,14 +138,14 @@ function Header() {
           >
             My Gallery
           </Link>
-          <a
+          {/* <a
             href="#"
             className="nav-link"
             onClick={closeMenu}
             aria-label="Login to your account"
           >
             Login
-          </a>
+          </a> */}
         </nav>
       </header>
     </HeaderStyle>
