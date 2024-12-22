@@ -10,11 +10,11 @@ Try it out here: [[Extravaganza](https://extravaganzart.netlify.app/)]
 <img src="./src/assets/images/demo.gif" alt="App Screenshot"  width="500">
 </div>
 
-#Minimun versions
+## Minimun versions
 
 -Node js v22.11.0
 
-#Installation
+## Installation
 
 To contribute to this repo and run it locally follow this instructions:
 
