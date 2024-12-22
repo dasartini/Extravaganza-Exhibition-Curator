@@ -43,7 +43,10 @@
     padding: 2rem;
     gap: 2rem;
 }
-
+.addingButton{
+    border: none;
+    background: none;
+  }
 .specs {
     position: relative;
     display: flex;

@@ -114,13 +114,13 @@ return (<>
                 <li>Medium: {artwork.technique || "Unknown medium"}</li>
                 <li>Category: {artwork.department || "Unknown"}</li>
               </ul>
-              <span
-                className="add-button"
+              <button
+                className="addingButton"
                 onClick={handleAdd}
                 aria-label={`Add ${artwork.title || "Untitled"} to your gallery`}
               >
                 <AddButton />
-              </span>
+              </button>
               <p
                 id="add-confirmation"
                 aria-live="polite"

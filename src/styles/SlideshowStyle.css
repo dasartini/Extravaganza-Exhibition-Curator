@@ -108,6 +108,11 @@ position: relative;
   .indicator:hover {
     transform: scale(1.2)
   }
+  .addingButton{
+    border: nome;
+    background: none;
+  }
+
 
   
 

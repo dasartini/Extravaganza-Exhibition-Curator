@@ -28,30 +28,63 @@ function Landing(){
   useEffect(()=>{ setVisible(true)},[])
 
     return(
-  <main>
-<LandingStyle>
+      <main>
+      <LandingStyle>
         <div className="search-section">
-      <h2 className="section-title">Search by museum</h2>
-      <div className="museum-cards">
+          <h2 className="section-title">Search by museum</h2>
+          <div className="museum-cards">
 
-        <Link onClick={ ()=>{  handleResetAndNavigate("chicago")
-           window.scrollTo({ top: 0, behavior: "smooth" })}} to="chicago-institute-of-art">
-        <div className="card">
-          <img src={chicago} alt="Art Institute of Chicago " className="card-image"/>
-          <h3 className="card-title">Art Institute of Chicago</h3>
-        </div>
-        </Link>
+            <Link
+              onClick={() => {
+                handleResetAndNavigate("chicago");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              to="chicago-institute-of-art"
+              aria-label="Navigate to the Art Institute of Chicago collection"
+            >
+              <div
+                className="card"
+                role="group"
+                aria-labelledby="chicago-card-title"
+              >
+                <img
+                  src={chicago}
+                  alt="Art Institute of Chicago museum exterior"
+                  className="card-image"
+                />
+                <h3 className="card-title" id="chicago-card-title">
+                  Art Institute of Chicago
+                </h3>
+              </div>
+            </Link>
 
-        <Link  onClick={()=>{ handleResetAndNavigate("cleveland") 
-          window.scrollTo({ top: 0, behavior: "smooth" })}} to="cleveland-art-museum">
-        <div className="card">
-          <img src="https://i.ytimg.com/vi/yBrPz5aCXdM/maxresdefault.jpg" alt="Palazzo Pitti" className="card-image"/>
-          <h3 className="card-title">Cleveland Museum Of Art</h3>
+            <Link
+              onClick={() => {
+                handleResetAndNavigate("cleveland");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              to="cleveland-art-museum"
+              aria-label="Navigate to the Cleveland Museum of Art collection"
+            >
+              <div
+                className="card"
+                role="group"
+                aria-labelledby="cleveland-card-title"
+              >
+                <img
+                  src="https://i.ytimg.com/vi/yBrPz5aCXdM/maxresdefault.jpg"
+                  alt="Cleveland Museum of Art entrance"
+                  className="card-image"
+                />
+                <h3 className="card-title" id="cleveland-card-title">
+                  Cleveland Museum Of Art
+                </h3>
+              </div>
+            </Link>
+
+          </div>
         </div>
-        </Link>
-      </div>
-    </div>
-    </LandingStyle>
+      </LandingStyle>
     </main>
     )
 }
