@@ -74,10 +74,10 @@ function Header() {
   }, [menuOpen])
 
   const determineTarget = () => {
-    if (location.pathname.startsWith("/chicago-institute-of-art")) {
+    if (location.pathname.startsWith("/museums/chicago-institute-of-art")) {
       return "chicago"
     }
-    if (location.pathname.startsWith("/cleveland-art-museum")) {
+    if (location.pathname.startsWith("/museums/cleveland-art-museum")) {
       return "cleveland"
     }
     return null
@@ -123,12 +123,20 @@ function Header() {
           aria-label="Main navigation"
         >
           <Link
-            to="/"
+            to="/home"
             className="nav-link"
             onClick={closeMenu}
             aria-label="Go to Home page"
           >
             Home
+          </Link>
+          <Link
+            to="/museums"
+            className="nav-link"
+            onClick={closeMenu}
+            aria-label="Go to All Museums"
+          >
+            Museums
           </Link>
           <Link
             to="/gallery"

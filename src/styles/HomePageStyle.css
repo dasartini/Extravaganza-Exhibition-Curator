@@ -1,0 +1,49 @@
+
+
+.homePageCont{
+    margin-top: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    margin-bottom: 2rem;
+}
+
+.quote{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+}
+.quoteImg{
+height: 20rem;
+border-radius: 20px;
+
+}
+.homePageText{
+    margin-top: 2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 5px;
+
+}
+
+
+@media( max-width : 768px){
+.quoteImg{
+    height: 15rem;
+}
+.quote{
+    flex-direction: column;
+}
+}
+.homePageCont{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}

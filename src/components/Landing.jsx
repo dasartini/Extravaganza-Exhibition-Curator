@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useSearchContext } from "../context/SearchContext";
 import { usePageContext } from "../context/PageContext";
 import { usePaginationContext } from "../context/PaginationContext";
+import GoBackButton from "./GoBack";
 
 
 function Landing(){
@@ -27,7 +28,8 @@ function Landing(){
   }
   useEffect(()=>{ setVisible(true)},[])
 
-    return(
+    return(<>
+      <GoBackButton/>
       <main>
       <LandingStyle>
         <div className="search-section">
@@ -86,6 +88,7 @@ function Landing(){
         </div>
       </LandingStyle>
     </main>
+    </>
     )
 }
 

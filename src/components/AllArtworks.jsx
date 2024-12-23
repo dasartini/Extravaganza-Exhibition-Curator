@@ -113,7 +113,7 @@ function AllArtworks() {
                                 className="item"
                                 aria-label={`Artwork: ${art.title || "Untitled"}`}
                             >
-                                <Link to={`/chicago-institute-of-art/${art.id}`}>
+                                <Link to={`/museums/chicago-institute-of-art/${art.id}`}>
                                     {renderImage(art, noImage)}
                                     <p
                                         className="itemTitle"

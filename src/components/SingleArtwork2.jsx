@@ -69,8 +69,8 @@ const handleAdd = () => {
 
 return (<>
   <SingleArtworkStyle>
-   <span onClick={() =>{console.log("actioned")
-     navigate(`/cleveland-art-museum`, { state: { num } })}}> <GoBackButton   /></span>
+   <span onClick={() =>{
+     navigate(`/museums/cleveland-art-museum`, { state: { num } })}}> <GoBackButton   /></span>
     <div className="singleArtworkCont">
       {loading ? (
         <>
