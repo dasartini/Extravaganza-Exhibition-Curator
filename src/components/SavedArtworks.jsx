@@ -41,7 +41,7 @@ function SavedArtworks() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape" && isSlideShowOpen) {
-        setIsSlideShowOpen(false);
+        setIsSlideShowOpen(false)
       }
     }
 

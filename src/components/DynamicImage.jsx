@@ -10,14 +10,14 @@ function DynamicImage({ singleArtworkId }) {
     useEffect(() => {
         getArtworksById(singleArtworkId)
             .then((data) => {
-                setDynamicImage(data.image_id);
+                setDynamicImage(data.image_id)
                 setLoading(false)
             })
             .catch((error) => {
                 console.error("Error fetching artwork by ID:", error)
                 setLoading(false)
-            });
-    }, [singleArtworkId]);
+            })
+    }, [singleArtworkId])
 
     if (loading) {
         return <Loader/>
@@ -37,4 +37,4 @@ function DynamicImage({ singleArtworkId }) {
     )
 }
 
-export default DynamicImage;
+export default DynamicImage

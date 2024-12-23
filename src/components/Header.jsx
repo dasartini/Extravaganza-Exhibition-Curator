@@ -14,16 +14,16 @@ function Header() {
   const navRef = useRef(null)
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen)
   }
 
   const closeMenu = () => {
-    setMenuOpen(false);
+    setMenuOpen(false)
   }
 
   const handleKeyDown = (event) => {
     if (menuOpen && event.key === "Escape") {
-      closeMenu();
+      closeMenu()
     }
   }
 
@@ -65,19 +65,18 @@ function Header() {
       document.removeEventListener("keydown", handleKeyDown)
       document.removeEventListener("keydown", trapFocus)
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
       document.removeEventListener("keydown", handleKeyDown)
       document.removeEventListener("keydown", trapFocus)
-    };
+    }
   }, [menuOpen])
 
   const determineTarget = () => {
-    if (location.pathname.startsWith("/chicago-institute-of-art")) {
+    if (location.pathname.startsWith("/museums/chicago-institute-of-art")) {
       return "chicago"
     }
-    if (location.pathname.startsWith("/cleveland-art-museum")) {
+    if (location.pathname.startsWith("/museums/cleveland-art-museum")) {
       return "cleveland"
     }
     return null
@@ -129,6 +128,14 @@ function Header() {
             aria-label="Go to Home page"
           >
             Home
+          </Link>
+          <Link
+            to="/museums"
+            className="nav-link"
+            onClick={closeMenu}
+            aria-label="Go to All Museums"
+          >
+            Museums
           </Link>
           <Link
             to="/gallery"

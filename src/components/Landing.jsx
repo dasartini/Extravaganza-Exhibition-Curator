@@ -6,10 +6,11 @@ import { useEffect } from "react";
 import { useSearchContext } from "../context/SearchContext";
 import { usePageContext } from "../context/PageContext";
 import { usePaginationContext } from "../context/PaginationContext";
+import GoBackButton from "./GoBack";
 
 
 function Landing(){
-  const { num, setNum } = usePaginationContext();
+  const { num, setNum } = usePaginationContext()
 
   const { visible, setVisible } = useVisibleContext()
   const { setChicagoQuery, setQuery } = useSearchContext()
@@ -25,10 +26,14 @@ function Landing(){
       setQuery("")
     }
   }
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [])
   useEffect(()=>{ setVisible(true)},[])
 
-    return(
-      <main>
+    return(<>
+      <GoBackButton/>
+      <main className="landingContainer">
       <LandingStyle>
         <div className="search-section">
           <h2 className="section-title">Search by museum</h2>
@@ -86,6 +91,7 @@ function Landing(){
         </div>
       </LandingStyle>
     </main>
+    </>
     )
 }
 

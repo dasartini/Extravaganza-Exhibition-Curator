@@ -39,7 +39,7 @@ function GoBackButton() {
         <img className="goback-button" src={goback} alt="Go back icon" />
       </button>
     </GoBackStyle>
-  );
+  )
 }
 
 export default GoBackButton

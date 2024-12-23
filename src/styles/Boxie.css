@@ -1,18 +1,20 @@
 .image-container {
   min-height: 30rem;
-  column-count: 4; 
-  column-gap: 15px; 
+  column-count: 4;
+  column-gap: 15px;
   padding: 30px;
 }
-.noMatch{
-border-radius: 20px;
-margin-top: 1rem;
-height: 20rem;
+
+.noMatch {
+  border-radius: 20px;
+  margin-top: 1rem;
+  height: 20rem;
 
 }
+
 .item {
-  break-inside: avoid; 
-  margin-bottom: 15px; 
+  break-inside: avoid;
+  margin-bottom: 15px;
   background-color: #000000;
   border-radius: 10px;
   overflow: hidden;
@@ -38,17 +40,20 @@ height: 20rem;
   line-height: 1.4;
   color: #ccc;
 }
-.allArtworks{
+
+.allArtworks {
   min-height: 100vh;
   margin-bottom: 2rem;
 }
-.pagination-buttons{
+
+.pagination-buttons {
   display: flex;
   flex-direction: row;
-  gap:2rem;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
 }
+
 @media (max-width: 1024px) {
   .image-container {
     column-count: 3;
@@ -59,18 +64,18 @@ height: 20rem;
   .image-container {
     overflow-x: hidden;
     min-height: 36rem;
-    column-count: 2; 
+    column-count: 2;
   }
 }
 
 @media (max-width: 480px) {
   .image-container {
-    column-count: 1; 
+    column-count: 1;
   }
 }
 
-@media (min-width : 768px){
-  .allArtworks{
+@media (min-width : 768px) {
+  .allArtworks {
     margin-top: -2.5rem;
   }
 

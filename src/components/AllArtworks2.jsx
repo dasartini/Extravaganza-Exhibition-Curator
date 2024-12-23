@@ -92,7 +92,7 @@ function AllArtworks2() {
                 aria-labelledby={`art-title-${index}`}
               >
                 <Link
-                  to={`/cleveland-art-museum/${art.id}`}
+                  to={`/museums/cleveland-art-museum/${art.id}`}
                   state={{ num }}
                 >
                   <img

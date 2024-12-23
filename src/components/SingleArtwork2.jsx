@@ -18,8 +18,8 @@ import { usePaginationContext } from "../context/PaginationContext";
 function SingleArtwork2(){
 const {savedArtworks,addArtwork} = useSavedArtworks()
 const { visible, setVisible } = useVisibleContext()
-const { num } = usePaginationContext();
-const navigate = useNavigate();
+const { num } = usePaginationContext()
+const navigate = useNavigate()
 const {artwork_id} = useParams()
 const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
@@ -39,7 +39,6 @@ useEffect(()=>{
 
     })
     .catch((err)=>{
-        console.log("was an error")
  setError(err.messge)
  setLoading(false)
 })
@@ -69,8 +68,8 @@ const handleAdd = () => {
 
 return (<>
   <SingleArtworkStyle>
-   <span onClick={() =>{console.log("actioned")
-     navigate(`/cleveland-art-museum`, { state: { num } })}}> <GoBackButton   /></span>
+   <span onClick={() =>{
+     navigate(`/museums/cleveland-art-museum`, { state: { num } })}}> <GoBackButton   /></span>
     <div className="singleArtworkCont">
       {loading ? (
         <>
