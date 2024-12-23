@@ -3,9 +3,9 @@ import { useSearchContext } from "../context/SearchContext";
 import { useState } from "react";
 
 function Search({target}) {
-  const { visible } = useVisibleContext();
+  const { visible } = useVisibleContext()
   const { setQuery, setChicagoQuery, query, chicagoQuery } = useSearchContext()
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("")
 
     const handleReset = () => {
       setInputValue("")

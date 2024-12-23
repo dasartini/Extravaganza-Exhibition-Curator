@@ -1,169 +1,190 @@
 .savedList.fadeOut {
-    opacity: 0;         
-    transform: scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-.savedList {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    margin-bottom: 10px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    cursor: grab;
-    position: relative; 
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.noArtworksContainer{
+
+.savedList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor: grab;
+  position: relative;
+}
+
+.noArtworksContainer {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
 .savedList:active {
-    transform: scale(1.05);
-    background-color: #f7f7f7;
+  transform: scale(1.05);
+  background-color: #f7f7f7;
 }
 
 .draggingListImage {
-    width: 100px;
-    margin-right: 10px;
+  width: 100px;
+  margin-right: 10px;
 }
 
 .erase {
-    position: absolute; 
-    top: 10px;
-    right: 10px;
-    border-radius: 50%;
-    background: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
 }
-.galleryButtonsCont{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+
+.galleryButtonsCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
-.galleryButtons{
-    margin-bottom: 20px;
-    padding: 10px;
+
+.galleryButtons {
+  margin-bottom: 20px;
+  padding: 10px;
 }
-.savedArtworksCont{
-  h1, h3{font-weight: normal;}
+
+.savedArtworksCont {
+
+  h1,
+  h3 {
+    font-weight: normal;
+  }
+
   margin-bottom: 1rem;
 }
 
 .listContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 ul {
-    width: 100%;
-    max-width: 500px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  max-width: 500px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .savedList div {
-    margin-right:2rem;
-    flex-grow: 1; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    
+  margin-right: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 
 }
-.SavedStyle{
-    min-height: 100vh;
+
+.SavedStyle {
+  min-height: 100vh;
 }
+
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.closingCont {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  margin-right: 2rem;
+}
+
+.modal-overlay {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+  max-width: 800px;
+  width: 90%;
+}
+
+.go-closing {
+  margin-top: 1rem;
+
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@media (min-width : 768px) {
+  .savedArtworksCont {
+    margin-top: -2.5rem;
+  }
+
+
+}
+
+@media (max-width :768px) {
+  .closingCont {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    margin-right: 0;
+    margin-top: 3rem;
   }
-  .closingCont{
-    display: flex;
-    align-items:end;
-    justify-content: end;
-    margin-right: 2rem;
-  }
-  .modal-overlay {
-  
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-  }
-  
-  .modal-content {
-    position: relative;
-    background: rgba(255, 255, 255, 0);
-    border-radius: 8px;
-    padding: 20px;
-    z-index: 1000;
-    max-width: 800px;
-    width: 90%;
-  }
-  .go-closing{
-    margin-top: 1rem;
-  
-  }
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  @keyframes modalFadeIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .modal-content {
-    animation: modalFadeIn 0.3s ease-out;
-  }
-  @media (min-width : 768px){
-    .savedArtworksCont{
-      margin-top: -2.5rem;
-    }
 
-
-  }
-  @media (max-width :768px){
-    .closingCont{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 0;
-      margin-top: 3rem;
-    }
-
-  }
+}

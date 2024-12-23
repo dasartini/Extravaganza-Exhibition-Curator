@@ -26,7 +26,7 @@ function ErrPage (){
             </Link>
           </SavedStyle>
         </>
-      );
+      )
 }
 
 export default ErrPage

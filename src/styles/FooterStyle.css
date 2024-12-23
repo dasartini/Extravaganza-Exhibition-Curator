@@ -3,28 +3,33 @@
   color: white;
   text-align: center;
   padding: 25px 0;
-  margin-top:auto;
+  margin-top: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 3rem
-
 }
-.extravaganza2{
+
+.extravaganza2 {
   height: 6rem;
 }
-.solid{ 
+
+.solid {
   margin-top: 1px;
   margin-bottom: 1px;
-  border-top: 1px solid #bbb;}
-.head{
+  border-top: 1px solid #bbb;
+}
+
+.head {
   width: 5rem;
 }
-.headcont{
+
+.headcont {
   display: flex;
   flex-direction: row;
 }
+
 .footertitle h1 {
   font-size: 1.5rem;
   margin-bottom: 0.2rem;
@@ -35,24 +40,28 @@
   color: #f3dfdf;
 }
 
-.profilecont{
+.profilecont {
   display: flex;
   flex-direction: column;
 }
-.socials{
+
+.socials {
   gap: 1rem;
   display: flex;
   flex-direction: row;
 }
-.socialIcons{
+
+.socialIcons {
   height: 2.3rem;
   transform: translateY(-5px);
 }
-.nft{
+
+.nft {
   height: 3rem;
   width: 3rem;
 }
-.socials h3{
+
+.socials h3 {
   margin-top: 0.5rem;
 }
 
@@ -81,13 +90,13 @@
   }
 
   .socials {
-    flex-direction:row;
+    flex-direction: row;
     gap: 0.5rem;
   }
 
   .socialIcons {
     height: 2rem;
-    
+
   }
 
   .nft {

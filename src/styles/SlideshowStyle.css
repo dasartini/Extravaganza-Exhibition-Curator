@@ -5,10 +5,12 @@
   position: relative;
   overflow: hidden;
 }
-.frameWithindicators{
-position: relative;
+
+.frameWithindicators {
+  position: relative;
 
 }
+
 .fancyFrame {
   background-color: #ddc;
   border: solid 3vmin#271e0a;
@@ -27,6 +29,7 @@ position: relative;
   max-height: 95vh;
 
 }
+
 .carouselImg {
   border: solid 2px;
   border-bottom-color: rgb(0, 0, 0);
@@ -69,169 +72,178 @@ position: relative;
   position: absolute;
   opacity: 0;
 }
-  
-  .arrows {
-    background: none;
-    border: none;
-    position: absolute;
-    filter: drop-shadow(0px 0px 5px #555);
-    height: 2rem;
-    width: 2rem;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .arrows:hover {
-    cursor: pointer;
-    transform: scale(1.1)
-  }
-  
-  .indicators {
-    display: flex;
-    position: absolute;
-    gap: 5px;
-    top:-2.2rem;
-    margin-left: 40%
-  }
-  
-  .indicator {
-    background-color: white;
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 5px #555;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .indicator:hover {
-    transform: scale(1.2)
-  }
-  .addingButton{
-    border: nome;
-    background: none;
-  }
 
-
-  
-
-.arrows{
-    position: absolute;
-    filter:drop-shadow( 0px 0px 5px #555);
-    height: 2rem;
-    width: 2rem;
-
-}
-.arrows:hover{
-    cursor: pointer;
+.arrows {
+  background: none;
+  border: none;
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #555);
+  height: 2rem;
+  width: 2rem;
+  transition: transform 0.2s ease-in-out;
 }
 
-.arrow-left{ 
-    left: 1rem;
-
-}
-.arrow-right{
-    right: 1rem;
+.arrows:hover {
+  cursor: pointer;
+  transform: scale(1.1)
 }
 
-.indicator{ 
-    background-color: white;
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 5px #555;
-    cursor: pointer;
+.indicators {
+  display: flex;
+  position: absolute;
+  gap: 5px;
+  top: -2.2rem;
+  margin-left: 40%
 }
 
-.indicator-inactive{
-    background-color: rgb(0, 0, 0);
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 5px #555;
-    cursor: pointer;
+.indicator {
+  background-color: white;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.indicator:hover {
+  transform: scale(1.2)
+}
+
+.addingButton {
+  border: nome;
+  background: none;
+}
+
+
+
+
+.arrows {
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #555);
+  height: 2rem;
+  width: 2rem;
+
+}
+
+.arrows:hover {
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+
+}
+
+.arrow-right {
+  right: 1rem;
+}
+
+.indicator {
+  background-color: white;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: rgb(0, 0, 0);
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  cursor: pointer;
 }
 
 
 @keyframes slideIn {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-  }
-  
-  .slide {
-    animation: slideIn 0.5s ease-in-out;
-  }
-  
-  .slide-exit {
-    animation: slideOut 0.5s ease-in-out;
-    position: absolute; 
-  }
-  
-
-  @media(max-width : 768px ) {
-    .fancyFrame {
-
- 
-    
-      padding: 1vmin;
-      max-height: 95vh;
-      max-width: 100%;
-    
-    }
-      .carouselImg {
-      
-       padding: 5px;
-       width: 18rem;
-        max-height: 70VH;
-      }
-      .arrows{
-        position: absolute;
-        filter:drop-shadow( 0px 0px 5px #555);
-        color: white;
-        height: 2rem;
-    
-    }
-      .arrow-left{ 
-        z-index: 300;
-        left: 0;
-    
-    }
-    .arrow-right{
-        z-index: 300;
-        right: 0;
-    }
-      
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
 
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-  @media(max-width : 730px ) {
-    .carouselImg {
-      
-       
-      width: 16rem;
-       max-height: 70VH;
-     }
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.slide {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.slide-exit {
+  animation: slideOut 0.5s ease-in-out;
+  position: absolute;
+}
+
+
+@media(max-width : 768px) {
+  .fancyFrame {
+
+
+
+    padding: 1vmin;
+    max-height: 95vh;
+    max-width: 100%;
 
   }
+
+  .carouselImg {
+
+    padding: 5px;
+    width: 18rem;
+    max-height: 70VH;
+  }
+
+  .arrows {
+    position: absolute;
+    filter: drop-shadow(0px 0px 5px #555);
+    color: white;
+    height: 2rem;
+
+  }
+
+  .arrow-left {
+    z-index: 300;
+    left: 0;
+
+  }
+
+  .arrow-right {
+    z-index: 300;
+    right: 0;
+  }
+
+}
+
+
+@media(max-width : 730px) {
+  .carouselImg {
+
+
+    width: 16rem;
+    max-height: 70VH;
+  }
+
+}

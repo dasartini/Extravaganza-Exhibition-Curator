@@ -29,9 +29,8 @@ function App() {
     <Header/>
   <PageProvider>
     <Routes>
+      <Route path='/' element={<HomePage/>}/>
       <Route path='/museums' element={<Landing/> }/>
-      <Route path='/home' element={<HomePage/>}/>
-
       <Route path='/museums/chicago-institute-of-art' element={<AllArtworks/>}/>
       <Route path='/museums/chicago-institute-of-art/:artwork_id' element={<SingleArtwork/>}/>
       <Route path='/museums/cleveland-art-museum' element={<AllArtworks2/>}/>

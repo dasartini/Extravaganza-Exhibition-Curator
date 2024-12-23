@@ -1,6 +1,7 @@
 import HomePageStyle from "../styles/HomePageStyle";
-import image from "../assets/images/homepageImg.jpg"
-import {Link } from "react-router"
+import image from "../assets/images/homepageImg.jpg";
+import {Link } from "react-router";
+
 function HomePage(){
 
     return(
@@ -9,7 +10,6 @@ function HomePage(){
    <HomePageStyle>
     <div className="homePageCont">
         <h1> EXTRAVAGANZA</h1>
-        <br></br>
         <br></br>
         <div className="quote">
         <img  className="quoteImg"src={image}/>
@@ -28,7 +28,7 @@ function HomePage(){
         <p>Enjoy exploring the ways different souls express themselves. </p>
         </div>
         <br></br><br></br>
-        <mark style={{background:"#000", color: "#fff"}}> <Link to={'/museums'}> <h3>Explore the museums</h3></Link> </mark>
+        <mark onClick={window.scrollTo({ top: 0, behavior: "smooth" })} style={{background:"#000", color: "#fff"}}> <Link  to={'/museums'}> <h3>Explore the museums</h3></Link> </mark>
     </div>
     </HomePageStyle>
     </>

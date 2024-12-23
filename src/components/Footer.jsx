@@ -17,7 +17,6 @@ function Footer() {
               alt="Logo for Extravaganza project"
             />
             <div>
-              <h2 id="footer-heading">About This App</h2>
               <p>
                 App designed and developed in React by Adrian Sartini. All rights
                 reserved.
@@ -80,7 +79,7 @@ function Footer() {
             </div>
           </div>
         </FooterStyle>
-      );
+      )
 }
 
 export default Footer

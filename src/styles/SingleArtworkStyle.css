@@ -2,6 +2,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -13,15 +14,16 @@
     flex-direction: column;
     margin-bottom: 2rem;
 }
+
 .confirmation {
-    position: absolute; 
-    bottom: -15px; 
+    position: absolute;
+    bottom: -15px;
     left: 0;
     right: 0;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5px; 
+    padding: 5px;
     opacity: 1;
     transform: translateY(100%);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -29,8 +31,9 @@
 
 .confirmation[hidden] {
     opacity: 0;
-    transform: translateY(0); 
+    transform: translateY(0);
 }
+
 .frame {
 
     display: flex;
@@ -43,10 +46,12 @@
     padding: 2rem;
     gap: 2rem;
 }
-.addingButton{
+
+.addingButton {
     border: none;
     background: none;
-  }
+}
+
 .specs {
     position: relative;
     display: flex;
@@ -55,10 +60,12 @@
     align-items: center;
     margin: 0 auto;
 }
-.specs-cont{
+
+.specs-cont {
     margin-top: 20%;
-    
+
 }
+
 .artworkInfo {
     border-radius: 20px;
     box-shadow: 0px 20px 30px -10px rgb(0, 0, 0);
@@ -100,12 +107,12 @@
 @media (max-width: 768px) {
     .frame {
         flex-direction: column;
-        text-align: center; 
+        text-align: center;
         padding: 1rem;
     }
 
     .singleArtwork {
-        max-width: 90%; 
+        max-width: 90%;
     }
 
     .specs {
@@ -124,10 +131,11 @@
     .artworkInfo p {
         padding: 1rem;
     }
-.watching{
-    height: 13rem;
 
-}
+    .watching {
+        height: 13rem;
+
+    }
 
 
 }

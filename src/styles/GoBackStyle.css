@@ -1,19 +1,21 @@
 .goback-button {
   height: 3rem;
-  width: 3rem; 
-  margin: 1rem; 
+  width: 3rem;
+  margin: 1rem;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
-  position: sticky; 
-  top: 1rem; 
-  z-index: 10000; 
+  position: sticky;
+  top: 1rem;
+  z-index: 10000;
   cursor: pointer;
   border: none;
   background: none;
 }
 
-@media (max-width :768px){
+@media (max-width :768px) {
 
-  .goback-button{position: fixed;}
+  .goback-button {
+    position: fixed;
+  }
 }

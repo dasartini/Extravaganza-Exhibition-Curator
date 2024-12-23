@@ -14,16 +14,16 @@ function Header() {
   const navRef = useRef(null)
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen)
   }
 
   const closeMenu = () => {
-    setMenuOpen(false);
+    setMenuOpen(false)
   }
 
   const handleKeyDown = (event) => {
     if (menuOpen && event.key === "Escape") {
-      closeMenu();
+      closeMenu()
     }
   }
 
@@ -65,12 +65,11 @@ function Header() {
       document.removeEventListener("keydown", handleKeyDown)
       document.removeEventListener("keydown", trapFocus)
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
       document.removeEventListener("keydown", handleKeyDown)
       document.removeEventListener("keydown", trapFocus)
-    };
+    }
   }, [menuOpen])
 
   const determineTarget = () => {
@@ -123,7 +122,7 @@ function Header() {
           aria-label="Main navigation"
         >
           <Link
-            to="/home"
+            to="/"
             className="nav-link"
             onClick={closeMenu}
             aria-label="Go to Home page"
