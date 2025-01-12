@@ -21,6 +21,7 @@ import Login from './components/Login';
 import { LoginProvider } from './context/LoginContext';
 import { useEffect } from 'react';
 import { useLoginContext } from "./context/LoginContext"
+import Write from './components/Write';
 
 
 
@@ -38,6 +39,7 @@ function App() {
     <Header/>
   <PageProvider>
     <Routes>
+      <Route path='/write' element={<Write/>}></Route>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/museums' element={<Landing/> }/>
       <Route path='/museums/chicago-institute-of-art' element={<AllArtworks/>}/>
