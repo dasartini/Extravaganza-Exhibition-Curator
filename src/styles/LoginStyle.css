@@ -1,0 +1,25 @@
+
+.LoginStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+.login-form{
+margin-top: 10px;
+margin-bottom: 10px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: -1px 0 10px rgba(0, 0, 0, 0.535);
+height: 20rem;
+width: 25rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+
+
+}
