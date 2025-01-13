@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import writeUser from "../../api"
+import {writeUser} from "../../firebaseApi"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { getDatabase, ref, set, push } from "firebase/database";
 import LoginStyle from '../styles/LoginStyle';
@@ -31,10 +31,12 @@ const LoginForm = () => {
       if (isSignUp) {
         userCredential = await createUserWithEmailAndPassword(auth, email, password)
         const username = extractUsername(userCredential.user.email)
-        await writeUser(email, username)
+        const userID = userCredential.user.uid
+        await writeUser(email, username, userID)
       } else {
         userCredential = await signInWithEmailAndPassword(auth, email, password)
       }
+      console.log(userCredential)
       const username = extractUsername(userCredential.user.email)
       setUser(username)
       console.log("User logged in as:", username)
