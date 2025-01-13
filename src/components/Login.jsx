@@ -1,17 +1,20 @@
 import { useState } from 'react';
+import writeUser from "../../api"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getDatabase, ref, set, push } from "firebase/database";
 import LoginStyle from '../styles/LoginStyle';
 import { useLoginContext } from '../context/LoginContext';
-import { auth } from '../../firebaseConfig';
+import { auth, app } from '../../firebaseConfig';
 import { useNavigate } from 'react-router';
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
-  const { setIsLoggedIn, setUser, user } = useLoginContext()
+  const { setIsLoggedIn, setUser } = useLoginContext()
   const [isSignUp, setIsSignUp] = useState(false)
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp)
@@ -20,42 +23,42 @@ const LoginForm = () => {
   const extractUsername = (email) => {
     return email.split('@')[0]
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       let userCredential
       if (isSignUp) {
         userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        const username = extractUsername(userCredential.user.email)
+        await writeUser(email, username)
       } else {
         userCredential = await signInWithEmailAndPassword(auth, email, password)
       }
-
       const username = extractUsername(userCredential.user.email)
-      
       setUser(username)
-      console.log("user logged as:",username)
+      console.log("User logged in as:", username)
       setIsLoggedIn(true)
-
       navigate('/')
     } catch (error) {
       setError(error.message)
     }
   }
 
-
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider()
     try {
       const result = await signInWithPopup(auth, provider)
-      const username = result.user.email
+      const username = extractUsername(result.user.email)
+      await writeUser(result.user.email, username)
       console.log('User logged in with Google successfully:', username)
       setUser(username)
       setIsLoggedIn(true)
+      navigate('/')
     } catch (error) {
       setError(error.message)
     }
-  }
-
+  };
   return (
     <LoginStyle>
       <div className="login-form">
