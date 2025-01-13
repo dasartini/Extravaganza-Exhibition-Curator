@@ -48,7 +48,8 @@ useEffect(() => {
   }
 }, [artwork, savedArtworks])
 
-const handleAdd = () => {
+const handleAdd = async () => {
+  
     const standardizedArtwork = {
       title: artwork.title ?
       artwork.title
@@ -67,6 +68,7 @@ const checkArtworks = () => {
   setAdded(isAdded)
 
 }
+
 
 return (<>
   <SingleArtworkStyle>
