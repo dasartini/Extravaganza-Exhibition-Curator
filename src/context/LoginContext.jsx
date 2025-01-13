@@ -12,7 +12,6 @@ export function LoginProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        console.log(firebaseUser)
         const username = firebaseUser.email.split("@")[0]
         const id = firebaseUser.uid
         setUser(username)
