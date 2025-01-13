@@ -1,55 +1,48 @@
 import { useSavedArtworks } from "../context/SavedArtworksContext";
 import SavedStyle from "../styles/SavedStyle";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Slideshow from "./Slideshow";
 import GoBackButton from "./GoBack";
 import noArtworks from "../assets/images/noconnection.jpg";
 import { useSlideShowContext } from "../context/SlideShowContext";
-
+import { useLoginContext } from "../context/LoginContext"; 
 
 function SavedArtworks() {
-  const { savedArtworks, setSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
+  const { savedArtworks, fetchSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
-  const {isSlideShowOpen, setIsSlideShowOpen} = useSlideShowContext()
+  const { isSlideShowOpen, setIsSlideShowOpen } = useSlideShowContext()
+  const { user, userID } = useLoginContext()
+  useEffect(() => {
+    if (userID) {
+      fetchSavedArtworks(userID);
+    }
+  }, [user, fetchSavedArtworks]);
 
   const handleResetGallery = () => {
-    setIsResetting(true)
+    setIsResetting(true);
     setTimeout(() => {
-      resetGallery()
-      setIsResetting(false)
-    }, 500)
-  }
+      resetGallery();
+      setIsResetting(false);
+    }, 500);
+  };
 
   const handleDragStart = (index) => {
-    setDraggedItemIndex(index)
-  }
+    setDraggedItemIndex(index);
+  };
 
   const handleDragOver = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   const handleDrop = (index) => {
     if (draggedItemIndex === null || draggedItemIndex === index) return;
-    const reorderedArtworks = [...savedArtworks]
-    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1)
-    reorderedArtworks.splice(index, 0, draggedItem)
-    setSavedArtworks(reorderedArtworks)
-    setDraggedItemIndex(null)
-  }
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape" && isSlideShowOpen) {
-        setIsSlideShowOpen(false)
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [isSlideShowOpen])
+    const reorderedArtworks = [...savedArtworks];
+    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1);
+    reorderedArtworks.splice(index, 0, draggedItem);
+    setSavedArtworks(reorderedArtworks);
+    setDraggedItemIndex(null);
+  };
 
   return (
     <SavedStyle>
@@ -135,20 +128,21 @@ function SavedArtworks() {
               className="modal-overlay"
               onClick={() => setIsSlideShowOpen(false)}
               aria-label="Close slideshow"
-
             >
               <div className="closingCont">
-              <button  onClick={() => setIsSlideShowOpen(false)} className="go go-closing" >Close</button>
-              </div></div>
+                <button onClick={() => setIsSlideShowOpen(false)} className="go go-closing">
+                  Close
+                </button>
+              </div>
+            </div>
             <div className="modal-content">
-         
               <Slideshow />
             </div>
           </div>
         )}
       </div>
     </SavedStyle>
-  )
+  );
 }
 
-export default SavedArtworks
+export default SavedArtworks;
