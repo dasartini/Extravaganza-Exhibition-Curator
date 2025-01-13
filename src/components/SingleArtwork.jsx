@@ -56,6 +56,7 @@ const handleAdd = async () => {
   }
   
     const standardizedArtwork = {
+      id: artwork.id,
       title: artwork.title ?
       artwork.title
       : "Untitled",

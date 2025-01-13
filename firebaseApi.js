@@ -1,4 +1,4 @@
-import { getDatabase, ref, set,get, update, push } from "firebase/database";
+import { getDatabase, ref, set,get, update, push , query, orderByChild, equalTo} from "firebase/database";
 import { app } from "./firebaseConfig";
 
 export const writeUser = async (eMail, userName, uid) => {
@@ -18,27 +18,12 @@ export const writeUser = async (eMail, userName, uid) => {
   }
 }
 
-// export const writeArtwork = async (userID, standarizedArtwork)=>{
 
-//   const db = getDatabase(app)
-//   const userArtworkRef = ref(db, `registeredUsers/${userID}/artworks`)
-//   try {
-//     await push(userArtworkRef, standarizedArtwork);
-//     console.log("artwork saved to database!")
-
-//   }
-//   catch(error){
-//     console.error("Error saving artwork to database:", error)
-//   }
-
-
-
-// }
 
 export const writeArtwork = async (userUID, standardizedArtwork) => {
   const db = getDatabase(app);
   const registeredUsersRef = ref(db, 'registeredUsers');
-  
+
   try {
     // Fetch the registeredUsers data to find the "weird ID" for the user
     const snapshot = await get(registeredUsersRef);
@@ -52,12 +37,27 @@ export const writeArtwork = async (userUID, standardizedArtwork) => {
       );
 
       if (userKey) {
-        // Get a reference to the user's saved artworks
         const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`);
 
-        // Push the artwork, letting Firebase generate the key
-        await push(userArtworksRef, standardizedArtwork);
+        // Query the database to check for the existence of the artwork
+        const existingArtworksSnapshot = await get(userArtworksRef);
 
+        if (existingArtworksSnapshot.exists()) {
+          const artworks = existingArtworksSnapshot.val();
+          const alreadyExists = Object.values(artworks).some(
+            artwork =>
+              artwork.id === standardizedArtwork.id &&
+              artwork.museum === standardizedArtwork.museum
+          );
+
+          if (alreadyExists) {
+            console.log("Artwork already exists in the database!");
+            return; // Exit the function if the artwork already exists
+          }
+        }
+
+        // If the artwork does not exist, push it to the database
+        await push(userArtworksRef, standardizedArtwork);
         console.log("Artwork successfully saved!");
       } else {
         console.error("User not found in registeredUsers!");
