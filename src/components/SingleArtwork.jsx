@@ -10,13 +10,14 @@ import noImage from "../assets/images/noImage2.jpg"
 import Loader from "./Loader";
 import GoBackButton from "./GoBack";
 import { useVisibleContext } from "../context/VisibleContext";
-
-
+import { useLoginContext } from "../context/LoginContext";
+import {writeArtwork} from "../../firebaseApi"
 
 
 function SingleArtwork(){
     const {savedArtworks, addArtwork} = useSavedArtworks()
     const { visible, setVisible } = useVisibleContext()
+    const {userID, user} =useLoginContext()
 
 
 const {artwork_id} = useParams()
@@ -48,8 +49,14 @@ useEffect(() => {
   }
 }, [artwork, savedArtworks])
 
-const handleAdd = () => {
+const handleAdd = async () => {
+  if(!user){
+    alert("You must be logged in to save artworks.")
+    return
+  }
+  
     const standardizedArtwork = {
+      id: artwork.id,
       title: artwork.title ?
       artwork.title
       : "Untitled",
@@ -60,6 +67,7 @@ const handleAdd = () => {
       museum: "Chicago",
     }
     addArtwork(standardizedArtwork)
+    await writeArtwork(userID, standardizedArtwork)
   }
 const checkArtworks = () => {
   const isAdded = savedArtworks.some((element) =>
@@ -67,6 +75,7 @@ const checkArtworks = () => {
   setAdded(isAdded)
 
 }
+
 
 return (<>
   <SingleArtworkStyle>

@@ -17,7 +17,17 @@ import SavedArtworks from './components/SavedArtworks';
 import Slideshow from './components/Slideshow';
 import ErrPage from './components/ErrPage';
 import HomePage from './components/HomePage';
+import Login from './components/Login';
+import { LoginProvider } from './context/LoginContext';
+import { useEffect } from 'react';
+import { useLoginContext } from "./context/LoginContext"
+import Write from './components/Write';
+
+
+
 function App() {
+  const{setIsLoggedIn, setUser} = useLoginContext()
+  useEffect(()=>{},[setIsLoggedIn, setUser])
 
   return (
       <VisibleProvider>
@@ -29,6 +39,7 @@ function App() {
     <Header/>
   <PageProvider>
     <Routes>
+      <Route path='/write' element={<Write/>}></Route>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/museums' element={<Landing/> }/>
       <Route path='/museums/chicago-institute-of-art' element={<AllArtworks/>}/>
@@ -38,6 +49,8 @@ function App() {
       <Route path='/gallery' element={<SavedArtworks/>}/>
       <Route path='/gallery/slideshow' element={<Slideshow/>}/>
       <Route path='/*' element={<ErrPage/>}/>
+      <Route path='/log-in' element={<Login/>}/>
+
   
     </Routes>
     </PageProvider>

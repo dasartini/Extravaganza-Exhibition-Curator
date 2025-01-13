@@ -11,7 +11,8 @@ import Loader from "./Loader";
 import GoBackButton from "./GoBack";
 import { useVisibleContext } from "../context/VisibleContext";
 import { usePaginationContext } from "../context/PaginationContext";
-
+import { useLoginContext } from "../context/LoginContext";
+import {writeArtwork} from "../../firebaseApi"
 
 
 
@@ -25,6 +26,8 @@ const [artwork, setArtwork] = useState(null)
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true)
 const [added, setAdded] =useState(false)
+const {userID, user} =useLoginContext()
+
 
 
 useEffect(()=>{
@@ -50,14 +53,20 @@ useEffect(() => {
     }
   }, [artwork, savedArtworks])
 
-const handleAdd = () => {
+const handleAdd = async () => {
+  if(!user){
+    alert("You must be logged in to save artworks.")
+    return
+  }
     const standardizedArtwork = {
+      id: artwork.id,
       title: artwork.title || "Untitled",
       artist: artwork.creators?.[0]?.description || "Unknown Artist",
       image: artwork.images?.web?.url || noImage,
       museum: "Cleveland",
     };
     addArtwork(standardizedArtwork)
+    await writeArtwork(userID, standardizedArtwork)
   }
 
   const checkArtworks = () => {

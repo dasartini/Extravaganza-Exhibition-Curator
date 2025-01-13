@@ -5,9 +5,14 @@ import { useState, useEffect, useRef } from "react";
 import Search from "./Search";
 import extravaganza from "../assets/images/extravaganza.png";
 import { useSlideShowContext } from "../context/SlideShowContext";
+import { useLoginContext } from '../context/LoginContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebaseConfig';
+
 
 
 function Header() {
+  const {user, isLoggedIn, setIsLoggedIn, setUser} = useLoginContext()
   const [menuOpen, setMenuOpen] = useState(false)
   const {isSlideShowOpen, setIsSlideShowOpen} = useSlideShowContext()
   const location = useLocation()
@@ -46,7 +51,16 @@ function Header() {
       }
     }
   }
-
+  const handleLogout = async () => {
+    try {
+      await signOut(auth)
+      console.log('User logged out successfully')
+      setIsLoggedIn(false)
+      setUser(null)
+    } catch (error) {
+      console.error('Error logging out:', error.message)
+    }
+  };
   const handleClickOutside = (event) => {
     if (menuOpen && !navRef.current.contains(event.target)) {
       if (event.target.closest(".hamburger")) {
@@ -145,14 +159,16 @@ function Header() {
           >
             My Gallery
           </Link>
-          {/* <a
-            href="#"
+
+          {user === null?  <Link
+            to="log-in"
             className="nav-link"
             onClick={closeMenu}
             aria-label="Login to your account"
           >
             Login
-          </a> */}
+          </Link> : <span className="nav-link" style={{"cursor":"pointer"}} onClick={handleLogout}>Logout</span> }
+         
         </nav>
       </header>
     </HeaderStyle>
