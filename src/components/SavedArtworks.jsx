@@ -8,7 +8,7 @@ import { useSlideShowContext } from "../context/SlideShowContext";
 import { useLoginContext } from "../context/LoginContext"; 
 
 function SavedArtworks() {
-  const { savedArtworks, fetchSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
+  const { setSavedArtworks, savedArtworks, fetchSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
   const { isSlideShowOpen, setIsSlideShowOpen } = useSlideShowContext()

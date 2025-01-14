@@ -1,4 +1,4 @@
-import { getDatabase, ref, set,get, update, push , query, orderByChild, equalTo} from "firebase/database";
+import { getDatabase, ref, set, get, update, push, query, orderByChild, equalTo } from "firebase/database";
 import { app } from "./firebaseConfig";
 
 export const writeUser = async (eMail, userName, uid) => {
@@ -7,7 +7,7 @@ export const writeUser = async (eMail, userName, uid) => {
     const usersRef = ref(db, "registeredUsers")
     const newUserRef = push(usersRef)
     await set(newUserRef, {
-      userUID:  uid,
+      userUID: uid,
       email: eMail,
       userName: userName,
     });
@@ -64,3 +64,28 @@ export const writeArtwork = async (userUID, standardizedArtwork) => {
     console.error("Error saving artwork to database:", error)
   }
 }
+
+
+export const fetchSavedArtworks = async (userUID) => {
+  const db = getDatabase(app);
+  const registeredUsersRef = ref(db, 'registeredUsers');
+  try {
+    const snapshot = await get(registeredUsersRef);
+    if (snapshot.exists()) {
+      const usersData = snapshot.val();
+      const userKey = Object.keys(usersData).find(key => usersData[key].userUID === userUID);
+      if (userKey) {
+        const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`);
+        const artworksSnapshot = await get(userArtworksRef);
+        if (artworksSnapshot.exists()) {
+          return Object.values(artworksSnapshot.val());
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching artworks:", error);
+  }
+  return []; 
+};
+
+
