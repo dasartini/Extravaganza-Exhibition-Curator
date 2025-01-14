@@ -110,4 +110,46 @@ export const resetUserArtworks = async (userUID) => {
   } catch (error) {
     console.error("Error resetting user's artworks:", error)
   }
-};
+}
+
+export const removeUserArtwork = async (userUID, artworkID) => {
+  const db = getDatabase(app)
+  const registeredUsersRef = ref(db, "registeredUsers")
+
+  try {
+    const snapshot = await get(registeredUsersRef)
+    if (snapshot.exists()) {
+      const usersData = snapshot.val();
+      const userKey = Object.keys(usersData).find(
+        (key) => usersData[key].userUID === userUID
+      )
+
+      if (userKey) {
+        const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`)
+        const artworksSnapshot = await get(userArtworksRef)
+
+        if (artworksSnapshot.exists()) {
+          const artworksData = artworksSnapshot.val()
+
+          const artworkKey = Object.keys(artworksData).find(
+            (key) => artworksData[key].id === artworkID
+          )
+
+          if (artworkKey) {
+            const artworkRef = ref(db, `registeredUsers/${userKey}/savedartworks/${artworkKey}`)
+            await remove(artworkRef)
+            console.log(`Artwork with id ${artworkID} removed successfully.`)
+          } else {
+            console.error("Artwork not found in the database.")
+          }
+        } else {
+          console.error("No artworks found for the user.")
+        }
+      } else {
+        console.error("User not found.")
+      }
+    }
+  } catch (error) {
+    console.error("Error removing artwork:", error)
+  }
+}

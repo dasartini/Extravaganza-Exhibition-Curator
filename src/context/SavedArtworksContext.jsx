@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import { app } from "../../firebaseConfig";
-import { fetchSavedArtworks, resetUserArtworks } from "../../firebaseApi";
+import { fetchSavedArtworks, removeUserArtwork, resetUserArtworks } from "../../firebaseApi";
 import { useLoginContext } from "./LoginContext";
 
 const SavedArtworksContext = createContext()
@@ -29,10 +29,19 @@ export function SavedArtworksProvider({ children }) {
     }
   }
 
-  const removeArtwork = (index) => {
-    const updated = savedArtworks.filter((_, i) => i !== index);
-    setSavedArtworks(updated)
-  }
+  const removeArtwork = async (index) => {
+    const artworkToRemove = savedArtworks[index]
+    
+    try {
+      if (artworkToRemove && userID) {
+        await removeUserArtwork(userID, artworkToRemove.id)
+      }
+      const updated = savedArtworks.filter((_, i) => i !== index)
+      setSavedArtworks(updated)
+    } catch (error) {
+      console.error("Error removing artwork:", error)
+    }
+  };
 
   const resetGallery = async () => {
     if (!userID) {
