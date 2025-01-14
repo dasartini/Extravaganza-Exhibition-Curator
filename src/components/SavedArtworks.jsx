@@ -15,34 +15,36 @@ function SavedArtworks() {
   const { user, userID } = useLoginContext()
   useEffect(() => {
     if (userID) {
-      fetchSavedArtworks(userID);
+      fetchSavedArtworks(userID)
     }
-  }, [user, fetchSavedArtworks]);
+  }, [user, fetchSavedArtworks])
 
-  const handleResetGallery = () => {
-    setIsResetting(true);
-    setTimeout(() => {
-      resetGallery();
-      setIsResetting(false);
-    }, 500);
-  };
+  const handleResetGallery = async () => {
+    setIsResetting(true)
+    try {
+      await resetGallery()
+    } catch (error) {
+      console.error("Error resetting gallery:", error)
+    }
+    setIsResetting(false)
+  }
 
   const handleDragStart = (index) => {
-    setDraggedItemIndex(index);
-  };
+    setDraggedItemIndex(index)
+  }
 
   const handleDragOver = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   const handleDrop = (index) => {
-    if (draggedItemIndex === null || draggedItemIndex === index) return;
-    const reorderedArtworks = [...savedArtworks];
-    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1);
-    reorderedArtworks.splice(index, 0, draggedItem);
-    setSavedArtworks(reorderedArtworks);
-    setDraggedItemIndex(null);
-  };
+    if (draggedItemIndex === null || draggedItemIndex === index) return
+    const reorderedArtworks = [...savedArtworks]
+    const [draggedItem] = reorderedArtworks.splice(draggedItemIndex, 1)
+    reorderedArtworks.splice(index, 0, draggedItem)
+    setSavedArtworks(reorderedArtworks)
+    setDraggedItemIndex(null)
+  }
 
   return (
     <SavedStyle>
@@ -142,7 +144,7 @@ function SavedArtworks() {
         )}
       </div>
     </SavedStyle>
-  );
+  )
 }
 
-export default SavedArtworks;
+export default SavedArtworks

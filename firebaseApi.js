@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, get, update, push, query, orderByChild, equalTo } from "firebase/database";
+import { getDatabase, ref, set, get, remove, update, push, query, orderByChild, equalTo } from "firebase/database";
 import { app } from "./firebaseConfig";
 
 export const writeUser = async (eMail, userName, uid) => {
@@ -17,8 +17,6 @@ export const writeUser = async (eMail, userName, uid) => {
     throw error
   }
 }
-
-
 
 export const writeArtwork = async (userUID, standardizedArtwork) => {
   const db = getDatabase(app)
@@ -65,27 +63,51 @@ export const writeArtwork = async (userUID, standardizedArtwork) => {
   }
 }
 
-
 export const fetchSavedArtworks = async (userUID) => {
-  const db = getDatabase(app);
-  const registeredUsersRef = ref(db, 'registeredUsers');
+  const db = getDatabase(app)
+  const registeredUsersRef = ref(db, 'registeredUsers')
   try {
-    const snapshot = await get(registeredUsersRef);
+    const snapshot = await get(registeredUsersRef)
     if (snapshot.exists()) {
-      const usersData = snapshot.val();
-      const userKey = Object.keys(usersData).find(key => usersData[key].userUID === userUID);
+      const usersData = snapshot.val()
+      const userKey = Object.keys(usersData).find(key => usersData[key].userUID === userUID)
       if (userKey) {
-        const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`);
-        const artworksSnapshot = await get(userArtworksRef);
+        const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`)
+        const artworksSnapshot = await get(userArtworksRef)
         if (artworksSnapshot.exists()) {
-          return Object.values(artworksSnapshot.val());
+          return Object.values(artworksSnapshot.val())
         }
       }
     }
   } catch (error) {
-    console.error("Error fetching artworks:", error);
+    console.error("Error fetching artworks:", error)
   }
-  return []; 
+  return []
+}
+
+export const resetUserArtworks = async (userUID) => {
+  const db = getDatabase(app)
+  const registeredUsersRef = ref(db, "registeredUsers")
+
+  try {
+    const snapshot = await get(registeredUsersRef);
+    if (snapshot.exists()) {
+      const usersData = snapshot.val();
+      const userKey = Object.keys(usersData).find(
+        (key) => usersData[key].userUID === userUID
+      );
+
+      if (userKey) {
+        const userArtworksRef = ref(db, `registeredUsers/${userKey}/savedartworks`)
+        await remove(userArtworksRef)
+        console.log("User's saved artworks have been reset.")
+      } else {
+        console.error("User not found.")
+      }
+    } else {
+      console.error("No users found in the database.")
+    }
+  } catch (error) {
+    console.error("Error resetting user's artworks:", error)
+  }
 };
-
-
