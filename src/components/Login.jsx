@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {writeUser} from "../../firebaseApi"
+import { writeUser } from "../../firebaseApi"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { getDatabase, ref, set, push } from "firebase/database";
 import LoginStyle from '../styles/LoginStyle';
@@ -55,7 +55,8 @@ const LoginForm = () => {
     try {
       const result = await signInWithPopup(auth, provider)
       const username = extractUsername(result.user.email)
-      await writeUser(result.user.email, username)
+      const userID = result.user.uid
+      await writeUser(result.user.email, username, userID)
       console.log('User logged in with Google successfully:', username)
       setUser(username)
       setIsLoggedIn(true)
@@ -66,80 +67,80 @@ const LoginForm = () => {
   };
   return (
     <LoginStyle>
-      
+
       <div className="login-form">
-    <div className="loginTitle">
-      <img className="loginLogo" src={logo} alt="App Logo" />
-      <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
-    </div>
-    <p className="loginSubtitle">
-      {!isSignUp
-        ? "Login with an existing account to save your artworks"
-        : "Create an account to save your artworks"}
-    </p>
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="email">Email Address</label>
-        <div className="input-container">
-          <i className="fas fa-envelope"></i>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+        <div className="loginTitle">
+          <img className="loginLogo" src={logo} alt="App Logo" />
+          <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
         </div>
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <div className="input-container">
-          <i  className="fas fa-lock"></i>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+        <p className="loginSubtitle">
+          {!isSignUp
+            ? "Login with an existing account to save your artworks"
+            : "Create an account to save your artworks"}
+        </p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <div className="input-container">
+              <i className="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="input-container">
+              <i className="fas fa-lock"></i>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" className="login-btn">
+            {isSignUp ? "Sign Up" : "Login"}
+          </button>
+        </form>
+        <button onClick={handleGoogleLogin} className="google-login-btn">
+          <img
+            src={g}
+            alt="Google Logo"
+            className="google-icon"
           />
-        </div>
+          Continue with Google
+        </button>
+
+
+
+        {error && <p className="error">Please check your credentials</p>}
+        <p className="toggle-form">
+          {isSignUp ? (
+            <>
+              Already have an account?{" "}
+              <span onClick={toggleForm} className="toggle-link">
+                Log in
+              </span>
+            </>
+          ) : (
+            <>
+              Don’t have an account yet?{" "}
+              <span onClick={toggleForm} className="toggle-link">
+                Sign up
+              </span>
+            </>
+          )}
+        </p>
       </div>
-      <button type="submit" className="login-btn">
-        {isSignUp ? "Sign Up" : "Login"}
-      </button>
-    </form>
-    <button onClick={handleGoogleLogin} className="google-login-btn">
-  <img 
-    src={g} 
-    alt="Google Logo" 
-    className="google-icon" 
-  />
-  Continue with Google
-</button>
-
-    
-
-    {error && <p className="error">{error}</p>}
-    <p className="toggle-form">
-      {isSignUp ? (
-        <>
-          Already have an account?{" "}
-          <span onClick={toggleForm} className="toggle-link">
-            Log in
-          </span>
-        </>
-      ) : (
-        <>
-          Don’t have an account yet?{" "}
-          <span onClick={toggleForm} className="toggle-link">
-            Sign up
-          </span>
-        </>
-      )}
-    </p>
-  </div>
     </LoginStyle>
   )
 }
