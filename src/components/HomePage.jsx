@@ -1,8 +1,13 @@
 import HomePageStyle from "../styles/HomePageStyle";
 import image from "../assets/images/homepageImg.jpg";
 import { Link } from "react-router";
+import { useEffect } from "react";
 
 function HomePage() {
+  useEffect(()=>{
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  },[])
+
 
   return (
     <>

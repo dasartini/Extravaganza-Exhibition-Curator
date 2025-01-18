@@ -29,7 +29,14 @@
   display: flex;
   gap: 1rem;
 }
-
+.logged-in-info {
+  font-size: 0.85rem; 
+  margin-top: 2rem;
+  color: #555; 
+  text-align: center; 
+  margin-left: 5.5rem;
+  position: absolute;
+}
 .go {
   border-radius: 5px;
   width: 40px;
@@ -199,5 +206,17 @@
   .nav-link {
     margin-top: 3rem;
     text-align: left;
+  }
+  .logged-in-info {
+    font-size: 0.75rem; 
+   position: relative;
+    margin-top: 2rem;
+    margin-left: 0;
+    white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  max-width: 120px;
+
+  
   }
 }
