@@ -4,7 +4,6 @@ import { Link } from "react-router";
 import { useEffect } from "react";
 
 function HomePage() {
-
   useEffect(()=>{
     window.scrollTo({ top: 0, behavior: "smooth" })
   },[])

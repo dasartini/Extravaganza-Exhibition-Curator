@@ -51,7 +51,7 @@ function SavedArtworks() {
       <GoBackButton />
       <div className="savedArtworksCont">
         <h1 id="saved-artworks-heading">My Saved Artworks</h1>
-        {savedArtworks.length > 0 && (
+        {savedArtworks.length > 0 && user && (
           <div className="galleryButtonsCont">
             <button
               onClick={handleResetGallery}
@@ -71,11 +71,11 @@ function SavedArtworks() {
           </div>
         )}
 
-        {savedArtworks.length === 0 ? (
+        {savedArtworks.length === 0 || !user ? (
           <div className="noArtworksContainer">
             <p aria-live="polite">No artworks saved yet!</p>
             <br />
-            <p>Add artworks from different museums and arrange and check them out in a slideshow here.</p>
+            <p>Add artworks from different museums, arrange and check them out in a slideshow here.</p>
             <img
               style={{ marginTop: "1rem", height: "20rem", borderRadius: "20px" }}
               src={noArtworks}

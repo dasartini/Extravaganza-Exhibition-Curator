@@ -10,7 +10,6 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 
 
-
 function Header() {
   const {user, isLoggedIn, setIsLoggedIn, setUser} = useLoginContext()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -167,9 +166,11 @@ function Header() {
             aria-label="Login to your account"
           >
             Login
-          </Link> : <span className="nav-link" style={{"cursor":"pointer"}} onClick={handleLogout}>Logout</span> }
-         
+          </Link> : <span className="nav-link" style={{"cursor":"pointer"}} onClick={handleLogout}>Log out</span> }
+          <p className="logged-in-info">{user ? `Logged in as ${user}` : ""}</p>
+
         </nav>
+       
       </header>
     </HeaderStyle>
   )
