@@ -62,6 +62,7 @@ const LoginForm = () => {
       setIsLoggedIn(true)
       navigate('/')
     } catch (error) {
+      
       setError(error.message)
     }
   };
@@ -122,7 +123,7 @@ const LoginForm = () => {
 
 
 
-        {error && <p className="error">Please check your credentials</p>}
+        {error && <p className="error">Please check your credentials {error}</p>}
         <p className="toggle-form">
           {isSignUp ? (
             <>

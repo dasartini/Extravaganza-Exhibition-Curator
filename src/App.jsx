@@ -21,7 +21,7 @@ import Login from './components/Login';
 import { LoginProvider } from './context/LoginContext';
 import { useEffect } from 'react';
 import { useLoginContext } from "./context/LoginContext"
-import Write from './components/Write';
+import Share from './components/Share';
 
 
 
@@ -39,7 +39,6 @@ function App() {
     <Header/>
   <PageProvider>
     <Routes>
-      <Route path='/write' element={<Write/>}></Route>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/museums' element={<Landing/> }/>
       <Route path='/museums/chicago-institute-of-art' element={<AllArtworks/>}/>
@@ -50,6 +49,7 @@ function App() {
       <Route path='/gallery/slideshow' element={<Slideshow/>}/>
       <Route path='/*' element={<ErrPage/>}/>
       <Route path='/log-in' element={<Login/>}/>
+      <Route path="/share" element={<Share/>}/>
 
   
     </Routes>

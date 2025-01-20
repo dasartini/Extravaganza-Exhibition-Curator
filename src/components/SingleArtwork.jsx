@@ -12,7 +12,7 @@ import GoBackButton from "./GoBack";
 import { useVisibleContext } from "../context/VisibleContext";
 import { useLoginContext } from "../context/LoginContext";
 import {writeArtwork} from "../../firebaseApi"
-
+import Share from "./Share";
 
 function SingleArtwork(){
     const {savedArtworks, addArtwork} = useSavedArtworks()
@@ -48,6 +48,7 @@ useEffect(() => {
     checkArtworks()
   }
 }, [artwork, savedArtworks])
+
 
 const handleAdd = async () => {
   if(!user){
@@ -136,7 +137,9 @@ return (<>
               >
                 Artwork already added to your gallery!
               </p>
-            </div>
+{   artwork.image_id ?      <Share id = {artwork_id}/> : ""  }           
+
+ </div>
           </div>
 
           {artwork.description ? (

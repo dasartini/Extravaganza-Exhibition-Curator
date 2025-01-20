@@ -6,13 +6,26 @@ import GoBackButton from "./GoBack";
 import noArtworks from "../assets/images/noconnection.jpg";
 import { useSlideShowContext } from "../context/SlideShowContext";
 import { useLoginContext } from "../context/LoginContext"; 
-
+import info from "../assets/images/info.svg"
+import {  useNavigate } from "react-router";
+import x from "../assets/images/x.svg"
 function SavedArtworks() {
   const { setSavedArtworks, savedArtworks, fetchSavedArtworks, removeArtwork, resetGallery } = useSavedArtworks()
   const [draggedItemIndex, setDraggedItemIndex] = useState(null)
   const [isResetting, setIsResetting] = useState(false)
   const { isSlideShowOpen, setIsSlideShowOpen } = useSlideShowContext()
   const { user, userID } = useLoginContext()
+  const navigate = useNavigate()
+
+  const handleInfo= (artwork) =>{
+    if(artwork.museum === "Chicago"){
+      navigate(`/museums/chicago-institute-of-art/${artwork.id}`)
+
+    }else if (artwork.museum === "Cleveland"){
+      navigate(`/museums/cleveland-art-museum/${artwork.id}`)
+    }
+
+  }
   useEffect(() => {
     if (userID) {
       fetchSavedArtworks(userID)
@@ -106,13 +119,20 @@ function SavedArtworks() {
                     <p>By: {artwork.artist}</p>
                     <p>From: {artwork.museum} Museum</p>
                   </div>
-                  <button
+                  <img 
+                  src={x}
                     className="erase"
                     onClick={() => removeArtwork(index)}
                     aria-label={`Remove artwork: ${artwork.title}`}
-                  >
-                    X
-                  </button>
+                  />
+           
+                  <img src={info}
+                    onClick={()=> handleInfo(artwork)}
+                    className="info"
+                    title="Information abou the artwork"
+                    aria-label={`Information about the artwork: ${artwork.title}`}
+                  />
+                  
                 </li>
               ))}
             </ul>

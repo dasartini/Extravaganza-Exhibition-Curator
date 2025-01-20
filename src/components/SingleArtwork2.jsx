@@ -13,6 +13,7 @@ import { useVisibleContext } from "../context/VisibleContext";
 import { usePaginationContext } from "../context/PaginationContext";
 import { useLoginContext } from "../context/LoginContext";
 import {writeArtwork} from "../../firebaseApi"
+import Share2 from "./Share2";
 
 
 
@@ -138,6 +139,7 @@ return (<>
               >
                 Artwork already added to your gallery!
               </p>
+{   artwork.images?.web?.url    &&        <Share2 id ={artwork_id}/>}
             </div>
           </div>
 
