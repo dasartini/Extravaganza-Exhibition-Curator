@@ -49,6 +49,7 @@ useEffect(() => {
   }
 }, [artwork, savedArtworks])
 
+
 const handleAdd = async () => {
   if(!user){
     alert("You must be logged in to save artworks.")
@@ -136,8 +137,9 @@ return (<>
               >
                 Artwork already added to your gallery!
               </p>
-              <Share id = {artwork_id}/>
-            </div>
+{   artwork.image_id ?      <Share id = {artwork_id}/> : ""  }           
+
+ </div>
           </div>
 
           {artwork.description ? (

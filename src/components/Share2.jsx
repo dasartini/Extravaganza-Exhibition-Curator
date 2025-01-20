@@ -1,8 +1,8 @@
 import { FacebookIcon, FacebookShareButton, TelegramIcon, TelegramShareButton,RedditIcon, RedditShareButton, TwitterShareButton, XIcon, WhatsappShareButton, WhatsappIcon, LinkedinIcon, LinkedinShareButton} from "react-share"
 
 
-function Share ({id} ) {
-const shareUrl = `https://extravaganzart.netlify.app/museums/chicago-institute-of-art/${id}`
+function Share2 ({id} ) {
+const shareUrl = `https://extravaganzart.netlify.app/museums/cleveland-art-museum/${id}`
 const title = "Check out this amazing artwork! "
     return (
     
@@ -25,7 +25,7 @@ const title = "Check out this amazing artwork! "
             <LinkedinShareButton title={title} url={shareUrl} >
                 <LinkedinIcon size={30} round/>
             </LinkedinShareButton>
-            <TelegramShareButton url={shareUrl} description={title}>
+            <TelegramShareButton  url={shareUrl} description={title}>
                 <TelegramIcon size={30} round/>
             </TelegramShareButton>
             
@@ -35,4 +35,4 @@ const title = "Check out this amazing artwork! "
     )
 }
 
-export default Share
+export default Share2
