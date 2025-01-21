@@ -3,6 +3,7 @@ import image from "../assets/images/homepageImg.jpg";
 import { Link } from "react-router";
 import { useEffect } from "react";
 
+import Design from "./Design";
 function HomePage() {
   useEffect(()=>{
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -11,7 +12,9 @@ function HomePage() {
 
   return (
     <>
+      <Design/>
       <HomePageStyle>
+     
         <div className="homePageCont" role="main" aria-labelledby="main-heading">
           <h1 id="main-heading">EXTRAVAGANZA</h1>
           <br />
@@ -54,7 +57,7 @@ function HomePage() {
               Feel free to navigate between the different museums available. You can also add artworks to your personal
               gallery and reorder them however you like.
             </p>
-            <p>And the best part? You can show your gallery with friends in a slideshow.</p> <br></br>
+            <p>And the best part? You can share your gallery with friends in a slideshow.</p> <br></br>
             <p>Enjoy exploring the ways different souls express themselves.</p> <br></br>
           </div>
           <br />
