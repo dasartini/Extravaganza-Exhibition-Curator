@@ -19,7 +19,7 @@ function Design() {
         <img  className="homePageTitle" src={title}/>
         <div className="designText">
         <h1 id="firstText">Chicago | Cleveland</h1>
-        <h1 id="secondText">Embark history</h1>
+        <h1 id="secondText">A Gateway to Art, History, and Heritage</h1>
         </div>
     
         <button className="designButton">
