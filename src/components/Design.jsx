@@ -2,12 +2,14 @@ import title from "../assets/images/text.png"
 import down from "../assets/images/down.svg"
 import DesignStyle from "../styles/DesignStyle"
 import { Navigate, useNavigate } from "react-router"
+import { HashLink } from "react-router-hash-link"
+
 function Design() {
 
     const navigate = useNavigate()
 
     const handleClick = ()=>{
-        navigate("/about")
+       navigate("/museums")
     }
   return (
 
@@ -21,10 +23,13 @@ function Design() {
         </div>
     
         <button className="designButton">
-    <a href="https://extravaganzart.netlify.app/museums" className="designButtonA"><span>Explore the museums</span></a> 
+    <a onClick={()=>{handleClick()}} className="designButtonA"><span>Explore the museums</span></a> 
     </button>
-    <img onClick={()=>{handleClick()}} className="arrowDown" src={down} />
+    <HashLink to="#aboutSection"  scroll={(el) => el.scrollIntoView({ behavior: "smooth", block: "start" })}>
+    <img  className="arrowDown" src={down} />
+    </HashLink >
             </div>
+        
             </DesignStyle>
     </>
   )
