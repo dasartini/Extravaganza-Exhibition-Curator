@@ -2,11 +2,15 @@ import HomePageStyle from "../styles/HomePageStyle";
 import image from "../assets/images/homepageImg.jpg";
 import { Link } from "react-router";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 function About() {
-
+  const navigate = useNavigate
       useEffect(()=>{
         window.scrollTo({ top: 0, behavior: "smooth" })
       },[])
+      const handleClick = ()=>{
+        navigate("/museums")
+     }
   return (
     <>
     <HomePageStyle>
