@@ -1,9 +1,4 @@
 .firstdiv {
-  background-image: url("../assets/images/home2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
   min-height: 900px;
   display: flex;
   flex-direction: column;
@@ -14,6 +9,19 @@
   margin-top: -3rem ;
 }
 
+.firstdiv::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/images/home2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
 .homePageTitle {
   position: relative;
   width: 80%; 

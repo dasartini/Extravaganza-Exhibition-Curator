@@ -1,12 +1,11 @@
 .homePageCont {
+    background-color: aliceblue;
     margin-top: 1rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 2rem;
+    
 }
 
 
@@ -26,6 +25,8 @@
 }
 
 .homePageText {
+    margin-left: 2rem;
+    margin-right:2rem;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -70,9 +71,4 @@
     }
 
 
-}
-
-.homePageCont {
-    margin-left: 2rem;
-    margin-right: 2rem;
 }
