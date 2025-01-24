@@ -26,7 +26,7 @@ function Design() {
         <button className="designButton">
     <a onClick={()=>{handleClick()}} className="designButtonA"><span>Explore the museums</span></a> 
     </button>
-    <HashLink to="#aboutSection"  scroll={(el) => el.scrollIntoView({ behavior: "smooth", block: "start" })}>
+    <HashLink to="#about"  scroll={(el) => el.scrollIntoView({ behavior: "smooth", block: "start" })}>
     <img  className="arrowDown" src={down} />
     </HashLink >
             </div>

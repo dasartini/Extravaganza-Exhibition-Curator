@@ -3,18 +3,22 @@ import image from "../assets/images/homepageImg.jpg";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 function About() {
-  const navigate = useNavigate
+  const navigate = useNavigate()
+  const handleClick = ()=>{
+
+    navigate("/museums")
+     }
       useEffect(()=>{
         window.scrollTo({ top: 0, behavior: "smooth" })
       },[])
-      const handleClick = ()=>{
-        navigate("/museums")
-     }
+
+
+  
   return (
     <>
     <HomePageStyle>
      
-        <div id="aboutSection" className="homePageCont" role="main" aria-labelledby="main-heading">
+        <div id="about" className="homePageCont" role="main" aria-labelledby="main-heading">
           <h1 id="main-heading">EXTRAVAGANZA</h1>
           <br />
           <div className="quote" aria-labelledby="quote-heading">
